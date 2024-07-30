@@ -36,7 +36,7 @@ struct Routes: View {
             .tint(.pink)
         }else{
             NavigationStack() {
-                HomeView()
+                HomeView().onAppear{EventManager.shared.getEvents()}
                     .navigationTitle("Inside App")
             }
         }

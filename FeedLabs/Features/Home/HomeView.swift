@@ -58,6 +58,14 @@ struct HomeView: View {
                                     .font(.system(size: 10,weight: .light))
                                     .padding()
                             }
+                            Button {
+                                if let id = event.id {
+                                    EventManager.shared.deleteEvent(id)
+                                }
+                            } label: {
+                                Text("del")
+                            }
+
                         }
                         .background(Color.gray).cornerRadius(10)
                     }
