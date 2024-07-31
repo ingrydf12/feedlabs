@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseDatabase
 
 class UserManager: ObservableObject {
     
@@ -23,7 +24,6 @@ class UserManager: ObservableObject {
     
     func fetchUser() {
         guard let userId = AuthManager.shared.userId else { return }
-        
         let db = Firestore.firestore()
         let ref = db.collection("Users").document(userId)
         
@@ -68,8 +68,22 @@ class UserManager: ObservableObject {
        let db = Firestore.firestore()
        
        do {
-           let _ = try db.collection("Users").document(userId).setData(from: user)
-           print("User added successfully to Firestore")
+           try db.collection("Users").document(userId).setData(from: user) { error in
+               if let error = error {
+                   print("Error adding user to Firestore: \(error.localizedDescription)")
+               } else {
+                   print("User added successfully to Firestore")
+                
+                   let ref = Database.database().reference()
+                   ref.child("users/\(userId)").setValue(["exists": true]) { error, _ in
+                       if let error = error {
+                           print("Error adding user ID to Realtime Database: \(error.localizedDescription)")
+                       } else {
+                           print("User ID added successfully to Realtime Database")
+                       }
+                   }
+               }
+           }
        } catch let error {
            print("Error adding user to Firestore: \(error.localizedDescription)")
        }
