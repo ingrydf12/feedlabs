@@ -13,10 +13,12 @@ class UserManager: ObservableObject {
     static let shared = UserManager()
     
     @Published var user: User?
+    @Published var listUsers: [User]?
     
     private init () {
         print("init User Manager")
         fetchUser()
+        getUsers()
     }
     
     func fetchUser() {
@@ -77,5 +79,22 @@ class UserManager: ObservableObject {
             print("Error editing user: \(error.localizedDescription)")
         }
     }
-
+    
+    func getUsers(){
+        let db = Firestore.firestore()
+        let ref = db.collection("Users")
+        
+        ref.getDocuments { documentsSnapshot, error in
+            if let error = error {
+                print("Error fetching users:", error.localizedDescription)
+                return
+            }
+            
+            if let documentsSnapshot = documentsSnapshot{
+                self.listUsers = documentsSnapshot.documents.compactMap{ document in
+                    try? document.data(as: User.self)
+                }
+            }
+        }
+    }
 }
