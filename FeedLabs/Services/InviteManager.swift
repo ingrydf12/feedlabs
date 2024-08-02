@@ -100,14 +100,15 @@ class InviteManager: ObservableObject {
     }
     
     func updateInviteStatus(_ invite: Invite, status: Status) {
+        
         let ref = Database.database().reference()
         let inviteId = invite.id
         let eventId = invite.eventId ?? ""
+        let userID = UserManager.shared.user?.id ?? ""
         
         switch status {
             case .aceito:
-                //incluir user que esta aceitando como participante do evento.
-                //apenas o for pode aceitar
+                EventManager.shared.addParticipant(userId: userID, to: eventId)
                 ref.child("invites").child(inviteId).child("status").setValue(status.rawValue)
             case .cancelado:
                 let from = invite.from ?? ""

@@ -64,6 +64,14 @@ class UserManager: ObservableObject {
             
         }
     }
+    
+    func getUserById(_ userId: String) -> User? {
+        if userId == user?.id {
+            return user
+        }
+        return users.first(where: { $0.id == userId })
+    }
+    
     func addUser(user: User) {
        guard let userId = user.id else {
            print("User ID is missing")
