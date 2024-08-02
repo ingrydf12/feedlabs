@@ -16,7 +16,6 @@ class EventManager: ObservableObject {
     
     private init () {
         print("init Event Manager")
-        getEvents()
     }
     
     func getEvents() {
@@ -24,8 +23,6 @@ class EventManager: ObservableObject {
             print("User is not authenticated")
             return
         }
-        
-        print("Fetching all events for user id: \(userId)")
         
         let db = Firestore.firestore()
         let ref = db.collection("Events")
@@ -38,12 +35,36 @@ class EventManager: ObservableObject {
             
             if let snapshot = snapshot {
                 self.events = snapshot.documents.compactMap { document in
-                    try? document.data(as: Event.self)
+                    do {
+                        let event = try document.data(as: Event.self)
+                        if self.haveAcess(of: userId, to: event){
+                            return event
+                        }else{
+                            return nil
+                        }
+                    } catch {
+                        print("Error decoding event:", error.localizedDescription)
+                        return nil
+                    }
                 }
                 print("Events fetched successfully")
             }
         }
     }
+    
+    private func haveAcess(of user: String, to event: Event) -> Bool {
+        if event.isPrivate {
+            if event.participants.contains(user) || event.owners.contains(user){
+                return true
+            }else {
+                print("User does not have permission to access this private event")
+                return false
+            }
+        }else{
+            return true
+        }
+    }
+    
     func addEvent(_ event: Event) {
         let db = Firestore.firestore()
         do {

@@ -12,6 +12,7 @@ struct HomeView: View {
     @StateObject private var userManager = UserManager.shared
     @StateObject private var eventManager = EventManager.shared
     @State private var showingAddEventModal = false
+    @State private var showingListUsers = false
     
     var body: some View {
         if userManager.user != nil {
@@ -40,7 +41,17 @@ struct HomeView: View {
                                 .padding(.horizontal,30)
                         }.background(Color.pink).cornerRadius(18)
                     })
+                  
                 }.padding(.horizontal,20)
+                Button(action: {
+                    showingListUsers.toggle()
+                }, label: {
+                    VStack{
+                        Text("List User").foregroundStyle(Color.white)
+                            .padding()
+                            .padding(.horizontal,30)
+                    }.background(Color.pink).cornerRadius(18)
+                })
                 ScrollView(.vertical) {
                     ForEach(eventManager.events ?? []) { event in
                         HStack {
@@ -58,13 +69,23 @@ struct HomeView: View {
                                     .font(.system(size: 10,weight: .light))
                                     .padding()
                             }
+                            Button {
+                                if let id = event.id {
+                                    EventManager.shared.deleteEvent(id)
+                                }
+                            } label: {
+                                Text("del")
+                            }
+
                         }
                         .background(Color.gray).cornerRadius(10)
                     }
                 }
             }.sheet(isPresented: $showingAddEventModal) {
                 AddEvent()
-            }
+            }.sheet(isPresented: $showingListUsers, content: {
+                ListUsers()
+            })
         }else {
             ProgressView()
                 .frame(width: 100, height: 150, alignment: .center) 

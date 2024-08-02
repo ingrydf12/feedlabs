@@ -10,35 +10,54 @@ import SwiftUI
 class CreatingNewMessageView: ObservableObject{
     @Published var users = [ChatUser]()
     @Published var erroMessage: String = ""
+    @StateObject var userManager = UserManager.shared
     
     init(){
         fetchAllUsers()
     }
     
     func fetchAllUsers(){
-        UserManager.shared.listUsers?.forEach({ user in
+        print(UserManager.shared.users)
+        userManager.users.forEach({ user in
+            print(user)
             let chatUser = ChatUser.init(user: user)
             if chatUser.id != AuthManager.shared.userId {
                 self.users.append(chatUser)
+                
             }
         })
     }
 }
 
 struct ListUsers: View {
-    
-    @ObservedObject var vm = CreatingNewMessageView()
+    @State var users = [User]()
+    @StateObject var userManager = UserManager.shared
+    @State private var isPrivate: Bool = false
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationStack{
-            ScrollView{
-                Text(vm.erroMessage)
-                ForEach(vm.users){ user in
-                    
-                    Text(user.email ?? "")
+        NavigationView{
+            Form {
+                Section(header: Text("Selecionar usuário")){
+                    List(filterUsers(users: userManager.users)){ user in
+                        HStack{
+                            Text(user.email ?? "")
+                        }
+                    }
                 }
             }
+            .navigationTitle("List Users")
+            .navigationBarItems(trailing: Button("Cancel") {
+                presentationMode.wrappedValue.dismiss()
+            })
         }
+    }
+    
+    func filterUsers(users: [User]) -> [User]{
+        let userFilter = users.filter({
+            return $0.id != AuthManager.shared.userId
+        })
+        return userFilter
     }
 }
 

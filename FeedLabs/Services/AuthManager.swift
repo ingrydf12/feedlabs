@@ -17,6 +17,7 @@ class AuthManager: ObservableObject {
         print("init Auth Manager")
         self.isAuthenticated = Auth.auth().currentUser != nil
         self.userId = Auth.auth().currentUser?.uid
+        
         Auth.auth().addStateDidChangeListener { _, user in
             self.isAuthenticated = user != nil
             self.userId = user?.uid
@@ -26,10 +27,13 @@ class AuthManager: ObservableObject {
     
     func signOut() {
         do {
-            print("saindo")
             try Auth.auth().signOut()
+            
             self.isAuthenticated = false
             self.userId = nil
+            
+            EventManager.shared.events?.removeAll()
+            
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }

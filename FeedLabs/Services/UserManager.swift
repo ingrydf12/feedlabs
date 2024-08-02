@@ -13,7 +13,7 @@ class UserManager: ObservableObject {
     static let shared = UserManager()
     
     @Published var user: User?
-    @Published var listUsers: [User]?
+    @Published var users: [User] = []
     
     private init () {
         print("init User Manager")
@@ -36,6 +36,28 @@ class UserManager: ObservableObject {
             if let document = document, document.exists {
                 self.user = try? document.data(as: User.self)
             }
+        }
+    }
+    func getUsers(){
+        guard AuthManager.shared.userId != nil else { return }
+        
+        let db = Firestore.firestore()
+        let ref = db.collection("Users")
+        
+        ref.getDocuments { snapshot, error in
+            if let error = error {
+                print("error:", error.localizedDescription)
+                return
+            }
+            
+            if let snapshot = snapshot {
+                self.users = snapshot.documents.compactMap { document in
+                    try? document.data(as: User.self)
+                }
+               
+                print("Users fetched successfully")
+            }
+            
         }
     }
     func addUser(user: User) {
@@ -80,21 +102,4 @@ class UserManager: ObservableObject {
         }
     }
     
-    func getUsers(){
-        let db = Firestore.firestore()
-        let ref = db.collection("Users")
-        
-        ref.getDocuments { documentsSnapshot, error in
-            if let error = error {
-                print("Error fetching users:", error.localizedDescription)
-                return
-            }
-            
-            if let documentsSnapshot = documentsSnapshot{
-                self.listUsers = documentsSnapshot.documents.compactMap{ document in
-                    try? document.data(as: User.self)
-                }
-            }
-        }
-    }
 }
