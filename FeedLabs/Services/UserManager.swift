@@ -24,6 +24,7 @@ class UserManager: ObservableObject {
     
     func fetchUser() {
         guard let userId = AuthManager.shared.userId else { return }
+       
         let db = Firestore.firestore()
         let ref = db.collection("Users").document(userId)
         
@@ -51,11 +52,13 @@ class UserManager: ObservableObject {
             }
             
             if let snapshot = snapshot {
-                self.users = snapshot.documents.compactMap { document in
-                    try? document.data(as: User.self)
-                }
-                print("Users fetched successfully")
-            }
+               self.users = snapshot.documents.compactMap { document in
+                   // Filtrar o usuário logado
+                   let user = try? document.data(as: User.self)
+                   return user?.id != userId ? user : nil
+               }
+               print("Users fetched successfully")
+           }
             
         }
     }

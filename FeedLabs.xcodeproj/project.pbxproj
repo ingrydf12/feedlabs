@@ -28,6 +28,7 @@
 		816A95542C57BC2600E881EC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A954F2C57BC2600E881EC /* RegisterView.swift */; };
 		816A95552C57BC2600E881EC /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95502C57BC2600E881EC /* Routes.swift */; };
 		816A95562C57BC2600E881EC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95512C57BC2600E881EC /* LoginView.swift */; };
+		81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		816A954F2C57BC2600E881EC /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		816A95502C57BC2600E881EC /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		816A95512C57BC2600E881EC /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				816A954E2C57BC2600E881EC /* AddEvent.swift */,
+				81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				816A95522C57BC2600E881EC /* HomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
+				81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */,
 				816426FD2C5A70EC00B1BD90 /* InviteManager.swift in Sources */,
 				816A95552C57BC2600E881EC /* Routes.swift in Sources */,
 				816A95432C57BB3B00E881EC /* User.swift in Sources */,

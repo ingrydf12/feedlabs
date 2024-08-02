@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddEvent: View {
+    
     @State private var name: String = ""
     @State private var isPrivate: Bool = false
     @State private var description: String = ""
@@ -47,24 +48,23 @@ struct AddEvent: View {
                 }
                 Section(header: Text("Selecionar Participantes")) {
                     List(UserManager.shared.users) { user in
-                        if UserManager.shared.user?.id != user.id {
-                            HStack {
-                                Text(user.name ?? "")
-                                Spacer()
-                                if selectedParticipants.contains(user.id ?? "") {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.blue)
-                                }
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                if selectedParticipants.contains(user.id ?? "") {
-                                    selectedParticipants.remove(user.id ?? "")
-                                } else {
-                                    selectedParticipants.insert(user.id ?? "")
-                                }
+                        HStack {
+                            Text(user.name ?? "")
+                            Spacer()
+                            if selectedParticipants.contains(user.id ?? "") {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
                             }
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if selectedParticipants.contains(user.id ?? "") {
+                                selectedParticipants.remove(user.id ?? "")
+                            } else {
+                                selectedParticipants.insert(user.id ?? "")
+                            }
+                        }
+                        
                     }
                 }
                 
