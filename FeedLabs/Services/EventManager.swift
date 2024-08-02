@@ -80,6 +80,10 @@ class EventManager: ObservableObject {
         }
     }
     
+    func addParticipant(userId: String, to eventId: String){
+        //implement
+    }
+    
     func updateEvent(_ event: Event) {
         guard let eventId = event.id else {
             print("Event ID is missing")

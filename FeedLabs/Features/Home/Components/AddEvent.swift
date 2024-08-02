@@ -15,6 +15,7 @@ struct AddEvent: View {
     @State private var date: Date = Date()
     @State private var estimatedTime: Int = 0
     @State private var selectedParticipants: Set<String> = []
+    @StateObject private var userManager = UserManager.shared
 
     @Environment(\.presentationMode) var presentationMode
     
@@ -47,7 +48,7 @@ struct AddEvent: View {
                     .padding()
                 }
                 Section(header: Text("Selecionar Participantes")) {
-                    List(UserManager.shared.users) { user in
+                    List(userManager.users) { user in
                         HStack {
                             Text(user.name ?? "")
                             Spacer()

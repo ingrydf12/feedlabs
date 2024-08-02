@@ -9,10 +9,10 @@ import SwiftUI
 
 struct InviteUsersView: View {
     
-    var event: String
+    @Binding var event: String
     
     @StateObject private var userManager = UserManager.shared
-    @StateObject private var inviteManager = InviteManager()
+    @StateObject private var inviteManager = InviteManager.shared
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -30,6 +30,7 @@ struct InviteUsersView: View {
                             if let userId = user.id {
                                 inviteManager.createInvite(for: event, to: userId)
                             }
+                            presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Convidar")
                         }
@@ -39,13 +40,7 @@ struct InviteUsersView: View {
                 Button("Fechar") {
                     presentationMode.wrappedValue.dismiss()
                 }
-            }.onAppear{print(1)}
-                .padding()
+            }.padding()
         }
     }
-}
-
-
-#Preview {
-    InviteUsersView(event: "SggpSZCGxvmWokq4mmmf")
 }

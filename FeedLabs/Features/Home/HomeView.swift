@@ -65,7 +65,7 @@ struct HomeView: View {
                             }
                             if event.owners.contains(user.id ?? ""){
                                 Button {
-                                    selectedEvent = event.id ?? ""
+                                    selectedEvent = event.id!
                                     showingInviteModal.toggle()
                                 } label: {
                                     Text("Convidar")
@@ -117,7 +117,7 @@ struct HomeView: View {
             }.sheet(isPresented: $showingAddEventModal) {
                 AddEvent()
             }.sheet(isPresented: $showingInviteModal) {
-                InviteUsersView(event: selectedEvent)
+                InviteUsersView(event: $selectedEvent)
             }
         } else {
             ProgressView()

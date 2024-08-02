@@ -6,7 +6,6 @@
 //
 
 //criar e enviar, aceitar, recusar, buscar.
-
 import Foundation
 import Firebase
 
@@ -41,16 +40,29 @@ class InviteManager: ObservableObject {
             let inviteId = snapshot.key
             
             let inviteDetailRef = Database.database().reference().child("invites").child(inviteId)
-            inviteDetailRef.observeSingleEvent(of: .value, with: { snapshot in
+            inviteDetailRef.observe(.value, with: { snapshot in
                 if let inviteData = snapshot.value as? [String: Any],
                    let invite = Invite(id: inviteId, dictionary: inviteData) {
                     DispatchQueue.main.async {
-                        self?.invites.append(invite)
+                        if let index = self?.invites.firstIndex(where: { $0.id == inviteId }) {
+                            self?.invites[index] = invite // Atualiza o convite existente
+                        } else {
+                            self?.invites.append(invite) // Adiciona um novo convite
+                        }
                     }
                 }
             })
         })
+        
+        // Observando remoção de convites
+        invitesRef?.observe(.childRemoved, with: { [weak self] snapshot in
+            let inviteId = snapshot.key
+            DispatchQueue.main.async {
+                self?.invites.removeAll { $0.id == inviteId }
+            }
+        })
     }
+    
     func createInvite(for eventId: String, to userId: String) {
         guard let from = AuthManager.shared.userId else {
             print("User ID is missing")
@@ -86,31 +98,27 @@ class InviteManager: ObservableObject {
             }
         }
     }
+    
     func updateInviteStatus(_ invite: Invite, status: Status) {
         let ref = Database.database().reference()
         let inviteId = invite.id
         let eventId = invite.eventId ?? ""
         
         switch status {
-        case .aceito:
-            //apenas o for pode aceitar
-            ref.child("invites").child(inviteId).child("status").setValue(status.rawValue)
-        case .cancelado:
+            case .aceito:
+                //incluir user que esta aceitando como participante do evento.
+                //apenas o for pode aceitar
+                ref.child("invites").child(inviteId).child("status").setValue(status.rawValue)
+            case .cancelado:
+                let from = invite.from ?? ""
+                let toId = invite.to ?? ""
+                
+                ref.child("invites").child(inviteId).removeValue()
+                ref.child("users").child(from).child("invites").child(inviteId).removeValue()
+                ref.child("users").child(toId).child("invites").child(inviteId).removeValue()
             
-            let from = invite.from ?? ""
-            let toId = invite.to ?? ""
-            
-            ref.child("invites").child(inviteId).removeValue()
-            ref.child("users").child(from).child("invites").child(inviteId).removeValue()
-            ref.child("users").child(toId).child("invites").child(inviteId).removeValue()
-        
-        default: // pendente e enviado
-            ref.child("invites").child(inviteId).child("status").setValue(status.rawValue)
+            default: // pendente e enviado
+                ref.child("invites").child(inviteId).child("status").setValue(status.rawValue)
         }
-        
-        // Update status of the invite
-        ref.child("invites").child(inviteId).child("status").setValue(status.rawValue)
     }
 }
-
-

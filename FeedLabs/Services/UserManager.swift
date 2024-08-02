@@ -23,6 +23,7 @@ class UserManager: ObservableObject {
     }
     
     func fetchUser() {
+        print("feching user")
         guard let userId = AuthManager.shared.userId else { return }
        
         let db = Firestore.firestore()
@@ -40,6 +41,7 @@ class UserManager: ObservableObject {
         }
     }
     func getUsers(){
+        print("getting user")
         guard let userId = AuthManager.shared.userId else { return }
         
         let db = Firestore.firestore()
