@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var coordinator = AuthCoordinator()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        
+        switch coordinator.currentScreen {
+        case .entry:
+            coordinator.entryView
+        case .login:
+            coordinator.loginView
+        case .register:
+            coordinator.registerView
+        case .passwordRecovery:
+            Text("Password Recovery")
+        case .home:
+            coordinator.homeView
         }
-        .padding()
     }
 }
 

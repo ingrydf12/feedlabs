@@ -1,51 +1,43 @@
 //
 //  Routes.swift
-//  testFireStorage
+//  FeedLabs
 //
-//  Created by João Pedro Borges on 25/07/24.
+//  Created by João Pedro Borges on 05/08/24.
 //
 
 import SwiftUI
 
 struct Routes: View {
     
-    @State private var selectedIndex: Int = 0
-    @StateObject var authManager = AuthManager.shared
-    
+    let coordinator: HomeCoordinator
+
     var body: some View {
-        if !authManager.isAuthenticated {
-            TabView(selection: $selectedIndex) {
-                NavigationStack() {
-                    LoginView()
-                        .navigationTitle("Login")
-                }
+        TabView {
+            coordinator.navigateToTeams()
                 .tabItem {
-                    Image(systemName: "1.circle")
+                    Label("Teams", systemImage: "1.circle")
                 }
-                .tag(0)
-                
-                NavigationStack() {
-                    RegisterView()
-                        .navigationTitle("Register")
-                }
+
+            coordinator.navigateToHome()
                 .tabItem {
-                    Image(systemName: "2.circle")
+                    Label("Home", systemImage: "2.circle")
                 }
-                .tag(1)
-            }
-            .tint(.pink)
-        }else{
-            NavigationStack() {
-                HomeView().onAppear{
-                    EventManager.shared.getEvents()
+
+            coordinator.navigateToChats()
+                .tabItem {
+                    Label("Chats", systemImage: "3.circle")
                 }
-                    .navigationTitle("Inside App")
-            }
         }
+    }
+}
+struct RoutesPreviewContainer: View {
+    @StateObject var coordinator = HomeCoordinator()
+
+    var body: some View {
+        Routes(coordinator: coordinator)
     }
 }
 
 #Preview {
-    Routes()
+    RoutesPreviewContainer()
 }
-//tca clean arc

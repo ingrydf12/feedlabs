@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  ChatsView.swift
 //  FeedLabs
 //
 //  Created by João Pedro Borges on 05/08/24.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct HomeView: View {
-    
+struct ChatsView: View {
+
     var body: some View {
-        Text("Home")
+        Text("Chat")
     }
 }
 
 #Preview {
-    HomeView()
+    ChatsView()
 }
