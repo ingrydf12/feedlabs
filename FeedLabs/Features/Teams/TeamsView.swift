@@ -10,7 +10,18 @@ import SwiftUI
 struct TeamsView: View {
     
     var body: some View {
-        Text("Teams")
+        
+        VStack{
+            HStack{
+                Text("Teams")
+                    .padding(.vertical,5)
+                    .padding(.horizontal,150)
+            }
+            .background(Color.clearGray)
+            .cornerRadius(15)
+            Spacer()
+        }.padding(.top,15)
+        
     }
 }
 
