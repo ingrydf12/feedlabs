@@ -31,34 +31,67 @@ class CreatingNewMessageView: ObservableObject{
 
 struct ListUsers: View {
     @State var users = [User]()
+
+    @State var isSearching: Bool = false
+    @State var search: Bool = false
     @StateObject var userManager = UserManager.shared
     @State private var isPrivate: Bool = false
     @Environment(\.presentationMode) var presentationMode
-    
+
     var body: some View {
+
         NavigationView{
             Form {
-                Section(header: Text("Selecionar usuário")){
-                    List(filterUsers(users: userManager.users)){ user in
-                        HStack{
-                            Text(user.email ?? "")
+                HStack{
+                    TextField("", text: $userManager.searchText, prompt: Text("Buscar").foregroundColor(.gray))
+                             .autocapitalization(.none)
+                             .foregroundColor(.gray)
+                            
+                     Button(action: {
+                         userManager.isSearchingUser = true
+                     }, label: {
+                         Image(systemName: "magnifyingglass")
+                             .foregroundColor(.gray)
+                     })
+                }
+               
+                if !(userManager.searchText == "") &&   userManager.isSearchingUser {
+                   
+                    Section(header: Text("Selecionar usuário")){
+                        ForEach(userManager.searchUsers){ user in
+                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                Text(user.email ?? "")
+                            })
+                            .foregroundStyle(Color(.black))
                         }
+                    }.onAppear{
+                        
+                    }
+                }else{
+                    Section(header: Text("Selecionar usuário")){
+                        ForEach(userManager.filteredUsers){ user in
+                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                                
+                                Text(user.email ?? "")
+                                    
+                            })
+                            .foregroundStyle(Color(.black))
+                        }
+                    }.onAppear{
+                        userManager.isSearchingUser = false
                     }
                 }
+                
             }
-            .navigationTitle("List Users")
+            
+            .navigationTitle("Chats")
             .navigationBarItems(trailing: Button("Cancel") {
                 presentationMode.wrappedValue.dismiss()
             })
+            .padding(-5)
         }
     }
     
-    func filterUsers(users: [User]) -> [User]{
-        let userFilter = users.filter({
-            return $0.id != AuthManager.shared.userId
-        })
-        return userFilter
-    }
 }
 
 #Preview {

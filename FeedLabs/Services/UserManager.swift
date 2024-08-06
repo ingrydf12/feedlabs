@@ -14,11 +14,25 @@ class UserManager: ObservableObject {
     
     @Published var user: User?
     @Published var users: [User] = []
+    @Published var searchUsers: [User] = []
+    @Published var filteredUsers: [User] = []
+    @Published var searchText: String = ""
+    @Published var isSearchingUser: Bool = false{
+        didSet {
+            if self.searchText.count != 0 {
+                self.filterUsersByEmail( email: searchText)
+            }else {
+                self.searchUsers.removeAll()
+            }
+        }
+    }
+    @Published var isLoading = false
     
     private init () {
         print("init User Manager")
         fetchUser()
         getUsers()
+        
     }
     
     func fetchUser() {
@@ -55,6 +69,7 @@ class UserManager: ObservableObject {
                     try? document.data(as: User.self)
                 }
                
+                self.filterUsers()
                 print("Users fetched successfully")
             }
             
@@ -102,4 +117,26 @@ class UserManager: ObservableObject {
         }
     }
     
+    func filterUsers(){
+        if !users.isEmpty{
+            let userFilter = users.filter({
+                return $0.id != AuthManager.shared.userId
+            })
+            self.filteredUsers = userFilter.sorted{ $0.email ?? "" < $1.email ?? ""}
+        }
+        
+    }
+    
+    func filterUsersByEmail(email: String){
+        guard !searchText.isEmpty else {
+            self.searchUsers = []
+            self.isLoading = false
+            return
+        }
+        
+        let userFilter = filteredUsers.filter({
+            return $0.email!.contains( email)
+        })
+        self.searchUsers = userFilter
+    }
 }
