@@ -21,9 +21,9 @@ struct AddEvent: View {
         NavigationView {
             Form {
                 Section(header: Text("Event Details")) {
-                    TextField("Name", text: $name)
+                    TextField("Insira o título do evento", text: $name)
                         .autocapitalization(.none)
-                    TextField("Description", text: $description)
+                    TextField("Insira uma breve descrição", text: $description)
                         .autocapitalization(.none)
                 }
                 
@@ -45,6 +45,7 @@ struct AddEvent: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .padding()
                 }
+                //test
                 Section(header: Text("Selecionar Participantes")) {
                     List(UserManager.shared.users) { user in
                         if UserManager.shared.user?.id != user.id {
@@ -52,8 +53,13 @@ struct AddEvent: View {
                                 Text(user.name ?? "")
                                 Spacer()
                                 if selectedParticipants.contains(user.id ?? "") {
+                                    // Value: Selected
                                     Image(systemName: "checkmark")
                                         .foregroundColor(.blue)
+                                } else {
+                                    //Value: Default
+                                    Image(systemName: "person.fill.checkmark")
+                                        .foregroundColor(.gray)
                                 }
                             }
                             .contentShape(Rectangle())
@@ -67,6 +73,7 @@ struct AddEvent: View {
                         }
                     }
                 }
+
                 
                 Button(action: {
                     guard let userId = AuthManager.shared.userId else{return}
@@ -84,11 +91,11 @@ struct AddEvent: View {
                     EventManager.shared.addEvent(newEvent)
                     presentationMode.wrappedValue.dismiss()
                 }) {
-                    Text("Add Event")
+                    Text("Criar evento")
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
-            .navigationTitle("Add Event")
+            .navigationTitle("Criar evento")
             .navigationBarItems(trailing: Button("Cancel") {
                 presentationMode.wrappedValue.dismiss()
             })
