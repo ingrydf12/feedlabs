@@ -26,6 +26,11 @@
 		816A95542C57BC2600E881EC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A954F2C57BC2600E881EC /* RegisterView.swift */; };
 		816A95552C57BC2600E881EC /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95502C57BC2600E881EC /* Routes.swift */; };
 		816A95562C57BC2600E881EC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95512C57BC2600E881EC /* LoginView.swift */; };
+		BC9E24502C6247C700314330 /* firstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9E244F2C6247C700314330 /* firstScreenView.swift */; };
+		BCA7DDA82C5CF3D4002E576F /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA7DDA72C5CF3D4002E576F /* buttonView.swift */; };
+		BCD73E162C5A7043007B7174 /* ResetpasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD73E152C5A7043007B7174 /* ResetpasswordView.swift */; };
+		BCD73E182C5A80CE007B7174 /* showCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD73E172C5A80CE007B7174 /* showCalendar.swift */; };
+		BCD898F02C5BCBF400AD4CF2 /* SucessRedefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD898EF2C5BCBF400AD4CF2 /* SucessRedefView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,11 @@
 		816A954F2C57BC2600E881EC /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		816A95502C57BC2600E881EC /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		816A95512C57BC2600E881EC /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BC9E244F2C6247C700314330 /* firstScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstScreenView.swift; sourceTree = "<group>"; };
+		BCA7DDA72C5CF3D4002E576F /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = buttonView.swift; path = FeedLabs/Features/Login/buttonView.swift; sourceTree = SOURCE_ROOT; };
+		BCD73E152C5A7043007B7174 /* ResetpasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetpasswordView.swift; sourceTree = "<group>"; };
+		BCD73E172C5A80CE007B7174 /* showCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showCalendar.swift; sourceTree = "<group>"; };
+		BCD898EF2C5BCBF400AD4CF2 /* SucessRedefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucessRedefView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +75,7 @@
 		816A95162C57B63800E881EC = {
 			isa = PBXGroup;
 			children = (
+				BCD898EC2C5BC35E00AD4CF2 /* extensions */,
 				816A95212C57B63800E881EC /* FeedLabs */,
 				816A95202C57B63800E881EC /* Products */,
 			);
@@ -169,6 +180,9 @@
 				816A955A2C57BC7800E881EC /* Components */,
 				816A95512C57BC2600E881EC /* LoginView.swift */,
 				816A954F2C57BC2600E881EC /* RegisterView.swift */,
+				BCD73E152C5A7043007B7174 /* ResetpasswordView.swift */,
+				BCD898EF2C5BCBF400AD4CF2 /* SucessRedefView.swift */,
+				BC9E244F2C6247C700314330 /* firstScreenView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -177,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				816A954E2C57BC2600E881EC /* AddEvent.swift */,
+				BCD73E172C5A80CE007B7174 /* showCalendar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -184,6 +199,7 @@
 		816A955A2C57BC7800E881EC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				BCA7DDA72C5CF3D4002E576F /* buttonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -194,6 +210,13 @@
 				816A95502C57BC2600E881EC /* Routes.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		BCD898EC2C5BC35E00AD4CF2 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,11 +299,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD73E162C5A7043007B7174 /* ResetpasswordView.swift in Sources */,
 				816A95492C57BB9E00E881EC /* EventManager.swift in Sources */,
 				816A95542C57BC2600E881EC /* RegisterView.swift in Sources */,
 				816A95442C57BB3B00E881EC /* Event.swift in Sources */,
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
 				816A95252C57B63800E881EC /* ContentView.swift in Sources */,
+				BC9E24502C6247C700314330 /* firstScreenView.swift in Sources */,
+				BCD73E182C5A80CE007B7174 /* showCalendar.swift in Sources */,
+				BCD898F02C5BCBF400AD4CF2 /* SucessRedefView.swift in Sources */,
+				BCA7DDA82C5CF3D4002E576F /* buttonView.swift in Sources */,
 				816A95232C57B63800E881EC /* FeedLabsApp.swift in Sources */,
 				816A95562C57BC2600E881EC /* LoginView.swift in Sources */,
 				816A95522C57BC2600E881EC /* HomeView.swift in Sources */,

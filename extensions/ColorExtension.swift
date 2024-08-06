@@ -7,12 +7,15 @@
 
 import SwiftUI
 
-struct ColorExtension: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+extension Color {
+    let Aqua = Color(
+        red: 0.0,
+        green: 1.0,
+        blue: 1.0)
+    //maioria das cores utilizadas no figma é essa cor :)
+    var DarkAqua : String {
+    Color (red:0.0,
+    green: 0.5,
+    blue: 0.5)
     }
-}
-
-#Preview {
-    ColorExtension()
 }
