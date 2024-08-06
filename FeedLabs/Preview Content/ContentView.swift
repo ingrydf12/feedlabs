@@ -9,21 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject private var coordinator = AuthCoordinator()
+    @StateObject private var authManager = AuthManager.shared
 
     var body: some View {
-        
-        switch coordinator.currentScreen {
-        case .entry:
-            coordinator.entryView
-        case .login:
-            coordinator.loginView
-        case .register:
-            coordinator.registerView
-        case .passwordRecovery:
-            Text("Password Recovery")
-        case .home:
-            coordinator.homeView
+        if authManager.isAuthenticated {
+            AuthRoutes()
+        } else {
+            HomeRoutes()
         }
     }
 }

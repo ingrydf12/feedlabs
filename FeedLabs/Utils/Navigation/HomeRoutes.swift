@@ -7,37 +7,31 @@
 
 import SwiftUI
 
-struct Routes: View {
-    
-    let coordinator: HomeCoordinator
+struct HomeRoutes: View {
 
     var body: some View {
         TabView {
-            coordinator.navigateToTeams()
+            TeamsView()
                 .tabItem {
+                    Image(systemName: "person.3")
                     Label("Teams", systemImage: "1.circle")
                 }
 
-            coordinator.navigateToHome()
+            HomeView()
                 .tabItem {
+                    Image(systemName: "calendar")
                     Label("Home", systemImage: "2.circle")
                 }
 
-            coordinator.navigateToChats()
+            ChatsView()
                 .tabItem {
+                    Image(systemName: "person.3")
                     Label("Chats", systemImage: "3.circle")
                 }
-        }
-    }
-}
-struct RoutesPreviewContainer: View {
-    @StateObject var coordinator = HomeCoordinator()
-
-    var body: some View {
-        Routes(coordinator: coordinator)
+        }.tint(.mint)
     }
 }
 
 #Preview {
-    RoutesPreviewContainer()
+    HomeRoutes()
 }

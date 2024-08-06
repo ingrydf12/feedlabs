@@ -12,10 +12,21 @@ struct RegisterView: View {
     let coordinator: AuthCoordinator
 
     var body: some View {
+        Button("Voltar", action: {
+            coordinator.navigateTo(screen: .login)
+        })
+        
         Text("Register")
     }
 }
+struct RegisterViewContainer: View {
+    
+    @StateObject var coordinator = AuthCoordinator()
 
-//#Preview {
-//    RegisterView()
-//}
+    var body: some View {
+        EntryView(coordinator: coordinator)
+    }
+}
+#Preview {
+    RegisterViewContainer()
+}

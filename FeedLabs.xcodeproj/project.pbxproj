@@ -28,12 +28,13 @@
 		816A95542C57BC2600E881EC /* TestRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A954F2C57BC2600E881EC /* TestRegisterView.swift */; };
 		816A95552C57BC2600E881EC /* TestRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95502C57BC2600E881EC /* TestRoutes.swift */; };
 		816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95512C57BC2600E881EC /* TestLoginView.swift */; };
+		818313132C624D630035180F /* AuthRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313122C624D630035180F /* AuthRoutes.swift */; };
+		818313152C6256830035180F /* RecoverPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313142C6256820035180F /* RecoverPasswordView.swift */; };
 		81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8162C5D240D00A10630 /* EventCard.swift */; };
 		81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8182C5D24D100A10630 /* InviteList.swift */; };
-		81CF08792C61187F00881B21 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF08782C61187F00881B21 /* Routes.swift */; };
+		81CF08792C61187F00881B21 /* HomeRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF08782C61187F00881B21 /* HomeRoutes.swift */; };
 		81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */; };
 		81D5E9EE2C61122400CA1443 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */; };
-		81D5E9F02C61126400CA1443 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9EF2C61126400CA1443 /* HomeCoordinator.swift */; };
 		81D5E9F42C61131F00CA1443 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9F32C61131F00CA1443 /* EntryView.swift */; };
 		81D5E9F82C61150600CA1443 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9F72C61150600CA1443 /* HomeView.swift */; };
 		81D5E9FA2C6115C700CA1443 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9F92C6115C700CA1443 /* LoginView.swift */; };
@@ -61,12 +62,13 @@
 		816A954F2C57BC2600E881EC /* TestRegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRegisterView.swift; sourceTree = "<group>"; };
 		816A95502C57BC2600E881EC /* TestRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRoutes.swift; sourceTree = "<group>"; };
 		816A95512C57BC2600E881EC /* TestLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLoginView.swift; sourceTree = "<group>"; };
+		818313122C624D630035180F /* AuthRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRoutes.swift; sourceTree = "<group>"; };
+		818313142C6256820035180F /* RecoverPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordView.swift; sourceTree = "<group>"; };
 		81A7D8162C5D240D00A10630 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		81A7D8182C5D24D100A10630 /* InviteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteList.swift; sourceTree = "<group>"; };
-		81CF08782C61187F00881B21 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		81CF08782C61187F00881B21 /* HomeRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoutes.swift; sourceTree = "<group>"; };
 		81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
-		81D5E9EF2C61126400CA1443 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		81D5E9F32C61131F00CA1443 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		81D5E9F72C61150600CA1443 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		81D5E9F92C6115C700CA1443 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -149,12 +151,12 @@
 		816A953D2C57B9FF00E881EC /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				81D5E9FE2C6116A700CA1443 /* Chats */,
-				81D5E9FD2C61169A00CA1443 /* Teams */,
-				81D5E9EB2C60FFB200CA1443 /* Recover Password */,
-				81D5E9EA2C60FFA800CA1443 /* Register */,
 				816A95582C57BC4D00E881EC /* Login */,
+				81D5E9EA2C60FFA800CA1443 /* Register */,
+				81D5E9EB2C60FFB200CA1443 /* Recover Password */,
+				81D5E9FD2C61169A00CA1443 /* Teams */,
 				816A95572C57BC4200E881EC /* Home */,
+				81D5E9FE2C6116A700CA1443 /* Chats */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -172,7 +174,6 @@
 		816A953F2C57BA4F00E881EC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				81D5E9EC2C61007400CA1443 /* TabBar */,
 				816A955B2C57BCA100E881EC /* Navigation */,
 			);
 			path = Utils;
@@ -234,8 +235,8 @@
 			children = (
 				816A95502C57BC2600E881EC /* TestRoutes.swift */,
 				81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */,
-				81D5E9EF2C61126400CA1443 /* HomeCoordinator.swift */,
-				81CF08782C61187F00881B21 /* Routes.swift */,
+				81CF08782C61187F00881B21 /* HomeRoutes.swift */,
+				818313122C624D630035180F /* AuthRoutes.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -251,15 +252,9 @@
 		81D5E9EB2C60FFB200CA1443 /* Recover Password */ = {
 			isa = PBXGroup;
 			children = (
+				818313142C6256820035180F /* RecoverPasswordView.swift */,
 			);
 			path = "Recover Password";
-			sourceTree = "<group>";
-		};
-		81D5E9EC2C61007400CA1443 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TabBar;
 			sourceTree = "<group>";
 		};
 		81D5E9FD2C61169A00CA1443 /* Teams */ = {
@@ -361,6 +356,7 @@
 				81D5EA002C6116C400CA1443 /* ChatsView.swift in Sources */,
 				816A95492C57BB9E00E881EC /* EventManager.swift in Sources */,
 				816A95542C57BC2600E881EC /* TestRegisterView.swift in Sources */,
+				818313152C6256830035180F /* RecoverPasswordView.swift in Sources */,
 				816A95442C57BB3B00E881EC /* Event.swift in Sources */,
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
 				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
@@ -374,16 +370,16 @@
 				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
+				818313132C624D630035180F /* AuthRoutes.swift in Sources */,
 				81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */,
 				816426FD2C5A70EC00B1BD90 /* InviteManager.swift in Sources */,
 				81D5E9F82C61150600CA1443 /* HomeView.swift in Sources */,
 				816A95552C57BC2600E881EC /* TestRoutes.swift in Sources */,
 				816A95432C57BB3B00E881EC /* User.swift in Sources */,
-				81CF08792C61187F00881B21 /* Routes.swift in Sources */,
+				81CF08792C61187F00881B21 /* HomeRoutes.swift in Sources */,
 				81D5E9EE2C61122400CA1443 /* AuthCoordinator.swift in Sources */,
 				816A95482C57BB9E00E881EC /* AuthManager.swift in Sources */,
 				81D5EA022C6116D800CA1443 /* TeamsView.swift in Sources */,
-				81D5E9F02C61126400CA1443 /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

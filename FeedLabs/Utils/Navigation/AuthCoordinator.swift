@@ -13,9 +13,7 @@ enum AuthScreen {
     case login
     case register
     case passwordRecovery
-    case home
 }
-
 
 class AuthCoordinator: ObservableObject {
     
@@ -25,23 +23,17 @@ class AuthCoordinator: ObservableObject {
     var entryView: EntryView?
     var loginView: LoginView?
     var registerView: RegisterView?
-    var homeView: HomeView?
-
+    var recoverPasswordView: RecoverPasswordView?
+    
     init() {
-        // Instancie as views apenas uma vez
         entryView = EntryView(coordinator: self)
         loginView = LoginView(coordinator: self)
         registerView = RegisterView(coordinator: self)
-        homeView = HomeView()
+        recoverPasswordView = RecoverPasswordView(coordinator: self)
     }
 
     func navigateTo(screen: AuthScreen) {
         currentScreen = screen
     }
-
-    func loginSuccessful() {
-        currentScreen = .home
-    }
-
 }
 

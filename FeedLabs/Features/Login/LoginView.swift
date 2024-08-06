@@ -12,9 +12,7 @@ struct LoginView: View {
     let coordinator: AuthCoordinator
 
     var body: some View {
-        Button("Fazer Log In") {
-            coordinator.loginSuccessful()
-        }
+        
         Button("Register") {
             coordinator.navigateTo(screen: .register)
         }
@@ -24,6 +22,14 @@ struct LoginView: View {
     }
 }
 
-//#Preview {
-//    LoginView()
-//}
+struct LoginViewContainer: View {
+    @StateObject var coordinator = AuthCoordinator()
+
+    var body: some View {
+        LoginView(coordinator: coordinator)
+    }
+}
+
+#Preview {
+    LoginViewContainer()
+}
