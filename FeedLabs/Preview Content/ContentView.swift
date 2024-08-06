@@ -15,7 +15,7 @@ struct ContentView: View {
         if authManager.isAuthenticated {
             AuthRoutes()
         } else {
-            HomeRoutes()
+            AuthRoutes()
         }
     }
 }

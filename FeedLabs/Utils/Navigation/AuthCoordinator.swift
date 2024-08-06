@@ -13,6 +13,7 @@ enum AuthScreen {
     case login
     case register
     case passwordRecovery
+    case sucessRedefView
 }
 
 class AuthCoordinator: ObservableObject {
@@ -24,12 +25,14 @@ class AuthCoordinator: ObservableObject {
     var loginView: LoginView?
     var registerView: RegisterView?
     var recoverPasswordView: RecoverPasswordView?
+    var sucessRedefView: SucessRedefView?
     
     init() {
         entryView = EntryView(coordinator: self)
         loginView = LoginView(coordinator: self)
         registerView = RegisterView(coordinator: self)
         recoverPasswordView = RecoverPasswordView(coordinator: self)
+        sucessRedefView = SucessRedefView(coordinator: self)
     }
 
     func navigateTo(screen: AuthScreen) {
