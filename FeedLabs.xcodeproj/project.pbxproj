@@ -30,6 +30,7 @@
 		816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95512C57BC2600E881EC /* TestLoginView.swift */; };
 		818313132C624D630035180F /* AuthRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313122C624D630035180F /* AuthRoutes.swift */; };
 		818313152C6256830035180F /* RecoverPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313142C6256820035180F /* RecoverPasswordView.swift */; };
+		818313172C62658A0035180F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313162C62658A0035180F /* PrimaryButton.swift */; };
 		81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8162C5D240D00A10630 /* EventCard.swift */; };
 		81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8182C5D24D100A10630 /* InviteList.swift */; };
 		81CF08792C61187F00881B21 /* HomeRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF08782C61187F00881B21 /* HomeRoutes.swift */; };
@@ -64,6 +65,7 @@
 		816A95512C57BC2600E881EC /* TestLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLoginView.swift; sourceTree = "<group>"; };
 		818313122C624D630035180F /* AuthRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRoutes.swift; sourceTree = "<group>"; };
 		818313142C6256820035180F /* RecoverPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordView.swift; sourceTree = "<group>"; };
+		818313162C62658A0035180F /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		81A7D8162C5D240D00A10630 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		81A7D8182C5D24D100A10630 /* InviteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteList.swift; sourceTree = "<group>"; };
 		81CF08782C61187F00881B21 /* HomeRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoutes.swift; sourceTree = "<group>"; };
@@ -272,12 +274,12 @@
 				81D5E9FF2C6116C400CA1443 /* ChatsView.swift */,
 			);
 			path = Chats;
-            sourceTree = "<group>";
-        };
+			sourceTree = "<group>";
+		};
 		B2C30FF22C6251570061FA03 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				B2C30FF32C62516B0061FA03 /* PrimaryButton.swift */,
+				818313162C62658A0035180F /* PrimaryButton.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -370,7 +372,6 @@
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
 				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
 				816A95252C57B63800E881EC /* ContentView.swift in Sources */,
-				B2C30FF42C62516B0061FA03 /* PrimaryButton.swift in Sources */,
 				816A95232C57B63800E881EC /* FeedLabsApp.swift in Sources */,
 				81D5E9F42C61131F00CA1443 /* EntryView.swift in Sources */,
 				81D5E9FA2C6115C700CA1443 /* LoginView.swift in Sources */,
@@ -381,6 +382,7 @@
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
 				818313132C624D630035180F /* AuthRoutes.swift in Sources */,
+				818313172C62658A0035180F /* PrimaryButton.swift in Sources */,
 				81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */,
 				816426FD2C5A70EC00B1BD90 /* InviteManager.swift in Sources */,
 				81D5E9F82C61150600CA1443 /* HomeView.swift in Sources */,
