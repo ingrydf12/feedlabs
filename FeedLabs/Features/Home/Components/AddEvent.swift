@@ -12,13 +12,14 @@ struct AddEvent: View {
     @State private var isPrivate: Bool = false
     @State private var description: String = ""
     @State private var date: Date = Date()
-    @State private var estimatedTime: Int = 0
+    //@State private var estimatedTime: Int = 0
     @State private var selectedParticipants: Set<String> = []
-
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
+            //MARK: Event Details
             Form {
                 Section(header: Text("Event Details")) {
                     TextField("Insira o título do evento", text: $name)
@@ -32,12 +33,7 @@ struct AddEvent: View {
                     DatePicker("Horário", selection: $date, displayedComponents: [.hourAndMinute])
                 }
                 
-                Section(header: Text("Tempo Estimado")) {
-                    Stepper(value: $estimatedTime, in: 0...320, step: 5) {
-                        Text("Tempo Estimado: \(estimatedTime) minutos")
-                    }
-                }
-                Section(header: Text("Escopo")) {
+                Section(header: Text("Tipo de Evento")) {
                     Picker("Escolha uma opção", selection: $isPrivate) {
                         Text("Privado").tag(true)
                         Text("Público").tag(false)
@@ -45,7 +41,8 @@ struct AddEvent: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .padding()
                 }
-                //test
+                
+                //MARK: Add participants
                 Section(header: Text("Selecionar Participantes")) {
                     List(UserManager.shared.users) { user in
                         if UserManager.shared.user?.id != user.id {
@@ -54,15 +51,20 @@ struct AddEvent: View {
                                 Spacer()
                                 if selectedParticipants.contains(user.id ?? "") {
                                     // Value: Selected
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.blue)
+                                    Image(systemName: "person.fill.checkmark")
+                                        .foregroundStyle(Color.blue)
+                                        .background(Circle().fill(Color.cyan.opacity(0.2))
+                                            .frame(width: 43, height: 43))
                                 } else {
                                     //Value: Default
-                                    Image(systemName: "person.fill.checkmark")
-                                        .foregroundColor(.gray)
+                                    Image(systemName: "person.badge.plus")
+                                        .foregroundColor(.cyan)
+                                        .background(Circle().fill(Color.cyan.opacity(0.2))
+                                            .frame(width: 43, height: 43))
                                 }
                             }
                             .contentShape(Rectangle())
+                            .frame(height: 48)
                             .onTapGesture {
                                 if selectedParticipants.contains(user.id ?? "") {
                                     selectedParticipants.remove(user.id ?? "")
@@ -73,8 +75,8 @@ struct AddEvent: View {
                         }
                     }
                 }
-
                 
+                //MARK: Action Button
                 Button(action: {
                     guard let userId = AuthManager.shared.userId else{return}
                     print(selectedParticipants)
@@ -85,20 +87,24 @@ struct AddEvent: View {
                         name: name,
                         description: description,
                         createdAt: Date(),
-                        date: date,
-                        estimatedTime: estimatedTime
+                        date: date
                     )
                     EventManager.shared.addEvent(newEvent)
-                    presentationMode.wrappedValue.dismiss()
+                    //presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Criar evento")
+                        .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
+                .buttonStyle(PrimaryButton())
             }
             .navigationTitle("Criar evento")
-            .navigationBarItems(trailing: Button("Cancel") {
+            .navigationBarItems(leading: Button(action: {
                 presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.backward")
             })
+
         }
     }
 }

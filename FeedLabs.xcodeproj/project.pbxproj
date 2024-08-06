@@ -26,6 +26,7 @@
 		816A95542C57BC2600E881EC /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A954F2C57BC2600E881EC /* RegisterView.swift */; };
 		816A95552C57BC2600E881EC /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95502C57BC2600E881EC /* Routes.swift */; };
 		816A95562C57BC2600E881EC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95512C57BC2600E881EC /* LoginView.swift */; };
+		B2C30FF42C62516B0061FA03 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C30FF32C62516B0061FA03 /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		816A954F2C57BC2600E881EC /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		816A95502C57BC2600E881EC /* Routes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		816A95512C57BC2600E881EC /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B2C30FF32C62516B0061FA03 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		816A953F2C57BA4F00E881EC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B2C30FF22C6251570061FA03 /* Styles */,
 				816A955B2C57BCA100E881EC /* Navigation */,
 			);
 			path = Utils;
@@ -194,6 +197,14 @@
 				816A95502C57BC2600E881EC /* Routes.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B2C30FF22C6251570061FA03 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				B2C30FF32C62516B0061FA03 /* PrimaryButton.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +292,7 @@
 				816A95442C57BB3B00E881EC /* Event.swift in Sources */,
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
 				816A95252C57B63800E881EC /* ContentView.swift in Sources */,
+				B2C30FF42C62516B0061FA03 /* PrimaryButton.swift in Sources */,
 				816A95232C57B63800E881EC /* FeedLabsApp.swift in Sources */,
 				816A95562C57BC2600E881EC /* LoginView.swift in Sources */,
 				816A95522C57BC2600E881EC /* HomeView.swift in Sources */,
