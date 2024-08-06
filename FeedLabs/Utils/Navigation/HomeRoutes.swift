@@ -25,7 +25,7 @@ struct HomeRoutes: View {
 
             ChatsView()
                 .tabItem {
-                    Image(systemName: "person.3")
+                    Image(systemName: "ellipsis.bubble")
                     Label("Chats", systemImage: "3.circle")
                 }
         }.tint(.mint)

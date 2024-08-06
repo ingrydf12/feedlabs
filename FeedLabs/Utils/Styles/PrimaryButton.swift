@@ -20,7 +20,5 @@ struct PrimaryButton: ButtonStyle {
                     .stroke()
                     .foregroundStyle(.white)
             })
-            //.shadow(color: .green, radius: 4, x: 1, y:5)
-
     }
 }
