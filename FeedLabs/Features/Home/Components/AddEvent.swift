@@ -13,7 +13,7 @@ struct AddEvent: View {
     @State private var isPrivate: Bool = false
     @State private var description: String = ""
     @State private var date: Date = Date()
-    //@State private var estimatedTime: Int = 0
+    @State private var type: EventType = .meet
     @State private var selectedParticipants: Set<String> = []
     @StateObject private var userManager = UserManager.shared
 
@@ -36,11 +36,11 @@ struct AddEvent: View {
                 }
                 
                 Section(header: Text("Tipo de Evento")) {
-                    Picker("Escolha uma opção", selection: $isPrivate) {
-                        Text("Privado").tag(true)
-                        Text("Público").tag(false)
+                    Picker("Escolha uma opção", selection: $type) {
+                        ForEach(EventType.allCases, id: \.self) { eventType in
+                            Text(eventType.rawValue)
+                        }
                     }
-                    .pickerStyle(SegmentedPickerStyle())
                     .padding()
                 }
                 
@@ -89,10 +89,10 @@ struct AddEvent: View {
                         name: name,
                         description: description,
                         createdAt: Date(),
-                        date: date
+                        date: date, type: type
                     )
                     EventManager.shared.addEvent(newEvent)
-                    //presentationMode.wrappedValue.dismiss()
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Criar evento")
                         .fontWeight(.bold)
@@ -108,6 +108,7 @@ struct AddEvent: View {
             })
 
         }
+        .background(Color.clear)
     }
 }
 
