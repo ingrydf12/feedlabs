@@ -48,6 +48,11 @@
 		CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0295252C63C8DA008E1EC7 /* Font+Extension.swift */; };
 		CE825DD52C64EE2B0006A3C3 /* Tahoma-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */; };
 		CE825DD62C64EE2B0006A3C3 /* Tahoma-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */; };
+		BC5632DE2C625E550044C09E /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632DD2C625E550044C09E /* buttonView.swift */; };
+		BC5632E02C6264790044C09E /* SucessRedefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632DF2C6264790044C09E /* SucessRedefView.swift */; };
+		BC5632E22C6269230044C09E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632E12C6269230044C09E /* LoginViewModel.swift */; };
+		BCC72BBB2C63900200FE3581 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC72BBA2C63900200FE3581 /* RegisterViewModel.swift */; };
+		BCC72BBD2C63A70600FE3581 /* RecoverPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC72BBC2C63A70600FE3581 /* RecoverPasswordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +95,11 @@
 		CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Bold.ttf"; sourceTree = "<group>"; };
 		CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Regular.ttf"; sourceTree = "<group>"; };
 		CE825DDE2C64F0B20006A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BC5632DD2C625E550044C09E /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = buttonView.swift; path = FeedLabs/Features/Login/buttonView.swift; sourceTree = SOURCE_ROOT; };
+		BC5632DF2C6264790044C09E /* SucessRedefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucessRedefView.swift; sourceTree = "<group>"; };
+		BC5632E12C6269230044C09E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		BCC72BBA2C63900200FE3581 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		BCC72BBC2C63A70600FE3581 /* RecoverPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +237,7 @@
 				816A954F2C57BC2600E881EC /* TestRegisterView.swift */,
 				81D5E9F32C61131F00CA1443 /* EntryView.swift */,
 				81D5E9F92C6115C700CA1443 /* LoginView.swift */,
+				BC5632E12C6269230044C09E /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -246,6 +257,7 @@
 		816A955A2C57BC7800E881EC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				BC5632DD2C625E550044C09E /* buttonView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -264,6 +276,7 @@
 		81D5E9EA2C60FFA800CA1443 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				BCC72BBA2C63900200FE3581 /* RegisterViewModel.swift */,
 				81D5E9FB2C6115DB00CA1443 /* RegisterView.swift */,
 			);
 			path = Register;
@@ -273,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				818313142C6256820035180F /* RecoverPasswordView.swift */,
+				BC5632DF2C6264790044C09E /* SucessRedefView.swift */,
+				BCC72BBC2C63A70600FE3581 /* RecoverPasswordViewModel.swift */,
 			);
 			path = "Recover Password";
 			sourceTree = "<group>";
@@ -412,21 +427,26 @@
 				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
 				B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */,
 				816A95252C57B63800E881EC /* ContentView.swift in Sources */,
+				BC5632E22C6269230044C09E /* LoginViewModel.swift in Sources */,
 				816A95232C57B63800E881EC /* FeedLabsApp.swift in Sources */,
 				81D5E9F42C61131F00CA1443 /* EntryView.swift in Sources */,
+				BC5632DE2C625E550044C09E /* buttonView.swift in Sources */,
 				81D5E9FA2C6115C700CA1443 /* LoginView.swift in Sources */,
 				81D5E9FC2C6115DB00CA1443 /* RegisterView.swift in Sources */,
+				BCC72BBD2C63A70600FE3581 /* RecoverPasswordViewModel.swift in Sources */,
 				81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */,
 				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
 				B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */,
 				CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */,
 				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
+				BCC72BBB2C63900200FE3581 /* RegisterViewModel.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
 				818313132C624D630035180F /* AuthRoutes.swift in Sources */,
 				818313172C62658A0035180F /* PrimaryButton.swift in Sources */,
 				81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */,
 				816426FD2C5A70EC00B1BD90 /* InviteManager.swift in Sources */,
+				BC5632E02C6264790044C09E /* SucessRedefView.swift in Sources */,
 				81D5E9F82C61150600CA1443 /* HomeView.swift in Sources */,
 				816A95552C57BC2600E881EC /* TestRoutes.swift in Sources */,
 				816A95432C57BB3B00E881EC /* User.swift in Sources */,
