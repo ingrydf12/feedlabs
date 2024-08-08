@@ -21,7 +21,7 @@ class UserManager: ObservableObject {
     @Published var isSearchingUser: Bool = false{
         didSet {
             if self.searchText.count != 0 {
-                self.filterUsersByEmail( email: searchText)
+                self.filterUsersByEmail( name: searchText)
             }else {
                 self.searchUsers.removeAll()
             }
@@ -147,12 +147,12 @@ class UserManager: ObservableObject {
             let userFilter = users.filter({
                 return $0.id != AuthManager.shared.userId
             })
-            self.filteredUsers = userFilter.sorted{ $0.email ?? "" < $1.email ?? ""}
+            self.filteredUsers = userFilter.sorted{ $0.name?.uppercased() ?? "" < $1.name?.uppercased() ?? ""}
         }
         
     }
     
-    func filterUsersByEmail(email: String){
+    func filterUsersByEmail(name: String){
         guard !searchText.isEmpty else {
             self.searchUsers = []
             self.isLoading = false
@@ -160,7 +160,7 @@ class UserManager: ObservableObject {
         }
         
         let userFilter = filteredUsers.filter({
-            return $0.email!.contains( email)
+            return $0.name!.uppercased().contains(name.uppercased())
         })
         self.searchUsers = userFilter
     }

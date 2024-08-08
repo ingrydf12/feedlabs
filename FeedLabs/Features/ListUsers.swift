@@ -36,12 +36,14 @@ struct ListUsers: View {
     @State var search: Bool = false
     @StateObject var userManager = UserManager.shared
     @State private var isPrivate: Bool = false
+    //@State private var hideToolbarItem = false
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
 
         NavigationView{
             Form {
+                
                 HStack{
                     TextField("", text: $userManager.searchText, prompt: Text("Buscar").foregroundColor(.gray))
                              .autocapitalization(.none)
@@ -53,46 +55,74 @@ struct ListUsers: View {
                          Image(systemName: "magnifyingglass")
                              .foregroundColor(.gray)
                      })
+                }//.padding()
+                
+                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
+                    Image("CatListUsers")
+                        .resizable()
+                        .frame(width: 300, height: 300)
+                        
+                    Text("Comece um chat pesquisando participantes na barra de busca")
+                        .font(.headline)
+                        .frame(maxWidth: 300)
+                        .foregroundColor(.gray)
+                        
                 }
                
                 if !(userManager.searchText == "") &&   userManager.isSearchingUser {
                    
                     Section(header: Text("Selecionar usuário")){
                         ForEach(userManager.searchUsers){ user in
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                Text(user.email ?? "")
-                            })
-                            .foregroundStyle(Color(.black))
+                            NavigationLink(destination: ChatsView(user: user)){
+                                HStack{
+                                    Image(systemName: "person.circle.fill")
+                                    Text(user.name ?? "")
+                                }
+                            }
                         }
-                    }.onAppear{
-                        
                     }
                 }else{
+                    
                     Section(header: Text("Selecionar usuário")){
                         ForEach(userManager.filteredUsers){ user in
-                            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                                
-                                Text(user.email ?? "")
-                                    
-                            })
-                            .foregroundStyle(Color(.black))
+                            NavigationLink(destination: ChatsView(user: user)){
+                                Image(systemName: "person.circle.fill")
+                                    .font(.largeTitle)
+                                Text(user.name ?? "")
+                            }
                         }
+                        .padding(4)
+                    
+                       
                     }.onAppear{
                         userManager.isSearchingUser = false
                     }
                 }
                 
             }
-            
-            .navigationTitle("Chats")
-            .navigationBarItems(trailing: Button("Cancel") {
-                presentationMode.wrappedValue.dismiss()
-            })
-            .padding(-5)
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading){
+                    Text("Chats").font(.largeTitle)
+                        .padding(9)
+                        .bold()
+                }
+                ToolbarItem(placement: .topBarTrailing){
+                    Button(action: {}){
+                      Image(systemName: "plus.circle.fill")
+                            .padding(6)
+                            .cornerRadius(30)
+                            .font(.title2)
+                            //.bold()
+
+                    }.foregroundStyle(Color("darkAqua"))
+
+                }
+            }
         }
+        
     }
-    
 }
+
 
 #Preview {
     ListUsers()
