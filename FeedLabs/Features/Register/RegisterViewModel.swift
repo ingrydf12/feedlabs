@@ -46,7 +46,7 @@ class RegisterViewModel: ObservableObject{
             print("User created successfully with uid: \(user.uid)")
             
             let newUser = User(id: user.uid, name: self.name, email:
-                                self.email, role: self.role)
+                                self.email, role: Role(rawValue: self.role ?? "Student"))
             UserManager.shared.addUser(user: newUser)
         }
     }
