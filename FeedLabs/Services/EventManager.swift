@@ -43,7 +43,6 @@ class EventManager: ObservableObject {
                             return nil
                         }
                     } catch {
-                        print("Error decoding event:", error.localizedDescription)
                         return nil
                     }
                 }
@@ -57,7 +56,6 @@ class EventManager: ObservableObject {
             if event.participants.contains(user) || event.owners.contains(user){
                 return true
             }else {
-                print("User does not have permission to access this private event")
                 return false
             }
         }else{
@@ -80,6 +78,22 @@ class EventManager: ObservableObject {
         }
     }
     
+    func addParticipant(userId: String, to eventId: String) {
+        let db = Firestore.firestore()
+        let eventRef = db.collection("Events").document(eventId)
+        
+        eventRef.updateData([
+            "participants": FieldValue.arrayUnion([userId])
+        ]) { error in
+            if let error = error {
+                print("Error adding participant: \(error.localizedDescription)")
+            } else {
+                print("Participant added successfully")
+                self.getEvents() // Atualiza os eventos após adicionar o participante
+            }
+        }
+    }
+
     func updateEvent(_ event: Event) {
         guard let eventId = event.id else {
             print("Event ID is missing")

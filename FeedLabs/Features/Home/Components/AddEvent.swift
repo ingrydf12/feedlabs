@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct AddEvent: View {
+    
     @State private var name: String = ""
     @State private var isPrivate: Bool = false
     @State private var description: String = ""
     @State private var date: Date = Date()
     @State private var estimatedTime: Int = 0
     @State private var selectedParticipants: Set<String> = []
-    @StateObject var userManager = UserManager.shared
+    @StateObject private var userManager = UserManager.shared
 
     @Environment(\.presentationMode) var presentationMode
     
@@ -48,24 +49,23 @@ struct AddEvent: View {
                 }
                 Section(header: Text("Selecionar Participantes")) {
                     List(userManager.users) { user in
-                        if UserManager.shared.user?.id != user.id {
-                            HStack {
-                                Text(user.name ?? "")
-                                Spacer()
-                                if selectedParticipants.contains(user.id ?? "") {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(.blue)
-                                }
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                if selectedParticipants.contains(user.id ?? "") {
-                                    selectedParticipants.remove(user.id ?? "")
-                                } else {
-                                    selectedParticipants.insert(user.id ?? "")
-                                }
+                        HStack {
+                            Text(user.name ?? "")
+                            Spacer()
+                            if selectedParticipants.contains(user.id ?? "") {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
                             }
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if selectedParticipants.contains(user.id ?? "") {
+                                selectedParticipants.remove(user.id ?? "")
+                            } else {
+                                selectedParticipants.insert(user.id ?? "")
+                            }
+                        }
+                        
                     }
                 }
                 

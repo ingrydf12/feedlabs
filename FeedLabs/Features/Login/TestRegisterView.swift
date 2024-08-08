@@ -9,12 +9,13 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
-struct RegisterView: View {
+struct TestRegisterView: View {
     
     @State var email: String = ""
     @State var password: String = ""
     @State var name: String = ""
     @State var role: String = ""
+    
     
     var body: some View {
         VStack{
@@ -92,5 +93,5 @@ struct RegisterView: View {
 }
 
 #Preview {
-    RegisterView()
+    TestRegisterView()
 }

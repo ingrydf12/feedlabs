@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Routes: View {
+struct TestRoutes: View {
     
     @State private var selectedIndex: Int = 0
     @StateObject var authManager = AuthManager.shared
@@ -16,7 +16,7 @@ struct Routes: View {
         if !authManager.isAuthenticated {
             TabView(selection: $selectedIndex) {
                 NavigationStack() {
-                    LoginView()
+                    TestLoginView()
                         .navigationTitle("Login")
                 }
                 .tabItem {
@@ -25,7 +25,7 @@ struct Routes: View {
                 .tag(0)
                 
                 NavigationStack() {
-                    RegisterView()
+                    TestRegisterView()
                         .navigationTitle("Register")
                 }
                 .tabItem {
@@ -36,7 +36,9 @@ struct Routes: View {
             .tint(.pink)
         }else{
             NavigationStack() {
-                HomeView().onAppear{EventManager.shared.getEvents()}
+                TestHomeView().onAppear{
+                    EventManager.shared.getEvents()
+                }
                     .navigationTitle("Inside App")
             }
         }
@@ -44,5 +46,6 @@ struct Routes: View {
 }
 
 #Preview {
-    Routes()
+    TestRoutes()
 }
+//tca clean arc

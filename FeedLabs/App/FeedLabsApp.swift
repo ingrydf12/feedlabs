@@ -24,7 +24,7 @@ struct FeedLabsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            Routes()
+            ContentView()
         }
     }
 }
