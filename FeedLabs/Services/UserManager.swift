@@ -8,19 +8,25 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseDatabase
+import FirebaseAuth
 
 class UserManager: ObservableObject {
     
     static let shared = UserManager()
     
-    @Published var user: User?
+    @Published var user: User? {
+        didSet {
+            userDidUpdate?()
+        }
+    }
     @Published var users: [User] = []
     
     private init () {
         print("init User Manager")
-        fetchUser()
         getUsers()
     }
+    
+    var userDidUpdate: (() -> Void)?
     
     func fetchUser() {
         print("feching user")
@@ -101,16 +107,43 @@ class UserManager: ObservableObject {
            print("Error adding user to Firestore: \(error.localizedDescription)")
        }
     }
-    func deleteUser(userId: String) {
-       let db = Firestore.firestore()
-       
-       db.collection("Users").document(userId).delete { error in
-           if let error = error {
-               print("Error deleting user: \(error.localizedDescription)")
-           } else {
-               print("User deleted successfully")
-           }
-       }
+    func deleteLoggedInUser() {
+        guard let user = Auth.auth().currentUser else {
+            print("No user is currently logged in")
+            return
+        }
+        
+        let userId = user.uid
+        let firestore = Firestore.firestore()
+        let realtimeDatabase = Database.database().reference()
+        
+        // Deletar usuário do Firestore
+        firestore.collection("Users").document(userId).delete { error in
+            if let error = error {
+                print("Error deleting user from Firestore: \(error.localizedDescription)")
+            } else {
+                print("User successfully deleted from Firestore")
+                
+                // Deletar usuário do Realtime Database
+                realtimeDatabase.child("users/\(userId)").removeValue { error, _ in
+                    if let error = error {
+                        print("Error deleting user from Realtime Database: \(error.localizedDescription)")
+                    } else {
+                        print("User successfully deleted from Realtime Database")
+                        
+                        // Deletar a conta de autenticação do usuário
+                        user.delete { error in
+                            if let error = error {
+                                print("Error deleting user authentication: \(error.localizedDescription)")
+                            } else {
+                                print("User authentication successfully deleted")
+                                AuthManager.shared.signOut()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     func editUser(user: User) {
         guard let userId = user.id else {

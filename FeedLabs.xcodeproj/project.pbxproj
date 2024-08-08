@@ -31,6 +31,11 @@
 		818313132C624D630035180F /* AuthRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313122C624D630035180F /* AuthRoutes.swift */; };
 		818313152C6256830035180F /* RecoverPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313142C6256820035180F /* RecoverPasswordView.swift */; };
 		818313172C62658A0035180F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313162C62658A0035180F /* PrimaryButton.swift */; };
+		81A5C0FF2C63958C00E62D6C /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C0FE2C63958C00E62D6C /* Team.swift */; };
+		81A5C1012C6395A400E62D6C /* TeamCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C1002C6395A400E62D6C /* TeamCard.swift */; };
+		81A5C1032C6395BC00E62D6C /* TeamsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C1022C6395BC00E62D6C /* TeamsViewModel.swift */; };
+		81A5C1052C63978500E62D6C /* TeamsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C1042C63978500E62D6C /* TeamsManager.swift */; };
+		81A5C1072C63BBDD00E62D6C /* NewTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C1062C63BBDD00E62D6C /* NewTeamView.swift */; };
 		81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8162C5D240D00A10630 /* EventCard.swift */; };
 		81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8182C5D24D100A10630 /* InviteList.swift */; };
 		81CF08792C61187F00881B21 /* HomeRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF08782C61187F00881B21 /* HomeRoutes.swift */; };
@@ -77,6 +82,11 @@
 		818313122C624D630035180F /* AuthRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRoutes.swift; sourceTree = "<group>"; };
 		818313142C6256820035180F /* RecoverPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordView.swift; sourceTree = "<group>"; };
 		818313162C62658A0035180F /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		81A5C0FE2C63958C00E62D6C /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		81A5C1002C6395A400E62D6C /* TeamCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCard.swift; sourceTree = "<group>"; };
+		81A5C1022C6395BC00E62D6C /* TeamsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewModel.swift; sourceTree = "<group>"; };
+		81A5C1042C63978500E62D6C /* TeamsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsManager.swift; sourceTree = "<group>"; };
+		81A5C1062C63BBDD00E62D6C /* NewTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTeamView.swift; sourceTree = "<group>"; };
 		81A7D8162C5D240D00A10630 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		81A7D8182C5D24D100A10630 /* InviteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteList.swift; sourceTree = "<group>"; };
 		81CF08782C61187F00881B21 /* HomeRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoutes.swift; sourceTree = "<group>"; };
@@ -194,6 +204,7 @@
 				816A95412C57BB3B00E881EC /* User.swift */,
 				816A95422C57BB3B00E881EC /* Event.swift */,
 				816426FE2C5A71A500B1BD90 /* Invite.swift */,
+				81A5C0FE2C63958C00E62D6C /* Team.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +226,7 @@
 				816A95462C57BB9E00E881EC /* EventManager.swift */,
 				816A95472C57BB9E00E881EC /* UserManager.swift */,
 				816426FC2C5A70EC00B1BD90 /* InviteManager.swift */,
+				81A5C1042C63978500E62D6C /* TeamsManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -273,6 +285,15 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		81A5C0FD2C63956C00E62D6C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				81A5C1002C6395A400E62D6C /* TeamCard.swift */,
+				81A5C1062C63BBDD00E62D6C /* NewTeamView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		81D5E9EA2C60FFA800CA1443 /* Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +316,9 @@
 		81D5E9FD2C61169A00CA1443 /* Teams */ = {
 			isa = PBXGroup;
 			children = (
+				81A5C0FD2C63956C00E62D6C /* Components */,
 				81D5EA012C6116D800CA1443 /* TeamsView.swift */,
+				81A5C1022C6395BC00E62D6C /* TeamsViewModel.swift */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -420,12 +443,17 @@
 				B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */,
 				81D5EA002C6116C400CA1443 /* ChatsView.swift in Sources */,
 				816A95492C57BB9E00E881EC /* EventManager.swift in Sources */,
+				81A5C1052C63978500E62D6C /* TeamsManager.swift in Sources */,
+				81A5C0FF2C63958C00E62D6C /* Team.swift in Sources */,
 				816A95542C57BC2600E881EC /* TestRegisterView.swift in Sources */,
 				818313152C6256830035180F /* RecoverPasswordView.swift in Sources */,
+				81A5C1072C63BBDD00E62D6C /* NewTeamView.swift in Sources */,
 				816A95442C57BB3B00E881EC /* Event.swift in Sources */,
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
+				81A5C1032C6395BC00E62D6C /* TeamsViewModel.swift in Sources */,
 				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
 				B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */,
+				81A5C1012C6395A400E62D6C /* TeamCard.swift in Sources */,
 				816A95252C57B63800E881EC /* ContentView.swift in Sources */,
 				BC5632E22C6269230044C09E /* LoginViewModel.swift in Sources */,
 				816A95232C57B63800E881EC /* FeedLabsApp.swift in Sources */,
