@@ -14,7 +14,7 @@ struct TestRoutes: View {
     
     var body: some View {
         if !authManager.isAuthenticated {
-            TabView(selection: $selectedIndex) {
+            TabView(selection: $selectedIndex)  {
                 NavigationStack() {
                     TestLoginView()
                         .navigationTitle("Login")

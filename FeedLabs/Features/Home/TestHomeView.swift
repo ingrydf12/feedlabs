@@ -9,19 +9,21 @@ import SwiftUI
 
 struct TestHomeView: View {
     
-    @StateObject private var userManager = UserManager.shared
+    @StateObject var userManager = UserManager.shared
     
     @State private var showingAddEventModal = false
     @State private var showingInviteModal = false
     @State private var selectedEvent: String = ""
     
     var body: some View {
-        if let user = userManager.user {
+        if let user = UserManager.shared.user {
             VStack{
+                //Debug
                 Text("ID: \(user.id ?? "nil")")
                 Text("NAME: \(user.name ?? "nil")")
                 Text("EMAIL: \(user.email ?? "nil")")
-                Text("ROLE: \(user.role ?? "nil")")
+                Text("ROLE: \(user.role?.rawValue ?? "nil")")
+                
                 HStack{
                     Button(action: {
                         AuthManager.shared.signOut()
@@ -48,6 +50,15 @@ struct TestHomeView: View {
                     }, label: {
                         VStack{
                             Text("Load").foregroundStyle(Color.white)
+                                .padding()
+                                .padding(.horizontal,10)
+                        }.background(Color.pink).cornerRadius(18)
+                    })
+                    Button(action: {
+                        UserManager.shared.deleteLoggedInUser()
+                    }, label: {
+                        VStack{
+                            Text("Apagar User").foregroundStyle(Color.white)
                                 .padding()
                                 .padding(.horizontal,10)
                         }.background(Color.pink).cornerRadius(18)

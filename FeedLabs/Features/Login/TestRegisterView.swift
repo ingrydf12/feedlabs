@@ -86,7 +86,7 @@ struct TestRegisterView: View {
             guard let user = result?.user else { return }
             print("User created successfully with uid: \(user.uid)")
             
-            let newUser = User(id: user.uid, name: name, email: email, role: role)
+            let newUser = User(id: user.uid, name: name, email: email, role: nil)
             UserManager.shared.addUser(user: newUser)
         }
     }

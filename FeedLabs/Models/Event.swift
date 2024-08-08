@@ -19,4 +19,14 @@ struct Event: Codable,Identifiable {
     var date: Date?
     var doneAt: Date?
     var estimatedTime: Int?
+    var type: EventType
+    
+}
+
+enum EventType: String, Codable, CaseIterable {
+    case meet = "Meet (Privada)"
+    case talk = "Talk (Pública)"
+    case oneOnOne = "One a One (Privado)"
+    case teamMeet = "Team Meet (Privado)"
+    case particular = "Particular (Público)"
 }
