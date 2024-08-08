@@ -44,6 +44,7 @@
 		81D5EA022C6116D800CA1443 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5EA012C6116D800CA1443 /* TeamsView.swift */; };
 		B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */; };
 		B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */; };
+		B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 		81D5EA012C6116D800CA1443 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
 		B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEvent.swift; sourceTree = "<group>"; };
 		B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 			children = (
 				818313162C62658A0035180F /* PrimaryButton.swift */,
 				B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */,
+				B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				81D5E9FC2C6115DB00CA1443 /* RegisterView.swift in Sources */,
 				81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */,
 				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
+				B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */,
 				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
