@@ -52,6 +52,15 @@ struct TestHomeView: View {
                                 .padding(.horizontal,10)
                         }.background(Color.pink).cornerRadius(18)
                     })
+                    Button(action: {
+                        UserManager.shared.deleteLoggedInUser()
+                    }, label: {
+                        VStack{
+                            Text("Apagar User").foregroundStyle(Color.white)
+                                .padding()
+                                .padding(.horizontal,10)
+                        }.background(Color.pink).cornerRadius(18)
+                    })
                 }.padding(.horizontal,20)
                 
                 EventCard(showingInviteModal: $showingInviteModal, selectedEvent: $selectedEvent, user: user.id ?? "")

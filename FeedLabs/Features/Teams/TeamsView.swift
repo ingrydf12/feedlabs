@@ -52,22 +52,14 @@ struct TeamsView: View {
                     ForEach(viewModel.teams) { team in
                         TeamCard(team: team)
                     }
+                    .padding(.top)
+                    .padding(.horizontal,9)
                 }
                 NavigationLink("add", destination: NewTeamView(viewModel: viewModel))
                 Spacer()
             }
             .padding(.top,15)
             .padding(.horizontal,20)
-            .onAppear{
-                switch UserManager.shared.user?.role {
-                    case "Mentor":
-                        viewModel.getAllTeams()
-                    case "Student":
-                    viewModel.getUserTeams()
-                    default:
-                    viewModel.getAllTeams()
-                }
-            }
             
         }
     }

@@ -14,15 +14,43 @@ enum TeamStatus: String {
 
 class TeamsViewModel: ObservableObject {
     
-    let teamManager = TeamsManager()
-    
+    var teamManager = TeamsManager()
+    @Published private var userManager = UserManager.shared {
+        didSet {
+            if let role = userManager.user?.role {
+                configureTeamsBasedOnUserRole(role: role)
+            }
+        }
+    }
     @Published var teams: [Team] = []
     
     @Published var name: String = ""
     @Published var description: String = ""
     @Published var participants: [String] = []
     @Published var owners: [String] = []
-
+    
+    init(){
+        print("Initializing TeamsViewModel")
+        userManager.userDidUpdate = { [weak self] in
+            guard let self = self, let role = self.userManager.user?.role else { return }
+            self.configureTeamsBasedOnUserRole(role: role)
+        }
+        if let role = userManager.user?.role {
+            configureTeamsBasedOnUserRole(role: role)
+        }
+    }
+    
+    private func configureTeamsBasedOnUserRole(role: String) {
+        switch role {
+        case "Mentor":
+            getAllTeams()
+        case "Student":
+            getUserTeams()
+        default:
+            getAllTeams()
+        }
+    }
+    
     func getAllTeams(){
         print("getting all teams")
         teamManager.getAllTeams{ teams in
@@ -32,12 +60,12 @@ class TeamsViewModel: ObservableObject {
         }
     }
     func getUserTeams(){
+        print("getting user teams")
         teamManager.getUserTeams{ teams in
             if let teams = teams {
                 self.teams = teams
             }
         }
-        print(teams)
     }
     func createTeam(){
         
@@ -58,13 +86,5 @@ class TeamsViewModel: ObservableObject {
                 print("ok nao")
             }
         }
-        
-        getAllTeams()
     }
-    
-    // se for student pega o seu, se for mentor pega todos
-    
-    // get participantes by id
-    
-    
 }
