@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-extension Font { 
+extension Font {
+    
     enum Tahoma {
-        case bold(CGFloat)
-        case regular(CGFloat)
+        case bold
+        case regular
         
         var fontName: String {
             switch self {
@@ -18,13 +19,6 @@ extension Font {
                 return "Tahoma-Bold"
             case .regular:
                 return "Tahoma-Regular"
-            }
-        }
-        
-        var fontSize: CGFloat {
-            switch self {
-            case .bold(let size), .regular(let size):
-                return size
             }
         }
     }
@@ -38,28 +32,33 @@ extension Font {
         case primaryButton
         case secondaryButton
         
-        var font: Tahoma {
+        var fontDetails: (Tahoma, CGFloat) {
             switch self {
             case .title:
-                return .bold(24)
+                return (.bold, 24)
             case .subtitle:
-                return .regular(20)
+                return (.regular, 20)
             case .body:
-                return .regular(16)
+                return (.regular, 16)
             case .secondary:
-                return .regular(14)
+                return (.regular, 14)
             case .minor:
-                return .regular(12)
+                return (.regular, 12)
             case .primaryButton:
-                return .bold(18)
+                return (.bold, 18)
             case .secondaryButton:
-                return .regular(18)
+                return (.regular, 18)
             }
         }
     }
     
     static func tahoma(_ type: FontType) -> Font {
-        let font = type.font
-        return Font.custom(font.fontName, size: font.fontSize)
+        let (fontStyle, fontSize) = type.fontDetails
+        return Font.custom(fontStyle.fontName, size: fontSize)
+    }
+    
+    static func tahoma(_ type: Tahoma, size: CGFloat) -> Font {
+        return Font.custom(type.fontName, size: size)
     }
 }
+

@@ -26,10 +26,5 @@
 	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:15453265535:ios:c063be65aedbe4fe81694a</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Tahoma-Bold.ttf</string>
-		<string>Tahoma-Regular.ttf</string>
-	</array>
 </dict>
 </plist>
