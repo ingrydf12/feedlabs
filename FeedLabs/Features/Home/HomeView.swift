@@ -10,7 +10,14 @@ import SwiftUI
 struct HomeView: View {
     
     var body: some View {
-        Text("Home")
+        VStack{
+            Text("Home")
+            Button(action: {
+                AuthManager.shared.signOut()
+            }, label: {
+                Text("Sair")
+            })
+        }
     }
 }
 

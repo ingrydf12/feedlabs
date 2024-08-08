@@ -10,19 +10,20 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct RecoverPasswordView: View {
+
     
-  //  @StateObject var usermanager = UserManager
-    let coordinator: AuthCoordinator
+    @State var viewModel: RecoverPasswordViewModel
     
-    @State private var email: String = ""
-    @State private var errormessage: String?
-    @State private var isSucess: Bool = false
+    init(coordinator: AuthCoordinator) {
+        self.viewModel = RecoverPasswordViewModel(coordinator: coordinator)
+    }
+    
     
     var body: some View {
             VStack{
                 HStack{
                     Button(action:{
-                        coordinator.navigateTo(screen: .login)
+                        viewModel.coordinator.navigateTo(screen: .login)
                     }){
                         
                         Image("Back")
@@ -52,7 +53,7 @@ struct RecoverPasswordView: View {
                     Text("E-mail")
                         .padding(.trailing,50)
                     HStack{
-                        TextField("", text: $email, prompt: Text("Insira seu e-mail")
+                        TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail")
                             .foregroundColor(.gray)
                                   
                         )
@@ -69,56 +70,22 @@ struct RecoverPasswordView: View {
                 }
                 
                 buttonView(name: "Enviar link de recuperação", background: Color.darkAqua) {
-                    sendPasswordReset(email: email)
-                    coordinator.navigateTo(screen: .sucessRedefView)
+                    viewModel.sendPasswordReset(email: viewModel.email)
+                    viewModel.coordinator.navigateTo(screen: .sucessRedefView)
                 }
                 Spacer()
 
-                if let errormessage = errormessage {
+                if let errormessage = viewModel.errormessage {
                     Text(errormessage)
                         .foregroundStyle(Color.red)
                         .padding()
-                        .offset(y:50)
                 }
             }
             
             
         
     }
-    func sendPasswordReset(email: String) {
-        errormessage = nil
-        isSucess = false
-        
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if error != nil {
-                // Ocorreu um erro ao enviar o email de redefinição de senha
-                self.errormessage = ("Insira um email válido")
-            } else {
-                // Email de redefinição de senha enviado com sucesso
-                self.isSucess = true
-                self.errormessage = nil
-            }
-        }
-    }
     
-    
-//    func fetchUser() {
-//        guard let userId = AuthManager.shared.userId else { return }
-//
-//        let db = Firestore.firestore()
-//        let ref = db.collection("Users").document(userId)
-//
-//        ref.getDocument { document, error in
-//            if let error = error {
-//                print("error:", error.localizedDescription)
-//                return
-//            }
-//
-//            if let document = document, document.exists {
-//                self.user = try? document.data(as: User.self)
-//            }
-//        }
-//    }
 }
 
 struct RecoveryViewContainer: View {
