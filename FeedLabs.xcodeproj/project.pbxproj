@@ -42,6 +42,8 @@
 		81D5E9FC2C6115DB00CA1443 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9FB2C6115DB00CA1443 /* RegisterView.swift */; };
 		81D5EA002C6116C400CA1443 /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9FF2C6116C400CA1443 /* ChatsView.swift */; };
 		81D5EA022C6116D800CA1443 /* TeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5EA012C6116D800CA1443 /* TeamsView.swift */; };
+		B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */; };
+		B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		81D5E9FB2C6115DB00CA1443 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		81D5E9FF2C6116C400CA1443 /* ChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
 		81D5EA012C6116D800CA1443 /* TeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsView.swift; sourceTree = "<group>"; };
+		B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEvent.swift; sourceTree = "<group>"; };
+		B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 				81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */,
 				81A7D8162C5D240D00A10630 /* EventCard.swift */,
 				81A7D8182C5D24D100A10630 /* InviteList.swift */,
+				B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				818313162C62658A0035180F /* PrimaryButton.swift */,
+				B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */,
 				81D5EA002C6116C400CA1443 /* ChatsView.swift in Sources */,
 				816A95492C57BB9E00E881EC /* EventManager.swift in Sources */,
 				816A95542C57BC2600E881EC /* TestRegisterView.swift in Sources */,
@@ -371,6 +378,7 @@
 				816A95442C57BB3B00E881EC /* Event.swift in Sources */,
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
 				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
+				B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */,
 				816A95252C57B63800E881EC /* ContentView.swift in Sources */,
 				816A95232C57B63800E881EC /* FeedLabsApp.swift in Sources */,
 				81D5E9F42C61131F00CA1443 /* EntryView.swift in Sources */,

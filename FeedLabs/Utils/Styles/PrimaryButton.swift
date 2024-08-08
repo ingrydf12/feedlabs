@@ -1,4 +1,3 @@
-//
 //  PrimaryButton.swift
 //  FeedLabs
 //
@@ -11,14 +10,8 @@ struct PrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 330, height: 50)
-            .background {
-                Color.cyan
-            }
+            .background (Color.darkAqua) // Change color to "Primary Color" or Action
             .clipShape(RoundedRectangle(cornerRadius: 12))
-            .overlay(content: {
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke()
-                    .foregroundStyle(.white)
-            })
+            .foregroundStyle(.white)
     }
 }

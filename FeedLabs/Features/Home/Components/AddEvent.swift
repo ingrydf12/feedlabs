@@ -16,6 +16,7 @@ struct AddEvent: View {
     @State private var type: EventType = .meet
     @State private var selectedParticipants: Set<String> = []
     @StateObject private var userManager = UserManager.shared
+    @State private var showConfirmEvent = false
 
     @Environment(\.presentationMode) var presentationMode
     
@@ -92,13 +93,19 @@ struct AddEvent: View {
                         date: date, type: type
                     )
                     EventManager.shared.addEvent(newEvent)
-                    presentationMode.wrappedValue.dismiss()
+                    showConfirmEvent = true // Popup
+                    
+                    //presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Criar evento")
                         .fontWeight(.bold)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .buttonStyle(PrimaryButton())
+                .sheet(isPresented: $showConfirmEvent) {
+                    ConfirmEvent()
+                }
+
             }
             .navigationTitle("Criar evento")
             .navigationBarItems(leading: Button(action: {
