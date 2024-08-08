@@ -74,8 +74,8 @@ class TeamsViewModel: ObservableObject {
         let newTeam = Team(
             name: name,
             description: description,
-            participants: [userId],
-            owners: [userId],
+            participants: participants,
+            owners: [userId],  // Presumindo que o criador do time é o dono
             events: []
         )
         
