@@ -45,6 +45,9 @@
 		B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */; };
 		B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */; };
 		B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */; };
+		CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0295252C63C8DA008E1EC7 /* Font+Extension.swift */; };
+		CE825DD52C64EE2B0006A3C3 /* Tahoma-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */; };
+		CE825DD62C64EE2B0006A3C3 /* Tahoma-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +86,10 @@
 		B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEvent.swift; sourceTree = "<group>"; };
 		B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventCard.swift; sourceTree = "<group>"; };
+		CE0295252C63C8DA008E1EC7 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Bold.ttf"; sourceTree = "<group>"; };
+		CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Regular.ttf"; sourceTree = "<group>"; };
+		CE825DDE2C64F0B20006A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +126,7 @@
 		816A95212C57B63800E881EC /* FeedLabs */ = {
 			isa = PBXGroup;
 			children = (
+				CE825DDE2C64F0B20006A3C3 /* Info.plist */,
 				816A95302C57B6E500E881EC /* GoogleService-Info.plist */,
 				816A953B2C57B9F000E881EC /* App */,
 				816A953C2C57B9F600E881EC /* Assets */,
@@ -151,6 +159,7 @@
 		816A953C2C57B9F600E881EC /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				CE02951D2C63C7E3008E1EC7 /* Fonts */,
 				816A95262C57B63900E881EC /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -182,6 +191,7 @@
 		816A953F2C57BA4F00E881EC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CE0295242C63C8CA008E1EC7 /* Extension */,
 				B2C30FF22C6251570061FA03 /* Styles */,
 				816A955B2C57BCA100E881EC /* Navigation */,
 			);
@@ -293,6 +303,23 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
+		CE02951D2C63C7E3008E1EC7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */,
+				CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CE0295242C63C8CA008E1EC7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE0295252C63C8DA008E1EC7 /* Font+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -362,6 +389,8 @@
 			files = (
 				816A952A2C57B63900E881EC /* Preview Assets.xcassets in Resources */,
 				816A95312C57B6E500E881EC /* GoogleService-Info.plist in Resources */,
+				CE825DD52C64EE2B0006A3C3 /* Tahoma-Bold.ttf in Resources */,
+				CE825DD62C64EE2B0006A3C3 /* Tahoma-Regular.ttf in Resources */,
 				816A95272C57B63900E881EC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +419,7 @@
 				81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */,
 				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
 				B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */,
+				CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */,
 				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
@@ -539,11 +569,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FeedLabs/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeedLabs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,11 +599,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FeedLabs/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeedLabs/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
