@@ -35,9 +35,9 @@ extension Font {
         var fontDetails: (Tahoma, CGFloat) {
             switch self {
             case .title:
-                return (.bold, 24)
+                return (.bold, 32)
             case .subtitle:
-                return (.regular, 20)
+                return (.bold, 24)
             case .body:
                 return (.regular, 16)
             case .secondary:
@@ -47,7 +47,7 @@ extension Font {
             case .primaryButton:
                 return (.bold, 18)
             case .secondaryButton:
-                return (.regular, 18)
+                return (.bold, 16)
             }
         }
     }
