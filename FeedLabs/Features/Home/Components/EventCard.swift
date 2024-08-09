@@ -3,7 +3,7 @@
 import SwiftUI
 
 struct EventCard: View {
-    @StateObject private var eventManager = EventManager.shared
+    var eventManager = EventManager.shared
     @Binding var showingInviteModal: Bool
     @Binding var selectedEvent: String
     var user: String

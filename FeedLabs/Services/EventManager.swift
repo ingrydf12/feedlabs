@@ -1,11 +1,12 @@
 import Foundation
 import FirebaseFirestore
 
-class EventManager: ObservableObject {
+@Observable
+class EventManager {
     
     static let shared = EventManager()
     
-    @Published var events: [Event] = []
+    var events: [Event] = []
     
     private init() {
         print("init Event Manager")

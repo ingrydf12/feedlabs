@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
+    private var viewModel = HomeViewModel()    
+    private let dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "H"
+            return formatter
+        }()
     
     var body: some View {
-        VStack(alignment: .leading) {
+        NavigationStack {
             Text("ID: \(viewModel.userManager.user?.id ?? "nil")")
             Text("NAME: \(viewModel.userManager.user?.name ?? "nil")")
             
@@ -19,21 +24,28 @@ struct HomeView: View {
                 .font(.tahoma(.subtitle))
             
             
-            let dateFormatter = DateFormatter()
-            
-            if let events = EventManager.shared.events {
-                ForEach(events) { event in
-                    VStack {
-                        Text("AAAAAAAAAAA")
-                        
-                    }
+            if !viewModel.eventManager.events.isEmpty {
+                
+                ForEach(viewModel.eventManager.events) { event in
+                    Text("\(event.name!) | \(dateFormatter.string(from: event.date!))")
                 }
+            } else {
+                Group {
+                    Image("imageNoEvent")
+                    Text("Parece que você não tem nenhum evento para hoje").font(.tahoma(.body))
+                        .multilineTextAlignment(.center)
+                }
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
+        .navigationTitle("Eventos")
+        .toolbar(content: {
+            ToolbarItem(placement: .topBarTrailing) {
+                AddEvent()
+            }
+        })
+        
         .padding()
-        .onAppear {
-            EventManager.shared.getEvents()
-        }
     }
 }
 

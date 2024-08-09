@@ -7,8 +7,9 @@
 
 import Foundation
 
-class HomeViewModel: ObservableObject {
+@Observable
+class HomeViewModel {
     var userManager: UserManager = UserManager.shared
-    var eventManager: EventManager = EventManager.shared
+    var eventManager = EventManager.shared
 
 }
