@@ -7,36 +7,9 @@
 
 import SwiftUI
 
-class CreatingNewMessageView: ObservableObject{
-    @Published var users = [ChatUser]()
-    @Published var erroMessage: String = ""
-    @StateObject var userManager = UserManager.shared
-    
-    init(){
-        fetchAllUsers()
-    }
-    
-    func fetchAllUsers(){
-        print(UserManager.shared.users)
-        userManager.users.forEach({ user in
-            print(user)
-            let chatUser = ChatUser.init(user: user)
-            if chatUser.id != AuthManager.shared.userId {
-                self.users.append(chatUser)
-                
-            }
-        })
-    }
-}
-
 struct ListUsers: View {
-    @State var users = [User]()
-
     @State var isSearching: Bool = false
-    @State var search: Bool = false
     @StateObject var userManager = UserManager.shared
-    @State private var isPrivate: Bool = false
-    //@State private var hideToolbarItem = false
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -55,20 +28,7 @@ struct ListUsers: View {
                          Image(systemName: "magnifyingglass")
                              .foregroundColor(.gray)
                      })
-                }//.padding()
-                
-                VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
-                    Image("CatListUsers")
-                        .resizable()
-                        .frame(width: 300, height: 300)
-                        
-                    Text("Comece um chat pesquisando participantes na barra de busca")
-                        .font(.headline)
-                        .frame(maxWidth: 300)
-                        .foregroundColor(.gray)
-                        
                 }
-               
                 if !(userManager.searchText == "") &&   userManager.isSearchingUser {
                    
                     Section(header: Text("Selecionar usuário")){
@@ -76,6 +36,7 @@ struct ListUsers: View {
                             NavigationLink(destination: ChatsView(user: user)){
                                 HStack{
                                     Image(systemName: "person.circle.fill")
+                                        .font(.largeTitle)
                                     Text(user.name ?? "")
                                 }
                             }
@@ -91,34 +52,26 @@ struct ListUsers: View {
                                 Text(user.name ?? "")
                             }
                         }
-                        .padding(4)
-                    
-                       
                     }.onAppear{
                         userManager.isSearchingUser = false
                     }
                 }
                 
-            }
-            .toolbar{
+            }.toolbar{
                 ToolbarItem(placement: .topBarLeading){
-                    Text("Chats").font(.largeTitle)
-                        .padding(9)
-                        .bold()
-                }
-                ToolbarItem(placement: .topBarTrailing){
-                    Button(action: {}){
-                      Image(systemName: "plus.circle.fill")
-                            .padding(6)
-                            .cornerRadius(30)
-                            .font(.title2)
-                            //.bold()
-
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                        userManager.searchText = ""
+                    }){
+                      
+                        Image(systemName:  "chevron.backward").padding(-4)
+                        Text("Voltar")
                     }.foregroundStyle(Color("darkAqua"))
-
+                        .font(.headline)
+                        .padding(7)
                 }
             }
-        }
+        }.navigationBarBackButtonHidden(true)
         
     }
 }

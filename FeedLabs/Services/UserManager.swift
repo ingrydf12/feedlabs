@@ -26,7 +26,7 @@ class UserManager: ObservableObject {
     @Published var isSearchingUser: Bool = false{
         didSet {
             if self.searchText.count != 0 {
-                self.filterUsersByEmail( name: searchText)
+                self.filterUsersByName( name: searchText)
             }else {
                 self.searchUsers.removeAll()
             }
@@ -185,7 +185,7 @@ class UserManager: ObservableObject {
         
     }
     
-    func filterUsersByEmail(name: String){
+    func filterUsersByName(name: String){
         guard !searchText.isEmpty else {
             self.searchUsers = []
             self.isLoading = false

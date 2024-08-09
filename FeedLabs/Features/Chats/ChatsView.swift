@@ -11,6 +11,12 @@ struct ChatsView: View {
     @State var user: User?
     @State var message: String = ""
     @Environment(\.presentationMode) var presentationMode  
+    @State var chatUser: ChatUser
+    
+    init(user: User){
+        self.user = user
+        self.chatUser = ChatUser(messages: [], userId: AuthManager.shared.userId)
+    }
     
     var body: some View {
        
@@ -18,17 +24,33 @@ struct ChatsView: View {
             VStack{
                 ScrollView{
                     VStack(alignment: .trailing){
-                        HStack{
-                            Spacer()
-                            Text("ddd")
-                                .frame(alignment: .trailing)
-                                .padding()
-                                .background(Color(.white))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(Color("darkAqua"), lineWidth: 2)
-                                )
+                        VStack{
+                            
+                            HStack{
+                                
+                                Text("Oi")
+                                    .frame(alignment: .trailing)
+                                    .padding()
+                                    .background(Color(.white))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color("darkAqua"), lineWidth: 2)
+                                    )
+                                Spacer()
+                            }
+                            HStack{
+                                Spacer()
+                                Text("E ai")
+                                    .frame(alignment: .trailing)
+                                    .padding()
+                                    .background(Color(.white))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 16)
+                                            .stroke(Color("darkAqua"), lineWidth: 2)
+                                    )
+                            }
                         }
+                        
                     }.padding()
                 }
                 Spacer()
@@ -54,7 +76,14 @@ struct ChatsView: View {
                         )
                         
                         Button(action: {
-                          
+                            let message = ChatMessage( text: message, toUser: user?.id, fromUser: AuthManager.shared.userId)
+                            
+                            
+                            //adicionar message no banco de dados
+                            
+                            //realizar a buscar e anexar ao chat
+                            //self.chatUser.messages?.append()
+                            
                         }, label: {
                             Image(systemName: "paperplane")
                                 .foregroundColor(Color("darkAqua") )
@@ -74,7 +103,7 @@ struct ChatsView: View {
                 ToolbarItem(placement: .topBarLeading){
                     Button(action: {presentationMode.wrappedValue.dismiss()}){
                       
-                        Image(systemName:  "chevron.backward").padding(-4)
+                        Image(systemName: "chevron.backward").padding(-4)
                         Text("Voltar")
                     }.foregroundStyle(Color("darkAqua"))
                         .font(.headline)
@@ -92,5 +121,5 @@ struct ChatsView: View {
 }
 
 #Preview {
-    ChatsView()
+    ChatsView(user: User())
 }
