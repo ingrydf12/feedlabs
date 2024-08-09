@@ -63,6 +63,9 @@
 		CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0295252C63C8DA008E1EC7 /* Font+Extension.swift */; };
 		CE825DD52C64EE2B0006A3C3 /* Tahoma-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */; };
 		CE825DD62C64EE2B0006A3C3 /* Tahoma-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */; };
+		CE825DE32C66584E0006A3C3 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE22C66584E0006A3C3 /* Calendar.swift */; };
+		CE825DE52C665FAD0006A3C3 /* DividerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */; };
+		CE825DE72C6664DE0006A3C3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +123,9 @@
 		CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Bold.ttf"; sourceTree = "<group>"; };
 		CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Regular.ttf"; sourceTree = "<group>"; };
 		CE825DDE2C64F0B20006A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE825DE22C66584E0006A3C3 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerComponent.swift; sourceTree = "<group>"; };
+		CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +257,7 @@
 				816A95592C57BC6700E881EC /* Components */,
 				816A954D2C57BC2600E881EC /* TestHomeView.swift */,
 				81D5E9F72C61150600CA1443 /* HomeView.swift */,
+				CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -276,6 +283,8 @@
 				81A7D8162C5D240D00A10630 /* EventCard.swift */,
 				81A7D8182C5D24D100A10630 /* InviteList.swift */,
 				B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */,
+				CE825DE22C66584E0006A3C3 /* Calendar.swift */,
+				CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -464,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD1C78E2C5A74B200AAF4B5 /* ChatManager.swift in Sources */,
+				CE825DE52C665FAD0006A3C3 /* DividerComponent.swift in Sources */,
 				7FD1C78A2C5A71CA00AAF4B5 /* Chat.swift in Sources */,
 				B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */,
 				81D5EA002C6116C400CA1443 /* ChatsView.swift in Sources */,
@@ -491,11 +501,13 @@
 				BC5632DE2C625E550044C09E /* buttonView.swift in Sources */,
 				81D5E9FA2C6115C700CA1443 /* LoginView.swift in Sources */,
 				81D5E9FC2C6115DB00CA1443 /* RegisterView.swift in Sources */,
+				CE825DE32C66584E0006A3C3 /* Calendar.swift in Sources */,
 				BCC72BBD2C63A70600FE3581 /* RecoverPasswordViewModel.swift in Sources */,
 				81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */,
 				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
 				B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */,
 				CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */,
+				CE825DE72C6664DE0006A3C3 /* HomeViewModel.swift in Sources */,
 				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				BCC72BBB2C63900200FE3581 /* RegisterViewModel.swift in Sources */,
