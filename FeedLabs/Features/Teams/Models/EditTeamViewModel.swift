@@ -49,8 +49,8 @@ class EditViewModel: ObservableObject {
         
         teamManager.createTeam(newTeam){ success in
             if success {
+                NotificationCenter.default.post(name: NSNotification.Name("TeamsUpdated"), object: nil)
                 print("ok")
-                EventManager.shared.getEvents()
             }else {
                 print("ok nao")
             }
@@ -67,8 +67,8 @@ class EditViewModel: ObservableObject {
         
         teamManager.updateTeam(updatedTeam) { success in
             if success {
+                NotificationCenter.default.post(name: NSNotification.Name("TeamsUpdated"), object: nil)
                 print("Team updated successfully")
-                EventManager.shared.getEvents()
             } else {
                 print("Failed to update team")
             }
@@ -77,8 +77,8 @@ class EditViewModel: ObservableObject {
     func deleteTeam(){
         teamManager.deleteTeam(teamId) { success in
             if success {
-                print("Team updated successfully")
-                EventManager.shared.getEvents()
+                NotificationCenter.default.post(name: NSNotification.Name("TeamsUpdated"), object: nil)
+                print("Team deleated successfully")
             } else {
                 print("Failed to update team")
             }

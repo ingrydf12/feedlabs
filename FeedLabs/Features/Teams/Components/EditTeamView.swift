@@ -74,8 +74,8 @@ struct EditTeamView: View {
                         } else {
                             //Value: Default
                             Image(systemName: "person.badge.plus")
-                                .foregroundColor(.cyan)
-                                .background(Circle().fill(Color.cyan.opacity(0.2))
+                                .foregroundColor(.darkAqua)
+                                .background(Circle().fill(Color.darkAqua.opacity(0.2))
                                     .frame(width: 43, height: 43))
                                 .padding(.trailing)
                         }

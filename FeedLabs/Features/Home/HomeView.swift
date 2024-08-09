@@ -19,21 +19,14 @@ struct HomeView: View {
                 .font(.tahoma(.subtitle))
             
             
-            let dateFormatter = DateFormatter()
-            
-            if let events = EventManager.shared.events {
-                ForEach(events) { event in
-                    VStack {
-                        Text("AAAAAAAAAAA")
-                        
-                    }
-                }
+            Button {
+                AuthManager.shared.signOut()
+            } label: {
+                Text("Sair")
             }
+
         }
         .padding()
-        .onAppear {
-            EventManager.shared.getEvents()
-        }
     }
 }
 

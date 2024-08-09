@@ -24,6 +24,7 @@ class TeamsViewModel: ObservableObject {
         print("Initializing TeamsViewModel")
         NotificationCenter.default.addObserver(self, selector: #selector(configureTeamsBasedOnUserRole), name: NSNotification.Name("UserUpdated"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getTeamMeets), name: NSNotification.Name("EventsUpdated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(configureTeamsBasedOnUserRole), name: NSNotification.Name("TeamsUpdated"), object: nil)
     }
     
     @objc func configureTeamsBasedOnUserRole() {
