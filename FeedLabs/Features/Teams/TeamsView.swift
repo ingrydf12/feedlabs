@@ -13,19 +13,18 @@ struct TeamsView: View {
     
     var body: some View {
         NavigationStack{
-            VStack{
-                HStack{
-                    Text("Teams")
-                        .padding(.vertical,5)
-                        .padding(.horizontal,150)
-                }
-                .background(Color.clearGray)
-                .cornerRadius(15)
-                
+            VStack {
                 HStack{
                     Text("Meets") // buscar nos eventos do usuario eventos do tipo team meet
                         .font(.system(size: 24,weight: .bold))
                     Spacer()
+                    Button {
+                        print("new team meet")
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 20,weight: .semibold))
+                            .foregroundColor(.darkAqua)
+                    }
                 }
                 
                 HStack{
@@ -47,18 +46,25 @@ struct TeamsView: View {
                     Text("Teams")
                         .font(.system(size: 24,weight: .bold))
                     Spacer()
+                    if viewModel.role == .mentor {
+                        NavigationLink(destination: EditTeamView()) {
+                            Image(systemName: "plus")
+                                .font(.system(size: 20,weight: .semibold))
+                                .foregroundColor(.darkAqua)
+                        }
+                    }
                 }
                 ScrollView(.vertical) {
                     ForEach(viewModel.teams) { team in
-                        TeamCard(team: team)
+                        TeamCard(team: team,role: viewModel.role ?? .student)
                     }
                     .padding(.top)
                     .padding(.horizontal,9)
+                    .padding(.bottom,20)
                 }
-                NavigationLink("add", destination: NewTeamView(viewModel: viewModel))
                 Spacer()
             }
-            .padding(.top,15)
+            .padding(.vertical,15)
             .padding(.horizontal,20)
             
         }

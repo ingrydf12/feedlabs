@@ -15,32 +15,19 @@ enum TeamStatus: String {
 class TeamsViewModel: ObservableObject {
     
     var teamManager = TeamsManager()
-    @Published private var userManager = UserManager.shared {
-        didSet {
-            if let role = userManager.user?.role {
-                configureTeamsBasedOnUserRole(role: role)
-            }
-        }
-    }
+
     @Published var teams: [Team] = []
-    
-    @Published var name: String = ""
-    @Published var description: String = ""
-    @Published var participants: [String] = []
-    @Published var owners: [String] = []
+    @Published var teamMeets: [Event] = []
+    @Published var role: Role?
     
     init(){
         print("Initializing TeamsViewModel")
-        userManager.userDidUpdate = { [weak self] in
-            guard let self = self, let role = self.userManager.user?.role else { return }
-            self.configureTeamsBasedOnUserRole(role: role)
-        }
-        if let role = userManager.user?.role {
-            configureTeamsBasedOnUserRole(role: role)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(configureTeamsBasedOnUserRole), name: NSNotification.Name("UserUpdated"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getTeamMeets), name: NSNotification.Name("EventsUpdated"), object: nil)
     }
     
-    private func configureTeamsBasedOnUserRole(role: Role) {
+    @objc func configureTeamsBasedOnUserRole() {
+        role = UserManager.shared.user?.role
         switch role {
         case .mentor:
             getAllTeams()
@@ -67,25 +54,11 @@ class TeamsViewModel: ObservableObject {
             }
         }
     }
-    func createTeam(){
-        
-        guard let userId = AuthManager.shared.userId else { return }
-        participants.append(userId)
-        
-        let newTeam = Team(
-            name: name,
-            description: description,
-            participants: participants,
-            owners: [userId],  // Presumindo que o criador do time é o dono
-            events: []
-        )
-        
-        teamManager.createTeam(newTeam){ success in
-            if success {
-                print("ok")
-            }else {
-                print("ok nao")
-            }
+    
+    @objc func getTeamMeets() {
+        let allEvents = EventManager.shared.events
+        self.teamMeets = allEvents.filter { event in
+            return event.type == .teamMeet
         }
     }
 }
