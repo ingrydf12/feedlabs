@@ -9,7 +9,8 @@ import SwiftUI
 
 struct TeamsView: View {
     
-    @StateObject private var viewModel = TeamsViewModel()
+    @ObservedObject var viewModel = TeamsViewModel()
+    var eventManager = EventManager.shared
     
     var body: some View {
         NavigationStack{
@@ -64,7 +65,6 @@ struct TeamsView: View {
                 }
                 Spacer()
             }
-            .padding(.vertical,15)
             .padding(.horizontal,20)
             
         }

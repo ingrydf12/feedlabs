@@ -32,6 +32,7 @@ struct HomeView: View {
                     AddEvent()
                 }
             }
+
         }
         .padding(.horizontal, 16)
         .background(Color.background)

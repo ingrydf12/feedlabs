@@ -47,7 +47,7 @@ struct TeamCard: View {
                     let displayParticipants = Array(participants.prefix(maxParticipantsToShow))
                     ForEach(displayParticipants, id: \.self) { participantId in
                         if let participant = UserManager.shared.getUserById(participantId) {
-                            Text("\(participant.name ?? "nnn")")
+                            Text("\(participant.name ?? "nnn"),")
                                 .font(.system(size: 16))
                         }
                     }
