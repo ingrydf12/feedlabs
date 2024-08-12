@@ -8,6 +8,7 @@
 //criar e enviar, aceitar, recusar, buscar.
 import Foundation
 import Firebase
+import FirebaseDatabaseInternal
 
 class InviteManager: ObservableObject {
     

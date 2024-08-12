@@ -14,13 +14,15 @@ enum TeamStatus: String {
 
 class TeamsViewModel: ObservableObject {
     
+    static let shared = TeamsViewModel() // Global instance
+    
     var teamManager = TeamsManager()
 
     @Published var teams: [Team] = []
     @Published var teamMeets: [Event] = []
     @Published var role: Role?
     
-    init(){
+    private init(){
         print("Initializing TeamsViewModel")
         NotificationCenter.default.addObserver(self, selector: #selector(configureTeamsBasedOnUserRole), name: NSNotification.Name("UserUpdated"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getTeamMeets), name: NSNotification.Name("EventsUpdated"), object: nil)

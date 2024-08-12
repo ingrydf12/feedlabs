@@ -9,11 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @StateObject private var userManager = UserManager.shared
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("ID: \(viewModel.userManager.user?.id ?? "nil")")
-            Text("NAME: \(viewModel.userManager.user?.name ?? "nil")")
+            Text("ID: \(userManager.user?.id ?? "nil")")
+            Text("NAME: \(userManager.user?.name ?? "nil")")
             
             Text("Eventos de hoje")
                 .font(.tahoma(.subtitle))
