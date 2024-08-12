@@ -17,7 +17,9 @@ struct HomeRoutes: View {
                     Label("Teams", systemImage: "1.circle")
                 }
 
-            HomeView()
+            NavigationStack {
+                HomeView()
+            }
                 .tabItem {
                     Image(systemName: "calendar")
                     Label("Home", systemImage: "2.circle")
@@ -29,7 +31,8 @@ struct HomeRoutes: View {
                     Label("Chats", systemImage: "3.circle")
                     
                 }
-        }.tint(.mint)
+        }
+        .tint(.accent)
     }
 }
 

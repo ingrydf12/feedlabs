@@ -66,6 +66,11 @@
 		CE825DE32C66584E0006A3C3 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE22C66584E0006A3C3 /* Calendar.swift */; };
 		CE825DE52C665FAD0006A3C3 /* DividerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */; };
 		CE825DE72C6664DE0006A3C3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */; };
+		CE825DE92C6A69DA0006A3C3 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */; };
+		CE825DEB2C6A6B4C0006A3C3 /* EmptyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */; };
+		CE825DED2C6A6B790006A3C3 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */; };
+		CE825DEF2C6A6C000006A3C3 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEE2C6A6C000006A3C3 /* UserInfoView.swift */; };
+		CE825DF12C6A72470006A3C3 /* UserProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +131,11 @@
 		CE825DE22C66584E0006A3C3 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerComponent.swift; sourceTree = "<group>"; };
 		CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
+		CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsView.swift; sourceTree = "<group>"; };
+		CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
+		CE825DEE2C6A6C000006A3C3 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +295,11 @@
 				B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */,
 				CE825DE22C66584E0006A3C3 /* Calendar.swift */,
 				CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */,
+				CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */,
+				CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */,
+				CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */,
+				CE825DEE2C6A6C000006A3C3 /* UserInfoView.swift */,
+				CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -481,12 +496,14 @@
 				81A5C1052C63978500E62D6C /* TeamsManager.swift in Sources */,
 				81A5C0FF2C63958C00E62D6C /* Team.swift in Sources */,
 				816A95542C57BC2600E881EC /* TestRegisterView.swift in Sources */,
+				CE825DED2C6A6B790006A3C3 /* EventRowView.swift in Sources */,
 				818313152C6256830035180F /* RecoverPasswordView.swift in Sources */,
 				81A5C1072C63BBDD00E62D6C /* EditTeamView.swift in Sources */,
 				81F68C152C664E3700111585 /* EditTeamViewModel.swift in Sources */,
 				816A95442C57BB3B00E881EC /* Event.swift in Sources */,
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
 				81A5C1032C6395BC00E62D6C /* TeamsViewModel.swift in Sources */,
+				CE825DEB2C6A6B4C0006A3C3 /* EmptyEventsView.swift in Sources */,
 				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
 				B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */,
 				81A5C1012C6395A400E62D6C /* TeamCard.swift in Sources */,
@@ -504,14 +521,17 @@
 				CE825DE32C66584E0006A3C3 /* Calendar.swift in Sources */,
 				BCC72BBD2C63A70600FE3581 /* RecoverPasswordViewModel.swift in Sources */,
 				81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */,
+				CE825DE92C6A69DA0006A3C3 /* EventsListView.swift in Sources */,
 				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
 				B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */,
+				CE825DF12C6A72470006A3C3 /* UserProfileButton.swift in Sources */,
 				CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */,
 				CE825DE72C6664DE0006A3C3 /* HomeViewModel.swift in Sources */,
 				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				BCC72BBB2C63900200FE3581 /* RegisterViewModel.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
+				CE825DEF2C6A6C000006A3C3 /* UserInfoView.swift in Sources */,
 				818313132C624D630035180F /* AuthRoutes.swift in Sources */,
 				818313172C62658A0035180F /* PrimaryButton.swift in Sources */,
 				81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */,

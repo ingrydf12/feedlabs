@@ -8,47 +8,37 @@
 import SwiftUI
 
 struct HomeView: View {
-    private var viewModel = HomeViewModel()    
-    private let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "H"
-            return formatter
-        }()
-    
+    @State private var viewModel = HomeViewModel()
+
     var body: some View {
-        NavigationStack {
-            Text("ID: \(viewModel.userManager.user?.id ?? "nil")")
-            Text("NAME: \(viewModel.userManager.user?.name ?? "nil")")
-            
+        VStack(alignment: .leading) {
+            CalendarView(selectedDate: $viewModel.selectedDate)
+                Spacer()
+                
             Text("Eventos de hoje")
                 .font(.tahoma(.subtitle))
-            
-            
-            if !viewModel.eventManager.events.isEmpty {
-                
-                ForEach(viewModel.eventManager.events) { event in
-                    Text("\(event.name!) | \(dateFormatter.string(from: event.date!))")
-                }
-            } else {
-                Group {
-                    Image("imageNoEvent")
-                    Text("Parece que você não tem nenhum evento para hoje").font(.tahoma(.body))
-                        .multilineTextAlignment(.center)
-                }
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
+
+            EventsListView(groupedEvents: viewModel.groupedEventsByHour())
+                .frame(alignment: .center)
         }
         .navigationTitle("Eventos")
-        .toolbar(content: {
-            ToolbarItem(placement: .topBarTrailing) {
-                AddEvent()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                UserProfileButton()
             }
-        })
-        
-        .padding()
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Adicionar Evento", systemImage: "plus") {
+                    AddEvent()
+                }
+            }
+        }
+        .padding(.horizontal, 16)
+        .background(Color.background)
     }
 }
 
 #Preview {
     HomeView()
 }
+
