@@ -12,7 +12,7 @@ struct ContentView: View {
     @StateObject private var authManager = AuthManager.shared
 
     var body: some View {
-        if authManager.isAuthenticated {
+        if !authManager.isAuthenticated {
             AuthRoutes()
         } else {
             HomeRoutes()

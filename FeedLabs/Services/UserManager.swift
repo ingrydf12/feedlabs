@@ -8,18 +8,33 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseDatabase
+import FirebaseAuth
 
 class UserManager: ObservableObject {
     
     static let shared = UserManager()
     
     @Published var user: User?
+    
     @Published var users: [User] = []
+    @Published var searchUsers: [User] = []
+    @Published var filteredUsers: [User] = []
+    @Published var searchText: String = ""
+    @Published var isSearchingUser: Bool = false{
+        didSet {
+            if self.searchText.count != 0 {
+                self.filterUsersByEmail( name: searchText)
+            }else {
+                self.searchUsers.removeAll()
+            }
+        }
+    }
+    @Published var isLoading = false
     
     private init () {
         print("init User Manager")
-        fetchUser()
         getUsers()
+        
     }
     
     func fetchUser() {
@@ -37,12 +52,13 @@ class UserManager: ObservableObject {
             
             if let document = document, document.exists {
                 self.user = try? document.data(as: User.self)
+                NotificationCenter.default.post(name: NSNotification.Name("UserUpdated"), object: nil)
             }
         }
     }
     func getUsers(){
-        print("getting user")
-        guard let userId = AuthManager.shared.userId else { return }
+        print("getting users")
+        guard AuthManager.shared.userId != nil else { return }
         
         let db = Firestore.firestore()
         let ref = db.collection("Users")
@@ -54,13 +70,13 @@ class UserManager: ObservableObject {
             }
             
             if let snapshot = snapshot {
-               self.users = snapshot.documents.compactMap { document in
-                   // Filtrar o usuário logado
-                   let user = try? document.data(as: User.self)
-                   return user?.id != userId ? user : nil
-               }
-               print("Users fetched successfully")
-           }
+                self.users = snapshot.documents.compactMap { document in
+                    try? document.data(as: User.self)
+                }
+               
+                self.filterUsers()
+                print("Users fetched successfully")
+            }
             
         }
     }
@@ -101,16 +117,43 @@ class UserManager: ObservableObject {
            print("Error adding user to Firestore: \(error.localizedDescription)")
        }
     }
-    func deleteUser(userId: String) {
-       let db = Firestore.firestore()
-       
-       db.collection("Users").document(userId).delete { error in
-           if let error = error {
-               print("Error deleting user: \(error.localizedDescription)")
-           } else {
-               print("User deleted successfully")
-           }
-       }
+    func deleteLoggedInUser() {
+        guard let user = Auth.auth().currentUser else {
+            print("No user is currently logged in")
+            return
+        }
+        
+        let userId = user.uid
+        let firestore = Firestore.firestore()
+        let realtimeDatabase = Database.database().reference()
+        
+        // Deletar usuário do Firestore
+        firestore.collection("Users").document(userId).delete { error in
+            if let error = error {
+                print("Error deleting user from Firestore: \(error.localizedDescription)")
+            } else {
+                print("User successfully deleted from Firestore")
+                
+                // Deletar usuário do Realtime Database
+                realtimeDatabase.child("users/\(userId)").removeValue { error, _ in
+                    if let error = error {
+                        print("Error deleting user from Realtime Database: \(error.localizedDescription)")
+                    } else {
+                        print("User successfully deleted from Realtime Database")
+                        
+                        // Deletar a conta de autenticação do usuário
+                        user.delete { error in
+                            if let error = error {
+                                print("Error deleting user authentication: \(error.localizedDescription)")
+                            } else {
+                                print("User authentication successfully deleted")
+                                AuthManager.shared.signOut()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     func editUser(user: User) {
         guard let userId = user.id else {
@@ -127,5 +170,26 @@ class UserManager: ObservableObject {
             print("Error editing user: \(error.localizedDescription)")
         }
     }
-
+    
+    func filterUsers(){
+        if !users.isEmpty{
+            let userFilter = users.filter({
+                return $0.id != AuthManager.shared.userId
+            })
+            self.filteredUsers = userFilter.sorted{ $0.name?.uppercased() ?? "" < $1.name?.uppercased() ?? ""}
+        }
+    }
+    
+    func filterUsersByEmail(name: String){
+        guard !searchText.isEmpty else {
+            self.searchUsers = []
+            self.isLoading = false
+            return
+        }
+        
+        let userFilter = filteredUsers.filter({
+            return $0.name!.uppercased().contains(name.uppercased())
+        })
+        self.searchUsers = userFilter
+    }
 }
