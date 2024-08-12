@@ -45,6 +45,7 @@
 		B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */; };
 		B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */; };
 		B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */; };
+		B2C2DA6A2C6A30C800EF7E75 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEvent.swift; sourceTree = "<group>"; };
 		B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventCard.swift; sourceTree = "<group>"; };
+		B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +291,7 @@
 				818313162C62658A0035180F /* PrimaryButton.swift */,
 				B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */,
 				B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */,
+				B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
 				818313132C624D630035180F /* AuthRoutes.swift in Sources */,
+				B2C2DA6A2C6A30C800EF7E75 /* SearchBar.swift in Sources */,
 				818313172C62658A0035180F /* PrimaryButton.swift in Sources */,
 				81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */,
 				816426FD2C5A70EC00B1BD90 /* InviteManager.swift in Sources */,

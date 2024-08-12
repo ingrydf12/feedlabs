@@ -26,14 +26,20 @@ struct EventCard: View {
                         }
                         
                         HStack {
-                            ForEach(event.participants, id: \.self) { participantId in
-                                if let participant = UserManager.shared.getUserById(participantId) {
-                                    Text(participant.name ?? "")
+                            if let firstParticipantId = event.participants.first,
+                               let firstParticipant = UserManager.shared.getUserById(firstParticipantId) {
+                                Text(firstParticipant.name ?? "")
+                                    .font(.system(size: 10, weight: .light))
+                                    .multilineTextAlignment(.center)
+                                
+                                if event.participants.count > 1 {
+                                    Text("+\(event.participants.count - 1)")
                                         .font(.system(size: 10, weight: .light))
                                         .multilineTextAlignment(.center)
                                 }
                             }
                         }
+
                     }
                     .padding()
                     
@@ -43,8 +49,10 @@ struct EventCard: View {
                             .font(.caption)
                             .padding(5)
                             .foregroundStyle(Color.darkAqua) //Change name to "Primary Color"" or Action
-                            .background(Color.fordBlue.opacity(0.2)) //Change color to "Terciary"
-                            .cornerRadius(10)
+                            .background(
+                                RoundedRectangle(cornerRadius: 15)
+                                    .stroke(Color.gray.opacity(0.5), lineWidth: 2)
+                            )
 
                         //Must to appear when (Team Details)
                         //Image(systemName: "plus.app")
@@ -73,8 +81,8 @@ struct EventCard: View {
                         Text(Self.dateFormatter.string(from: event.date ?? Date()))
                             .font(.caption)
                             .padding(5)
-                            .foregroundStyle(Color.darkAqua) //Change name to "Primary Color"" or Action
-                            .background(.fordBlue.opacity(0.2))
+                            .foregroundStyle(Color.blue) //Change name to "Inactive color
+                            .background(Color.gray.opacity(0.2))
                             .cornerRadius(10)
                     }
                 }
@@ -93,3 +101,4 @@ struct MeetEventView: View {
         Text("teste")
     }
 }
+
