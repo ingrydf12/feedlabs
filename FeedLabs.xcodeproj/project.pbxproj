@@ -56,6 +56,7 @@
 		B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */; };
 		B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */; };
 		B2C2DA6A2C6A30C800EF7E75 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */; };
+		B2C2DA6C2C6A472A00EF7E75 /* FilterGenericPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA6B2C6A472A00EF7E75 /* FilterGenericPage.swift */; };
 		BC5632DE2C625E550044C09E /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632DD2C625E550044C09E /* buttonView.swift */; };
 		BC5632E02C6264790044C09E /* SucessRedefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632DF2C6264790044C09E /* SucessRedefView.swift */; };
 		BC5632E22C6269230044C09E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632E12C6269230044C09E /* LoginViewModel.swift */; };
@@ -116,6 +117,7 @@
 		B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoEventCard.swift; sourceTree = "<group>"; };
 		B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		B2C2DA6B2C6A472A00EF7E75 /* FilterGenericPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterGenericPage.swift; sourceTree = "<group>"; };
 		BC5632DD2C625E550044C09E /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = buttonView.swift; path = FeedLabs/Features/Login/buttonView.swift; sourceTree = SOURCE_ROOT; };
 		BC5632DF2C6264790044C09E /* SucessRedefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucessRedefView.swift; sourceTree = "<group>"; };
 		BC5632E12C6269230044C09E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */,
 				81CF08782C61187F00881B21 /* HomeRoutes.swift */,
 				818313122C624D630035180F /* AuthRoutes.swift */,
+				B2C2DA6B2C6A472A00EF7E75 /* FilterGenericPage.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				81F68C152C664E3700111585 /* EditTeamViewModel.swift in Sources */,
 				816A95442C57BB3B00E881EC /* Event.swift in Sources */,
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
+				B2C2DA6C2C6A472A00EF7E75 /* FilterGenericPage.swift in Sources */,
 				81A5C1032C6395BC00E62D6C /* TeamsViewModel.swift in Sources */,
 				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
 				B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */,
