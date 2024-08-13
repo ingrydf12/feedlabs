@@ -70,7 +70,6 @@
 		CE825DE92C6A69DA0006A3C3 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */; };
 		CE825DEB2C6A6B4C0006A3C3 /* EmptyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */; };
 		CE825DED2C6A6B790006A3C3 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */; };
-		CE825DEF2C6A6C000006A3C3 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEE2C6A6C000006A3C3 /* UserInfoView.swift */; };
 		CE825DF12C6A72470006A3C3 /* UserProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,7 +135,6 @@
 		CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
 		CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsView.swift; sourceTree = "<group>"; };
 		CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
-		CE825DEE2C6A6C000006A3C3 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,7 +298,6 @@
 				CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */,
 				CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */,
 				CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */,
-				CE825DEE2C6A6C000006A3C3 /* UserInfoView.swift */,
 				CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */,
 			);
 			path = Components;
@@ -534,7 +531,6 @@
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				BCC72BBB2C63900200FE3581 /* RegisterViewModel.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEvent.swift in Sources */,
-				CE825DEF2C6A6C000006A3C3 /* UserInfoView.swift in Sources */,
 				818313132C624D630035180F /* AuthRoutes.swift in Sources */,
 				B2C2DA6A2C6A30C800EF7E75 /* SearchBar.swift in Sources */,
 				818313172C62658A0035180F /* PrimaryButton.swift in Sources */,
