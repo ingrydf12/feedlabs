@@ -6,6 +6,7 @@
 import SwiftUI
 
 struct FilterGenericPage<T: Decodable & Identifiable>: View {
+    
     @State private var searchItem: String = ""
     @State private var items: [T] = []
 
@@ -24,7 +25,15 @@ struct FilterGenericPage<T: Decodable & Identifiable>: View {
     }
 
     // filtrar as parada
-    private func filteredItems(){}
+    private func filteredItems(option: EventType){
+        
+    }
+    
+    // retorna o card event específico
+//    private func returnCard(_item: T) -> EventCard{
+//        
+//        return EventCard.Type
+//    }
     
     // pegar os evento aí
     private func loadItems() {
