@@ -9,25 +9,70 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class RegisterViewModel: ObservableObject{
+@Observable
+class RegisterViewModel{
     
     let coordinator: AuthCoordinator
         
-        @Published var email: String = ""
-        @Published var password: String = ""
-        @Published var name: String = ""
-        @Published var role: String? = nil
+         var email: String = ""
+         var password: String = ""
+         var name: String = ""
+         var role: String = ""
+         var emailError: String?
+         var passwordError: String?
+         var nameError: String?
+         var roleError: String?
+    
+    var isRegistered: Bool = false
+    
     
     init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
     }
     
+    func validateInputs() -> Bool {
+        var isValid = true
+        
+        if email.isEmpty {
+            emailError = "O campo não pode estar vazio."
+            isValid = false
+        } else if !isValidEmail(email) {
+            emailError = "Insira um e-mail válido."
+            isValid = false
+        } else {
+            emailError = nil
+        }
+        
+        if password.isEmpty {
+            passwordError = "O campo não pode estar vazio."
+            isValid = false
+        } else {
+            passwordError = nil
+        }
+        
+        if name.isEmpty {
+            nameError = "O campo não pode estar vazio"
+            isValid = false
+        } else {
+            nameError = nil
+        }
+        
+        if role.isEmpty {
+            roleError = "Selecione um cargo"
+            isValid = false
+        } else{
+            roleError = nil
+        }
+        
+        return isValid
+    }
+    
     
     func handleRegister() {
-        if !isValidEmail(email) || password.count < 6 {
-            return
+        if validateInputs(){
+            createUser()
+            coordinator.navigateTo(screen: .sucessRegisterView)
         }
-        createUser()
         
     }
     func isValidEmail(_ email: String) -> Bool {
@@ -36,19 +81,20 @@ class RegisterViewModel: ObservableObject{
         return emailPred.evaluate(with: email)
     }
     func createUser() {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print(error.localizedDescription)
-                return
+            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                guard let user = result?.user else { return }
+                print("User created successfully with uid: \(user.uid)")
+                
+                let newUser = User(id: user.uid, name: self.name, email: self.email, role: Role(rawValue: self.role))
+                UserManager.shared.addUser(user: newUser)
+                
+                self.coordinator.navigateTo(screen: .sucessRegisterView)
             }
-            
-            guard let user = result?.user else { return }
-            print("User created successfully with uid: \(user.uid)")
-            
-            let newUser = User(id: user.uid, name: self.name, email:
-                                self.email, role: Role(rawValue: self.role ?? "Student"))
-            UserManager.shared.addUser(user: newUser)
-        }
+        
     }
-
 }

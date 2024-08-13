@@ -53,30 +53,38 @@ struct RecoverPasswordView: View {
                     Text("E-mail")
                         .padding(.trailing,50)
                     HStack{
-                        TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail")
-                            .foregroundColor(.gray)
-                                  
-                        )
+                        TextField("", text: $viewModel.email,prompt: Text("Insira seu e-mail")
+                        .foregroundColor(.gray)
+                                  )
                         .padding(10)
                         .foregroundColor(.gray)
-                        .autocorrectionDisabled()
-                       
+                        .autocorrectionDisabled(true)
+                        .autocapitalization(.none)
+                        .frame(width: 332, height: 48)
+                        .overlay{
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray, lineWidth: 1)
+                        }
                         
                     }
-                    .frame(width: 332, height: 48)
-                    .cornerRadius(10)
-                    .border(Color.gray)
                   
                 }
                 
                 buttonView(name: "Enviar link de recuperação", background: Color.darkAqua) {
-                    viewModel.sendPasswordReset(email: viewModel.email)
-                    viewModel.coordinator.navigateTo(screen: .sucessRedefView)
+                    UserManager.shared.checkIfEmailExists(email: viewModel.email) { exists in
+                        if exists {
+                            viewModel.sendPasswordReset(email: viewModel.email)
+                            viewModel.coordinator.navigateTo(screen: .sucessRedefView)
+                        }
+                    }
+                    
+                    
                 }
                 Spacer()
 
-                if let errormessage = viewModel.errormessage {
-                    Text(errormessage)
+                
+                if viewModel.isSucess == false{
+                    Text(viewModel.errormessage)
                         .foregroundStyle(Color.red)
                         .padding()
                 }
