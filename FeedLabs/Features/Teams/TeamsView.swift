@@ -25,10 +25,12 @@ struct TeamsView: View {
             }
             ScrollView(.vertical,showsIndicators: false) {
                 if viewModel.teamMeets.count != 0 {
-                    ForEach(viewModel.teamMeets) { teamMeet in
-                        TeamMeetCard(event: teamMeet)
-                    }
-                    .padding(.horizontal,9)
+                    VStack{
+                        ForEach(viewModel.teamMeets) { teamMeet in
+                            TeamMeetCard(event: teamMeet)
+                        }
+                        .padding(.horizontal,9)
+                    }.padding(.vertical)
                 }else {
                     VStack(alignment:.center){
                         Image("imageNoEvent")
@@ -61,10 +63,12 @@ struct TeamsView: View {
                         }
                     }
                 }
-                ForEach(viewModel.teams) { team in
-                    TeamCard(team: team,role: viewModel.role ?? .student)
+                VStack{
+                    ForEach(viewModel.teams) { team in
+                        TeamCard(team: team,role: viewModel.role ?? .student)
+                    }
                 }
-                .padding(.top)
+                .padding(.vertical,7)
                 .padding(.horizontal,9)
                 Spacer()
             }
