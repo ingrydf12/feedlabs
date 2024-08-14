@@ -59,6 +59,7 @@ class TeamsViewModel: ObservableObject {
     }
     
     @objc func getTeamMeets() {
+        print("getting tm")
         let allEvents = EventManager.shared.events
         self.teamMeets = allEvents.filter { event in
             return event.type == .teamMeet

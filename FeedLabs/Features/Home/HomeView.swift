@@ -25,6 +25,9 @@ struct HomeView: View {
             } label: {
                 Text("Sair")
             }
+            if let user = userManager.user {
+                InviteList(user: user.id ?? "")
+            }
 
         }
         .padding()

@@ -10,7 +10,7 @@ import Foundation
 class AddEventViewModel: ObservableObject {
     
     @Published var name: String = ""
-    @Published var isPrivate: Bool = false
+    var isPrivate: Bool = true
     @Published var description: String = ""
     @Published var date: Date = Date()
     @Published var type: EventType = .meet
@@ -18,11 +18,24 @@ class AddEventViewModel: ObservableObject {
     
     var userId = AuthManager.shared.userId ?? ""
     
-    func createEvent(){
+    private func createEventInDatabase() -> String? {
+        
+        var participants = [userId]
+        
+        switch type {
+        case .talk:
+            isPrivate = false
+        case .teamMeet:
+            participants.append(contentsOf: Array(selectedParticipants))
+        case .particular:
+             isPrivate = false
+        default:
+            isPrivate = true
+        }
         
         let newEvent = Event(
             isPrivate: isPrivate,
-            participants: Array(selectedParticipants) + [userId],
+            participants: participants,
             owners: [userId],
             name: name,
             description: description,
@@ -30,9 +43,26 @@ class AddEventViewModel: ObservableObject {
             date: date, type: type
         )
         
-        EventManager.shared.addEvent(newEvent)
+        return EventManager.shared.addEvent(newEvent)
     }
-    func inviteParticipants(){
+    func inviteParticipants() {
+        guard let eventId = createEventInDatabase() else { // Cria o evento no banco de dados e obtém o ID
+            print("Failed to create event")
+            return
+        }
         
+        switch type {
+        case .talk, .teamMeet, .particular:
+            return
+        case .meet, .oneOnOne:
+            break
+        }
+        
+        print("convidando")
+        // Envia convites para os participantes selecionados
+        for participantId in selectedParticipants {
+            InviteManager.shared.createInvite(for: eventId, to: participantId)
+        }
     }
+
 }

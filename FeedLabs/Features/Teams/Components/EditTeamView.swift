@@ -24,90 +24,66 @@ struct EditTeamView: View {
     }
     
     var body: some View {
-        VStack{
-            HStack{
+        VStack(spacing: 20){
+            //header
+            HStack {
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "chevron.left").font(.system(size: 26)).foregroundColor(.darkAqua)
-                })
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.black)
+                }
                 Spacer()
-                Text(isEditMode ? "Editar Team" :"Criar Team").foregroundColor(.darkAqua)
+                Text(isEditMode ? "Editar Team": "Criar Team")
+                    .font(.headline)
+                    .foregroundColor(.black)
                 Spacer()
-            }
-            .padding(.horizontal,20)
+            }.scrollDisabled(true)
+            .padding(.horizontal)
+            
             ScrollView(.vertical,showsIndicators: false){
-                VStack(alignment: .leading ){
-                    Text("Nome do Time:")
-                    HStack{
-                        TextField("", text: $viewModel.name, prompt: Text("Digite o nome").foregroundColor(.white))
-                            .autocapitalization(.none)
-                            .foregroundColor(.white)
-                            .padding(.leading)
+                VStack(spacing: 20) {
+                    // Event Name and Description
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Nome")
+                        TextField("Insira o nome do evento", text: $viewModel.name)
+                            .padding()
+                            .background(Color(UIColor.systemGray6))
+                            .cornerRadius(8)
+                        Text("Descrição")
+                        TextField("Insira uma descrição sobre o evento", text: $viewModel.description)
+                            .padding()
+                            .background(Color(UIColor.systemGray6))
+                            .cornerRadius(8)
                     }
-                    .frame(width: 344, height: 46)
-                    .background(Color.gray.cornerRadius(10.0))
+                    .padding(.top)
+                    .padding(.horizontal)
                     
-                    Text("Descrição:")
-                    HStack{
-                        TextField("", text: $viewModel.description, prompt: Text("Escreva a descrição").foregroundColor(.white))
-                            .autocapitalization(.none)
-                            .foregroundColor(.white)
-                            .padding(.leading)
-                    }
-                    .frame(width: 344, height: 46)
-                    .background(Color.gray.cornerRadius(10.0))
+                    Divider()
+                        .padding(.horizontal)
                     
-                }.padding(.top)
-                Text("Participantes:").padding()
-                ForEach(viewModel.users) { user in
-                    HStack {
-                        Text(user.name ?? "").padding(.leading,5)
-                        Spacer()
-                        if viewModel.selectedParticipants.contains(user.id ?? "") {
-                            // Value: Selected
-                            Image(systemName: "person.fill.checkmark")
-                                .foregroundStyle(Color.blue)
-                                .background(Circle().fill(Color.cyan.opacity(0.2))
-                                    .frame(width: 43, height: 43))
-                                .padding(.trailing)
-                        } else {
-                            //Value: Default
-                            Image(systemName: "person.badge.plus")
-                                .foregroundColor(.darkAqua)
-                                .background(Circle().fill(Color.darkAqua.opacity(0.2))
-                                    .frame(width: 43, height: 43))
-                                .padding(.trailing)
+                    // Participants Section
+                    ParticipantsList(selectedParticipants: $viewModel.selectedParticipants, type: $viewModel.type)
+                        .padding(.horizontal)
+                    
+                    Button(isEditMode ? "Editar Team" : "Criar Team"){
+                        if isEditMode {
+                            viewModel.editTeam()
+                        }else {
+                            viewModel.createTeam()
                         }
-                    }
-                    .contentShape(Rectangle())
-                    .frame(height: 48)
-                    .onTapGesture {
-                        if viewModel.selectedParticipants.contains(user.id ?? "") {
-                            viewModel.selectedParticipants.remove(user.id ?? "")
-                        } else {
-                            viewModel.selectedParticipants.insert(user.id ?? "")
-                        }
-                    }
-                }
-                
-                Button(isEditMode ? "Editar Team" : "Criar Team"){
-                    if isEditMode {
-                        viewModel.editTeam()
-                    }else {
-                        viewModel.createTeam()
-                    }
-                    presentationMode.wrappedValue.dismiss()
-                }.buttonStyle(PrimaryButton())
-                if isEditMode {
-                    Button("Apagar Team"){
-                        viewModel.deleteTeam()
                         presentationMode.wrappedValue.dismiss()
+                    }.buttonStyle(PrimaryButton())
+                    if isEditMode {
+                        Button("Apagar Team"){
+                            viewModel.deleteTeam()
+                            presentationMode.wrappedValue.dismiss()
 
-                    }.buttonStyle(SecondaryButton())
+                        }.buttonStyle(SecondaryButton())
+                            .padding(.top,-15)
+                    }
                 }
             }
-            .padding()
         }
         .padding()
         .navigationBarBackButtonHidden()

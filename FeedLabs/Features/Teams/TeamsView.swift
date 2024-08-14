@@ -9,30 +9,27 @@ import SwiftUI
 
 struct TeamsView: View {
     
-    @StateObject var viewModel = TeamsViewModel.shared
+    @ObservedObject private var viewModel = TeamsViewModel.shared
     
     var body: some View {
-        NavigationStack{
-            VStack {
-                HStack{
-                    Text("Meets") // buscar nos eventos do usuario eventos do tipo team meet
-                        .font(.system(size: 24,weight: .bold))
-                    Spacer()
-                    NavigationLink(destination: AddEvent()) {
-                        Image(systemName: "plus")
-                            .font(.system(size: 20,weight: .semibold))
-                            .foregroundColor(.darkAqua)
-                    }
+        VStack {
+            HStack{
+                Text("Meets") // buscar nos eventos do usuario eventos do tipo team meet
+                    .font(.system(size: 24,weight: .bold))
+                Spacer()
+                NavigationLink(destination: AddEventView()) {
+                    Image(systemName: "plus")
+                        .font(.system(size: 20,weight: .semibold))
+                        .foregroundColor(.darkAqua)
                 }
+            }
+            ScrollView(.vertical,showsIndicators: false) {
                 if viewModel.teamMeets.count != 0 {
-                    ScrollView(.vertical) {
-                        ForEach(viewModel.teamMeets) { teamMeet in
-                            Text("\(teamMeet.name ?? "nada")")
-                                .font(.system(size: 16,weight: .semibold))
-                        }
-                        .padding(.top)
-                        .padding(.horizontal,9)
+                    ForEach(viewModel.teamMeets) { teamMeet in
+                        TeamMeetCard(event: teamMeet)
                     }
+                    .padding(.vertical)
+                    .padding(.horizontal,9)
                 }else {
                     VStack(alignment:.center){
                         Image("imageNoEvent")
@@ -65,19 +62,17 @@ struct TeamsView: View {
                         }
                     }
                 }
-                ScrollView(.vertical) {
-                    ForEach(viewModel.teams) { team in
-                        TeamCard(team: team,role: viewModel.role ?? .student)
-                    }
-                    .padding(.top)
-                    .padding(.horizontal,9)
-                    .padding(.bottom,20)
+                ForEach(viewModel.teams) { team in
+                    TeamCard(team: team,role: viewModel.role ?? .student)
                 }
+                .padding(.top)
+                .padding(.horizontal,9)
                 Spacer()
             }
-            .padding(.horizontal,20)
-            
         }
+        .navigationBarBackButtonHidden()
+        .padding(.top,5)
+        .padding(.horizontal,20)
     }
 }
 

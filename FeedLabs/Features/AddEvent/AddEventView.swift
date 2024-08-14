@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct AddEvent: View {
+struct AddEventView: View {
     
     @StateObject var viewModel = AddEventViewModel()
     @StateObject private var userManager = UserManager.shared
@@ -85,8 +85,9 @@ struct AddEvent: View {
                 }
                 // Create Event Button
                 Button("Criar Evento"){
-                    viewModel.createEvent()
+                    viewModel.inviteParticipants()
                     showConfirmEvent = true
+                    
                 }.buttonStyle(PrimaryButton())
                 .padding(.horizontal)
                 .sheet(isPresented: $showConfirmEvent) {
@@ -102,5 +103,5 @@ struct AddEvent: View {
 }
 
 #Preview {
-    AddEvent()
+    AddEventView()
 }

@@ -71,10 +71,10 @@ struct TestHomeView: View {
                     .font(.headline)
                     .padding(.top)
                 
-                InviteList(user: user.id ?? "")
+                //InviteList(user: user.id ?? "")
                 
             }.sheet(isPresented: $showingAddEventModal) {
-                AddEvent()
+                AddEventView()
             }.sheet(isPresented: $showingInviteModal) {
                 InviteUsersView(event: $selectedEvent)
             }
