@@ -192,4 +192,52 @@ class UserManager: ObservableObject {
         })
         self.searchUsers = userFilter
     }
+    
+    func checkIfEmailExists(email: String, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("Users")
+        
+        ref.whereField("email", isEqualTo: email).getDocuments { snapshot, error in
+            if let error = error {
+                print("Error checking email existence: \(error.localizedDescription)")
+                completion(false)
+                return
+            }
+            
+            if let snapshot = snapshot, !snapshot.isEmpty {
+                // O email já existe no banco de dados
+                completion(true)
+            } else {
+                // O email não existe no banco de dados
+                completion(false)
+            }
+        }
+    }
 }
+//func checkIfEmailExists(email: String, completion: @escaping (Bool) -> Void) {
+//    let db = Firestore.firestore()
+//    let ref = db.collection("Users")
+//    
+//    ref.whereField("email", isEqualTo: email).getDocuments { snapshot, error in
+//        if let error = error {
+//            print("Error checking email existence: \(error.localizedDescription)")
+//            completion(false)
+//            return
+//        }
+//        
+//        if let snapshot = snapshot, !snapshot.isEmpty {
+//            // O email já existe no banco de dados
+//            completion(true)
+//        } else {
+//            // O email não existe no banco de dados
+//            completion(false)
+//        }
+//    }
+//}
+//
+//
+//func validateEmail(){
+//    
+//}
+//
+

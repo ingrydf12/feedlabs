@@ -9,13 +9,14 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+@Observable
 class RecoverPasswordViewModel: ObservableObject{
     
     let coordinator: AuthCoordinator
     
-    @Published  var email: String = ""
-    @Published  var errormessage: String?
-    @Published  var isSucess: Bool = false
+      var email: String = ""
+      var errormessage: String = ""
+      var isSucess: Bool = false
     
     init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
@@ -23,17 +24,16 @@ class RecoverPasswordViewModel: ObservableObject{
     
     
     func sendPasswordReset(email: String) {
-        errormessage = nil
-        isSucess = false
+       
         
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {
-              
+                self.isSucess = false
                 self.errormessage = ("Insira um email válido")
             } else {
                
                 self.isSucess = true
-                self.errormessage = nil
+                self.errormessage = ""
             }
         }
     }
