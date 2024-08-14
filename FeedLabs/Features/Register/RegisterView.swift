@@ -35,9 +35,9 @@ struct RegisterView: View {
                 Spacer()
                 VStack{
                     Text("Cadastro")
+                        .font(.tahoma(.secondaryButton))
                 }
                     .foregroundStyle(Color.darkAqua)
-                    .bold()
                     .padding(.trailing,60)
                 Spacer()
                     
@@ -48,7 +48,7 @@ struct RegisterView: View {
             
             VStack{
                 Text("Você é:")
-                    .bold()
+                    .font(.tahoma(.primaryButton))
                    
                 Spacer()
                 HStack{
@@ -91,6 +91,7 @@ struct RegisterView: View {
             VStack{
                     HStack{
                         Text("Nome de usuário")
+                            .font(.tahoma(.secondaryButton))
                             .padding(.leading, 25)
                         Spacer()
                     }
@@ -117,6 +118,7 @@ struct RegisterView: View {
                 Spacer()
                 HStack{
                     Text("E-mail")
+                        .font(.tahoma(.secondaryButton))
                         .padding(.leading, 25)
                     Spacer()
                 }
@@ -143,6 +145,7 @@ struct RegisterView: View {
                 VStack{
                     HStack{
                         Text("Senha")
+                            .font(.tahoma(.secondaryButton))
                             .padding(.leading,25)
                         Spacer()
                     }
@@ -173,6 +176,7 @@ struct RegisterView: View {
                     viewModel.handleRegister()
                     
                 }
+                .font(.tahoma(.secondaryButton))
             }
         }
         

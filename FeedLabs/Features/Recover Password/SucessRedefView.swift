@@ -20,10 +20,10 @@ struct SucessRedefView: View {
                 
                 VStack{
                     Text("O email foi enviado!")
-                        .bold()
-                        .font(.title2)
+                        .font(.tahoma(.title))
                         .padding(10)
                     Text("Cheque suas mensagens e acesse o link para continuar")
+                        .font(.tahoma(.secondaryButton))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Color.gray)
                 }

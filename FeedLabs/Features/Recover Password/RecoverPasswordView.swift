@@ -42,15 +42,16 @@ struct RecoverPasswordView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 206 , height: 136.9)
                 Text("Redefinição de senha!")
-                    .bold()
-                    .font(.title2)
+                    .font(.tahoma(.title))
                 
                 Text("Informe um email cadastrado e enviaremos um link para recuperação da sua senha")
+                    .font(.tahoma(.secondaryButton))
                     .multilineTextAlignment(.center)
                     .padding(20)
                     .foregroundStyle(Color.gray)
                 VStack(alignment: .leading){
                     Text("E-mail")
+                        .font(.tahoma(.secondaryButton))
                         .padding(.trailing,50)
                     HStack{
                         TextField("", text: $viewModel.email,prompt: Text("Insira seu e-mail")
@@ -80,6 +81,7 @@ struct RecoverPasswordView: View {
                     
                     
                 }
+                .font(.tahoma(.secondaryButton))
                 Spacer()
 
                 

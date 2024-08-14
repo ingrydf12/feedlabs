@@ -23,7 +23,6 @@ class RegisterViewModel{
          var nameError: String?
          var roleError: String?
     
-    var isRegistered: Bool = false
     
     
     init(coordinator: AuthCoordinator) {

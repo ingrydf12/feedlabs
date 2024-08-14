@@ -20,12 +20,12 @@ struct SucessRegisterView: View {
                 
                 VStack{
                     Text("Conta criada com sucesso!")
-                        .bold()
-                        .font(.title2)
+                        .font(.tahoma(.title))
                         .padding(10)
-                    Text("verifique sua caixa de mensagens para continuar")
+                    Text("você será redirecionado para o aplicativo!")
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Color.gray)
+                        .font(.tahoma(.secondaryButton))
                 }
                 
             }

@@ -36,6 +36,7 @@ struct LoginView: View {
             VStack{
                 HStack{
                 Text("Login")
+                        .font(.tahoma(.title))
                     .bold()
                     .padding(.leading,10)
                 Spacer()
@@ -45,9 +46,12 @@ struct LoginView: View {
             VStack{
                 HStack{
                     Text("E-mail")
+                        .font(.tahoma(.secondaryButton))
                         .padding(.leading, 25)
+                      
                     Spacer()
                 }
+               
                 
                 HStack{
                     TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail").foregroundColor(.gray))
@@ -76,6 +80,7 @@ struct LoginView: View {
             VStack{
                 HStack{
                     Text("Senha")
+                        .font(.tahoma(.secondaryButton))
                         .padding(.leading,25)
                     Spacer()
                 }
@@ -108,7 +113,7 @@ struct LoginView: View {
            
             HStack{
                 Spacer()
-                Text("Esqueceu sua senha?").foregroundStyle(Color.darkAqua).bold()
+                Text("Esqueceu sua senha?").foregroundStyle(Color.darkAqua).font(.tahoma(.secondaryButton))
                     .onTapGesture {
                         viewModel.coordinator.navigateTo(screen: .passwordRecovery)
                     }
@@ -124,14 +129,16 @@ struct LoginView: View {
                         viewModel.handleLogin()
                     
                 }
+                .font(.tahoma(.secondaryButton))
                
                 Spacer()
                 HStack{
                     Text("Não tem uma conta?")
+                        .font(.tahoma(.secondaryButton))
                     Button {
                         viewModel.coordinator.navigateTo(screen: .register)
                     } label: {
-                        Text("Cadastre-se").foregroundStyle(Color.darkAqua).bold()
+                        Text("Cadastre-se").foregroundStyle(Color.darkAqua).font(.tahoma(.subtitle))
                         
                         }
                     
