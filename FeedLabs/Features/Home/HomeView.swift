@@ -11,7 +11,7 @@ struct HomeView: View {
     @State private var viewModel = HomeViewModel()
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack{
             CalendarView(selectedDate: $viewModel.selectedDate)
                 Spacer()
                 

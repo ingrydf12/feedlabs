@@ -20,6 +20,7 @@ struct TeamCard: View {
                 VStack(alignment: .leading){
                     HStack{
                         Text("No prazo")
+                            .font(.tahoma(.regular, size: 16))
                             .padding(.horizontal,10)
                             .padding(.vertical,4)
                     }.overlay{
@@ -28,7 +29,7 @@ struct TeamCard: View {
                     }
                     
                     Text("\(team.name)")
-                        .font(.system(size: 32,weight: .bold))
+                        .font(.tahoma(.bold, size: 32))
                 }
                 if role == .mentor {
                     Spacer()
@@ -48,16 +49,16 @@ struct TeamCard: View {
                     ForEach(displayParticipants, id: \.self) { participantId in
                         if let participant = UserManager.shared.getUserById(participantId) {
                             Text("\(participant.name ?? "nnn"),")
-                                .font(.system(size: 16))
+                                .font(.tahoma(.regular, size: 16))
                         }
                     }
                     if participants.count > maxParticipantsToShow {
                         Text("e mais \(participants.count - maxParticipantsToShow)")
-                            .font(.system(size: 16))
+                            .font(.tahoma(.regular, size: 16))
                             .italic()
                     }
                 }
-                Text("\(team.description ?? "")")
+                Text("\(team.description?.capitalized ?? "")")
                     .foregroundStyle(.darkAqua)
             }
             .padding(.horizontal)

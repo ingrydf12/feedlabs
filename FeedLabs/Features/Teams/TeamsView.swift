@@ -28,7 +28,6 @@ struct TeamsView: View {
                     ForEach(viewModel.teamMeets) { teamMeet in
                         TeamMeetCard(event: teamMeet)
                     }
-                    .padding(.vertical)
                     .padding(.horizontal,9)
                 }else {
                     VStack(alignment:.center){
