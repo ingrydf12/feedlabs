@@ -28,9 +28,11 @@ struct HomeView: View {
                 UserProfileButton()
             }
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Adicionar Evento", systemImage: "plus") {
-                    AddEvent()
-                }
+                NavigationLink(destination: {
+                    AddEventView()
+                }, label: {
+                    Image(systemName: "plus")
+                })
             }
 
         }

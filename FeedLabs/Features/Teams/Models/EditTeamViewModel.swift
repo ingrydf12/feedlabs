@@ -17,7 +17,7 @@ class EditViewModel: ObservableObject {
     @Published var participants: [String] = []
     @Published var owners: [String] = []
     @Published var selectedParticipants: Set<String> = []
-    
+    @Published var type: EventType = .meet
     @Published var users: [User] = []
     
     init(){

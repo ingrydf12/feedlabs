@@ -57,10 +57,16 @@ class EventManager {
         }
     }
     
-    func addEvent(_ event: Event) {
+    func addEvent(_ event: Event) -> String? {
+        print("adicionando evento")
         let db = Firestore.firestore()
+        let documentId = db.collection("Events").document().documentID // Gerar o ID do documento
+
+        var eventWithId = event
+        eventWithId.id = documentId // Atribuir o ID gerado ao evento
+        
         do {
-            try db.collection("Events").addDocument(from: event) { error in
+            try db.collection("Events").document(documentId).setData(from: eventWithId) { error in
                 DispatchQueue.global(qos: .userInitiated).async {
                     if let error = error {
                         print("Error adding event: \(error.localizedDescription)")
@@ -68,14 +74,18 @@ class EventManager {
                     } else {
                         DispatchQueue.main.async {
                             self.getEvents()
+                            print("evento adicionado")
                         }
                     }
                 }
             }
+            return documentId // Retornar o ID do documento criado
         } catch let error {
             print("Error adding event to Firestore: \(error.localizedDescription)")
+            return nil
         }
     }
+
     
     func addParticipant(userId: String, to eventId: String) {
         let db = Firestore.firestore()

@@ -27,6 +27,7 @@ class AuthManager: ObservableObject {
     
     func signOut() {
         do {
+            InviteManager.shared.handleLogout()
             try Auth.auth().signOut()
             
             self.isAuthenticated = false
