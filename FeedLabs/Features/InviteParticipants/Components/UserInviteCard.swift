@@ -1,13 +1,12 @@
 // UserInviteCard.swift
 // FeedLabs
 // Created by Ingryd Cordeiro Duarte on 13/08/24.
-//
 
 import SwiftUI
 
 struct UserInviteCard: View {
     var user: User
-    var event: EventType  // Accepts EventType directly
+    var event: Event  // Accepts EventType directly
     @StateObject private var userManager = UserManager.shared
     @StateObject private var inviteManager = InviteManager.shared
     @State private var selectedParticipants: Set<String> = []
@@ -19,7 +18,7 @@ struct UserInviteCard: View {
                 .padding(15)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(user.name ?? "sem nome")
+                Text(user.name ?? "No name")
                     .font(.tahoma(.bold, size: 24))
                 
                 // Role Tag
@@ -29,10 +28,13 @@ struct UserInviteCard: View {
             Spacer()
             
             // Invite Button
-            HStack(alignment: .center){
-                inviteButton(imageName: "person.fill.badge.plus", action: addUserToEvent)
+            Button {
+                addUserToEvent()
+            } label: {
+                Image(systemName: "person.fill.badge.plus")
                     .padding(10)
             }
+            .buttonStyle(InviteButton())
         }
         .padding(5)
         .frame(maxWidth: 350)
@@ -40,55 +42,43 @@ struct UserInviteCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 10.0))
         .overlay(
             RoundedRectangle(cornerRadius: 10.0)
-                .stroke(style: StrokeStyle(lineWidth: 2.0))
-                .foregroundStyle(Color.accentColor)
+                .stroke(Color.accentColor, lineWidth: 2.0)
         )
     }
     
-    // Button with action
-    private func inviteButton(imageName: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Image(systemName: imageName)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 30, height: 30)
-                .background(Color.gray.opacity(0.2))
-                .clipShape(Circle())
-        }
-    }
-    
+    //MARK: - addUserToEvent function
     // Handle the action to add user to event
     private func addUserToEvent() {
         guard let userId = user.id else { return }
-        // Create the invite using the event's raw value
-        inviteManager.createInvite(for: event.rawValue, to: userId)
-        // Optionally update the UI to reflect that the user has been invited
+        
+        guard let eventId = event.id else { return }
+        
+        inviteManager.createInvite(for: eventId, to: userId)
         selectedParticipants.insert(userId)
     }
     
-    // Profile Image View
+    // MARK: - Profile Image View
     private var profileImageView: some View {
         ZStack {
             Circle()
                 .fill(Color.purple)
                 .frame(width: 60, height: 60)
             if let usernameInitial = user.name?.first {
-                Text(String(usernameInitial))
+                Text(String(usernameInitial).capitalized)
                     .font(.tahoma(.primaryButton))
-                    .foregroundStyle(Color.white)
+                    .foregroundStyle(.white)
             }
         }
     }
     
-    // Role Tag
+    // MARK: - Role Tag
     private var roleTag: some View {
         HStack {
             if let userRole = user.role {
                 Text(userRole.rawValue)
                     .font(.tahoma(.regular, size: 14))
-                    .foregroundStyle(Color.black)
+                    .foregroundStyle(.black)
                     .padding(5)
-                    .multilineTextAlignment(.center)
                     .background(
                         RoundedRectangle(cornerRadius: 30)
                             .stroke(Color.gray.opacity(0.5), lineWidth: 2)
@@ -97,3 +87,4 @@ struct UserInviteCard: View {
         }
     }
 }
+

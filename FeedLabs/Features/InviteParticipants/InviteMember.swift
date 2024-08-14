@@ -1,8 +1,15 @@
+//
+// InviteMember.swift
+// FeedLabs
+// Created by Ingryd Cordeiro Duarte on 13/08/24.
+//
+
 import SwiftUI
 
 struct InviteMember: View {
+    var user: User
     @State private var searchItem: String = ""
-    @Binding var event: EventType  // Usando EventType diretamente
+    @Binding var event: EventType 
     @StateObject private var userManager = UserManager.shared
     @StateObject private var inviteManager = InviteManager.shared
     
@@ -22,24 +29,29 @@ struct InviteMember: View {
     }
     
     var body: some View {
-        VStack {
-            SearchBar(text: $searchItem, placeholder: "Buscar membros")
-            
-            // MARK: - Scroll com users
-            ScrollView {
-                VStack {
-                    ForEach(filteredUsers, id: \.id) { user in
-                        // Verifica se o usuário não é o usuário atual
-                        if userManager.user?.id != user.id {
-                            UserInviteCard(user: user, event: event)
-                                .onTapGesture {
-                                    inviteManager.createInvite(for: event.rawValue, to: user.id ?? "")
-                                }
-                        }
-                    }
+        NavigationView {
+            VStack {
+                SearchBar(text: $searchItem, placeholder: "Buscar membros")
+                
+                // MARK: - Scroll com users
+                ScrollView {
+//                    VStack {
+//                        ForEach(filteredUsers, id: \.id) { user in
+//                            if (userManager.user?.id)! != user.id {
+//                                UserInviteCard(user: user, event: event)
+//                                    .onTapGesture {
+//                                        inviteManager.createInvite(for: event.id, to: user.id ?? "")
+//                                    }
+//                            }
+//                        }
+//                    }
                 }
             }
+            .navigationTitle("Convidar Membros")
+            .navigationBarItems(trailing: Button("Close") {
+                presentationMode.wrappedValue.dismiss()
+            })
+            .padding()
         }
-        .padding()
     }
 }
