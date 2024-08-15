@@ -86,10 +86,12 @@ struct AddEvent: View {
                     }
                 }
                 
+                
                 //MARK: Action Button
                 Button(action: {
                     guard let userId = AuthManager.shared.userId else{return}
                     print(selectedParticipants)
+                    
                     let newEvent = Event(
                         isPrivate: isPrivate,
                         participants: Array(selectedParticipants) + [userId],

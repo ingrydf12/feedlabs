@@ -1,7 +1,7 @@
 // =)
 //
 //FilterGenericPage.swift
-// Created at 08/08/2024
+// Created by Ingryd Cordeiro Duarte at 08/08/2024
 
 import SwiftUI
 
