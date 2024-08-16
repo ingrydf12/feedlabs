@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InviteCardList: View {
+struct InviteCardView: View {
     
     @StateObject private var inviteManager = InviteManager.shared
     var user: String
