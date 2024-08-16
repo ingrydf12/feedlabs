@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct EventCard: View {
+    // miss interaction to leaveEventCard (popup)
     var eventManager = EventManager.shared
     @Binding var showingInviteModal: Bool
     @Binding var selectedEvent: String
