@@ -36,7 +36,8 @@ struct LoginView: View {
             VStack{
                 HStack{
                 Text("Login")
-                    .font(Font.custom("tahoma", size: 32).bold())
+                        .font(.tahoma(.title))
+                    .bold()
                     .padding(.leading,10)
                 Spacer()
             }
@@ -45,9 +46,12 @@ struct LoginView: View {
             VStack{
                 HStack{
                     Text("E-mail")
+                        .font(.tahoma(.secondaryButton))
                         .padding(.leading, 25)
+                      
                     Spacer()
                 }
+               
                 
                 HStack{
                     TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail").foregroundColor(.gray))
@@ -60,6 +64,13 @@ struct LoginView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(viewModel.emailError != nil ? Color.red : Color.gray,lineWidth: 1)
                 }
+                
+                if let emailError = viewModel.emailError {
+                    Text(emailError)
+                        .foregroundStyle(Color.red)
+                        .padding(.leading,25)
+                        .padding(.top,5)
+                }
 
             }
             Spacer()
@@ -69,59 +80,65 @@ struct LoginView: View {
             VStack{
                 HStack{
                     Text("Senha")
-                        .padding(.leading, 25)
+                        .font(.tahoma(.secondaryButton))
+                        .padding(.leading,25)
                     Spacer()
-                    
                 }
                 HStack{
-                    SecureField("", text: $viewModel.password, prompt: Text("Insira sua senha").foregroundColor(.gray))
+                    showPassword(text: $viewModel.password, title: "Insira sua senha")
+                        .foregroundStyle(Color.gray)
                         .autocapitalization(.none)
-                        .foregroundColor(.gray)
-                        .padding(.leading, 20)
+                        .padding(.leading,20)
+                }
+                        .frame(width: 344, height: 46)
+                        .overlay{
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(viewModel.passwordError != nil ? Color.red : Color.gray,lineWidth: 1)
+                            
+                        }
+                    if let passwordError = viewModel.passwordError {
+                        Text(passwordError)
+                            .foregroundStyle(Color.red)
+                            .padding(.leading,25)
+                            .padding(.top,5)
+                    }
                     
-                }
                 
-                
-                .frame(width: 344, height: 46)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(viewModel.passwordError != nil ? Color.red : Color.gray,lineWidth: 1)
-                }
 
             
             }
-            
             Spacer()
                 
             
-            Button {
-                viewModel.coordinator.navigateTo(screen: .passwordRecovery)
-            } label: {
-                HStack{
-                    Spacer()
-                    Text("Esqueceu sua senha?").foregroundStyle(Color.darkAqua).bold()
-                    
-                }
+           
+            HStack{
+                Spacer()
+                Text("Esqueceu sua senha?").foregroundStyle(Color.darkAqua).font(.tahoma(.secondaryButton))
+                    .onTapGesture {
+                        viewModel.coordinator.navigateTo(screen: .passwordRecovery)
+                    }
                 
-                .padding(.trailing,25)
             }
-                
+            .padding(.trailing,25)
             
             VStack(){
                 Spacer()
                     .padding()
                 buttonView(name: "Entrar", background: Color.darkAqua) {
-                        
+                    
                         viewModel.handleLogin()
-                   
+                    
                 }
+                .font(.tahoma(.secondaryButton))
+               
                 Spacer()
                 HStack{
                     Text("Não tem uma conta?")
+                        .font(.tahoma(.secondaryButton))
                     Button {
                         viewModel.coordinator.navigateTo(screen: .register)
                     } label: {
-                        Text("Cadastre-se").foregroundStyle(Color.darkAqua).bold()
+                        Text("Cadastre-se").foregroundStyle(Color.darkAqua).font(.tahoma(.subtitle))
                         
                         }
                     

@@ -9,34 +9,42 @@ import SwiftUI
 
 struct TeamsView: View {
     
-    @ObservedObject var viewModel = TeamsViewModel()
-    @StateObject var eventManager = EventManager.shared
+    @ObservedObject private var viewModel = TeamsViewModel.shared
     
     var body: some View {
-        NavigationStack{
-            VStack {
-                HStack{
-                    Text("Meets") // buscar nos eventos do usuario eventos do tipo team meet
-                        .font(.system(size: 24,weight: .bold))
-                    Spacer()
-                    Button {
-                        print("new team meet")
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 20,weight: .semibold))
-                            .foregroundColor(.darkAqua)
+        VStack {
+            HStack{
+                Text("Meets") // buscar nos eventos do usuario eventos do tipo team meet
+                    .font(.system(size: 24,weight: .bold))
+                Spacer()
+                NavigationLink(destination: AddEventView()) {
+                    Image(systemName: "plus")
+                        .font(.system(size: 20,weight: .semibold))
+                        .foregroundColor(.darkAqua)
+                }
+            }
+            ScrollView(.vertical,showsIndicators: false) {
+                if viewModel.teamMeets.count != 0 {
+                    VStack{
+                        ForEach(viewModel.teamMeets) { teamMeet in
+                            TeamMeetCard(event: teamMeet)
+                        }
+                        .padding(.horizontal,9)
+                    }.padding(.vertical)
+                }else {
+                    VStack(alignment:.center){
+                        Image("imageNoEvent")
+                            .resizable()
+                            .frame(width: 117,height: 114)
+                        Text("Parece que você não tem nenhum")
+                            .font(.system(size: 16,weight: .semibold))
+                        Text("evento pra hoje")
+                            .font(.system(size: 16,weight: .semibold))
+                        
                     }
+                    .padding()
+                    .accessibilityLabel("Nenhum evento Hoje")
                 }
-                
-                HStack{
-                    EmptyView()
-                }
-                .frame(width: 333,height: 95)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.darkAqua, lineWidth: 2)
-                )
-                .padding(.bottom,10)
                 
                 Rectangle()
                     .frame(height: 4)
@@ -55,19 +63,19 @@ struct TeamsView: View {
                         }
                     }
                 }
-                ScrollView(.vertical) {
+                VStack{
                     ForEach(viewModel.teams) { team in
                         TeamCard(team: team,role: viewModel.role ?? .student)
                     }
-                    .padding(.top)
-                    .padding(.horizontal,9)
-                    .padding(.bottom,20)
                 }
+                .padding(.vertical,7)
+                .padding(.horizontal,9)
                 Spacer()
             }
-            .padding(.horizontal,20)
-            
         }
+        .navigationBarBackButtonHidden()
+        .padding(.top,5)
+        .padding(.horizontal,20)
     }
 }
 

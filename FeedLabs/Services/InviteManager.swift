@@ -8,32 +8,33 @@
 //criar e enviar, aceitar, recusar, buscar.
 import Foundation
 import Firebase
+import FirebaseDatabaseInternal
 
 class InviteManager: ObservableObject {
     
     static let shared = InviteManager()
     
     @Published var invites: [Invite] = []
-    
+    @Published var pendingInvitesCount: Int = 0
+
     private var invitesRef: DatabaseReference?
     private var invitesHandle: DatabaseHandle? // Observador
     
-    init() {
-        observeInvites()
+    private init() {
+        print("initing invite manager")
+        self.observeInvites()
     }
     
     deinit {
-        if let invitesHandle = invitesHandle {
-            invitesRef?.removeObserver(withHandle: invitesHandle)
-        }
+        print("saindo")
+        self.removeObserver()
     }
     
     private func observeInvites() {
-        guard let userId = AuthManager.shared.userId else {
-            print("User ID is missing")
-            return
-        }
         
+        guard let userId = AuthManager.shared.userId else { return }
+        
+        print("observing invites")
         self.invitesRef = Database.database().reference().child("users").child(userId).child("invites")
         
         self.invitesHandle = invitesRef?.observe(.childAdded, with: { [weak self] snapshot in
@@ -49,6 +50,7 @@ class InviteManager: ObservableObject {
                         } else {
                             self?.invites.append(invite) // Adiciona um novo convite
                         }
+                        self?.updatePendingInvitesCount() // Atualiza a contagem de convites pendentes
                     }
                 }
             })
@@ -59,8 +61,20 @@ class InviteManager: ObservableObject {
             let inviteId = snapshot.key
             DispatchQueue.main.async {
                 self?.invites.removeAll { $0.id == inviteId }
+                self?.updatePendingInvitesCount() // Atualiza a contagem de convites pendentes
+
             }
         })
+    }
+    private func updatePendingInvitesCount() {
+        let count = invites.filter { $0.status == .pendente }.count
+        self.pendingInvitesCount = count
+    }
+    func removeObserver() {
+        if let handle = self.invitesHandle {
+            self.invitesRef?.removeObserver(withHandle: handle)
+            self.invitesHandle = nil
+        }
     }
     
     func createInvite(for eventId: String, to userId: String) {
@@ -121,5 +135,18 @@ class InviteManager: ObservableObject {
             default: // pendente e enviado
                 ref.child("invites").child(inviteId).child("status").setValue(status.rawValue)
         }
+        updatePendingInvitesCount()
+    }
+    func resetInvitesData() {
+        DispatchQueue.main.async {
+            self.invites = []
+            self.pendingInvitesCount = 0
+        }
+    }
+    
+    func handleLogout() {
+        print("saindo do observador")
+        removeObserver() // Remove Firebase observers
+        resetInvitesData() // Clear invites and pending count
     }
 }

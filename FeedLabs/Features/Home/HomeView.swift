@@ -8,28 +8,40 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel = HomeViewModel()
-    
+    @State private var viewModel = HomeViewModel()
+
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("ID: \(viewModel.userManager.user?.id ?? "nil")")
-            Text("NAME: \(viewModel.userManager.user?.name ?? "nil")")
-            
+        VStack{
+            CalendarView(selectedDate: $viewModel.selectedDate)
+                Spacer()
+                
             Text("Eventos de hoje")
                 .font(.tahoma(.subtitle))
-            
-            
-            Button {
-                AuthManager.shared.signOut()
-            } label: {
-                Text("Sair")
+
+            EventsListView(groupedEvents: viewModel.groupedEventsByHour())
+                .frame(alignment: .center)
+        }
+        .navigationTitle("Eventos")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                UserProfileButton()
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink(destination: {
+                    AddEventView()
+                }, label: {
+                    Image(systemName: "plus")
+                })
             }
 
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .background(Color.background)
     }
 }
 
 #Preview {
     HomeView()
 }
+

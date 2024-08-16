@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InviteList: View {
     
-    @StateObject private var inviteManager = InviteManager.shared
+    @ObservedObject private var inviteManager = InviteManager.shared
     var user: String
     
     var body: some View {

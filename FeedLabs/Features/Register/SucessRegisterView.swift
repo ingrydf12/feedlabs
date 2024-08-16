@@ -1,31 +1,31 @@
 //
-//  SucessRedefView.swift
+//  registerViewSucess.swift
 //  FeedLabs
 //
-//  Created by Guilherme Pessoa on 01/08/24.
+//  Created by Guilherme Pessoa on 13/08/24.
 //
 
 import SwiftUI
 
-struct SucessRedefView: View {
+struct SucessRegisterView: View {
     
     let coordinator: AuthCoordinator
     
     var body: some View {
             VStack{
-                Image("sucess_reset")
+                Image("sucessRegister")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 206 , height: 184.92)
+                    .frame(width: 334 , height: 188)
                 
                 VStack{
-                    Text("O email foi enviado!")
+                    Text("Conta criada com sucesso!")
                         .font(.tahoma(.title))
                         .padding(10)
-                    Text("Cheque suas mensagens e acesse o link para continuar")
-                        .font(.tahoma(.secondaryButton))
+                    Text("você será redirecionado para o aplicativo!")
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Color.gray)
+                        .font(.tahoma(.secondaryButton))
                 }
                 
             }
@@ -40,15 +40,15 @@ struct SucessRedefView: View {
         
 }
 
-struct SucessViewContainer: View {
+struct SucessRegisterViewContainer: View {
     
     @StateObject var coordinator = AuthCoordinator()
 
     var body: some View {
-        SucessRedefView(coordinator: coordinator)
+        SucessRegisterView(coordinator: coordinator)
     }
 }
 
 #Preview {
-    SucessViewContainer()
+   SucessRegisterViewContainer()
 }

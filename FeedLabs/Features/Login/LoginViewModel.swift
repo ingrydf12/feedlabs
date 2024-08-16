@@ -1,49 +1,62 @@
-//
-//  LoginViewModel.swift
-//  FeedLabs
-//
-//  Created by Guilherme Pessoa on 06/08/24.
-//
-
 import Foundation
 import FirebaseAuth
 
-
-class LoginViewModel: ObservableObject {
+@Observable
+class LoginViewModel {
     
     let coordinator: AuthCoordinator
     
-    @Published var email: String = ""
-    @Published var password: String = ""
-    @Published var emailError: String? = nil
-    @Published var passwordError: String? = nil
-    
+    var email: String = ""
+    var password: String = ""
+    var emailError: String?
+    var passwordError: String?
     
     init(coordinator: AuthCoordinator) {
         self.coordinator = coordinator
     }
     
-    
-    
-    func handleLogin(){
+    func validateInputs() -> Bool {
+        var isValid = true
         
-        guard isValid else {return}
+        if email.isEmpty {
+            emailError = "O campo e-mail não pode estar vazio."
+            isValid = false
+        } else if !isValidEmail(email) {
+            emailError = "Insira um e-mail válido."
+            isValid = false
+        } else {
+            emailError = nil
+        }
         
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                print(error.localizedDescription)
-                self.emailError = "Não pode estar em branco"
-                self.passwordError = "Não pode estar em branco"
-                return
+        if password.isEmpty {
+            passwordError = "O campo senha não pode estar vazio."
+            isValid = false
+        } else {
+            passwordError = nil
+        }
+        
+        return isValid
+    }
+    
+    func handleLogin() {
+        if validateInputs() {
+            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    self.passwordError = "E-mail ou senha incorretos."
+                    return
+                }
+                guard let user = result?.user else { return }
+                print("User logged in successfully with uid: \(user.uid)")
+                // Navegar para a próxima tela aqui, se necessário
             }
-            guard let user = result?.user else { return }
-            print("User logged successfully with uid: \(user.uid)")
         }
     }
     
-    var isValid: Bool {
-        emailError = email.isEmpty ? "Não pode estar em branco" : nil
-        passwordError = password.isEmpty ? "Não pode estar em branco" : nil
-        return emailError == nil && passwordError == nil
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
 }
+
