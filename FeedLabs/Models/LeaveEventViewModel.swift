@@ -5,14 +5,33 @@
 //  Created by Ingryd Cordeiro Duarte on 16/08/24.
 //
 
+import Foundation
 import SwiftUI
 
-struct LeaveEventViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class LeaveEventViewModel: ObservableObject {
+    @Published var showPopup = false
+    
+    var eventManager = EventManager.shared
+    
+    var event: Event
+    
+    init(event: Event) {
+        self.event = event
     }
-}
-
-#Preview {
-    LeaveEventViewModel()
+    
+    func leaveEvent() {
+        guard let userId = AuthManager.shared.userId, let eventId = event.id else { return }
+        
+        eventManager.removeParticipant(userId, from: eventId) { success in
+            if success {
+                print("Successfully removed participant.")
+            } else {
+                print("Failed to remove participant.")
+            }
+            
+            DispatchQueue.main.async {
+                self.showPopup = false
+            }
+        }
+    }
 }
