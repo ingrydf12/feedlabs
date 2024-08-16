@@ -11,6 +11,8 @@ import FirebaseFirestore
 struct ChatUser: Codable, Identifiable {
     @DocumentID var id: String?
     var messages: [String]?
-    var userId: String?
+    //var userName: String?
+    var fromUser: String?
+    var toUser: String?
 }
 

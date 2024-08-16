@@ -13,4 +13,5 @@ struct ChatMessage: Codable, Identifiable {
     var text: String?
     var toUser: String?
     var fromUser: String?
+    var chatId: String?
 }

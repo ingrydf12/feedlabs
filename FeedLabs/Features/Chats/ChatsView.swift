@@ -10,12 +10,22 @@ import SwiftUI
 struct ChatsView: View {
     @State var user: User?
     @State var message: String = ""
-    @Environment(\.presentationMode) var presentationMode  
-    @State var chatUser: ChatUser
-    
-    init(user: User){
-        self.user = user
-        self.chatUser = ChatUser(messages: [], userId: AuthManager.shared.userId)
+    @State var chatUser: ChatUser?
+    @State var isEdit: Bool = false
+    @StateObject var messageManager = MessageManager.shared
+    @Environment(\.presentationMode) var presentationMode
+
+    init(user: User, chat: ChatUser? = nil){
+        _user = State(initialValue: user)
+        if chat != nil {
+            _chatUser = State(initialValue: chat)
+            _isEdit = State(initialValue: true)
+            
+        }else if chatUser?.id == nil{
+            _chatUser = State(initialValue:  ChatUser(messages: [], fromUser: AuthManager.shared.userId, toUser: user.id))
+            _isEdit = State(initialValue: false)
+        }
+        
     }
     
     var body: some View {
@@ -25,39 +35,32 @@ struct ChatsView: View {
                 ScrollView{
                     VStack(alignment: .trailing){
                         VStack{
-                            
-                            HStack{
+                            ForEach(messageManager.filteredMessages){ message in
+                                HStack{
+                                    Spacer()
+                                    HStack{
+                                        if AuthManager.shared.userId == message.fromUser {Spacer()}
+                                        Text(message.text ?? "")
+                                            .frame(alignment: .trailing)
+                                            .padding()
+                                            .background(Color(.white))
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .stroke(Color("darkAqua"), lineWidth: 2)
+                                            )
+                                        if AuthManager.shared.userId != message.fromUser {Spacer()}
+                                    }
+                                }
                                 
-                                Text("Oi")
-                                    .frame(alignment: .trailing)
-                                    .padding()
-                                    .background(Color(.white))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color("darkAqua"), lineWidth: 2)
-                                    )
-                                Spacer()
-                            }
-                            HStack{
-                                Spacer()
-                                Text("E ai")
-                                    .frame(alignment: .trailing)
-                                    .padding()
-                                    .background(Color(.white))
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color("darkAqua"), lineWidth: 2)
-                                    )
                             }
                         }
-                        
                     }.padding()
                 }
                 Spacer()
                 VStack{
                     HStack{
                         HStack{
-                            TextField( "message", text: $message)
+                            TextField( "Insira uma mensagem", text: $message)
                                 .padding()
                                 .font(.callout)
                                 
@@ -76,15 +79,24 @@ struct ChatsView: View {
                         )
                         
                         Button(action: {
-                            let message = ChatMessage( text: message, toUser: user?.id, fromUser: AuthManager.shared.userId)
-                            
-                            
-                            //adicionar message no banco de dados
-                            
-                            //realizar a buscar e anexar ao chat
-                            //self.chatUser.messages?.append()
-                            
-                        }, label: {
+                            if message != "" {
+                                let chatMessage = ChatMessage( text: message, toUser: user?.id, fromUser: AuthManager.shared.userId, chatId: self.chatUser?.id)
+                                
+                                self.message = ""
+                                messageManager.addMessage(message: chatMessage){ success in
+                                    if success{
+                                        if let messageId = messageManager.messageAddId {
+                                            self.chatUser?.messages?.append(messageId)
+                                            ChatManager.shared.editChat(chat: self.chatUser ?? ChatUser())
+                                            //print(self.chatUser ?? "")
+                                        }else{
+                                            print("Erro: messageAddId está nulo")
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        , label: {
                             Image(systemName: "paperplane")
                                 .foregroundColor(Color("darkAqua") )
                         })
@@ -108,17 +120,33 @@ struct ChatsView: View {
                     }.foregroundStyle(Color("darkAqua"))
                         .font(.headline)
                 }
-                
             }
             .toolbarBackground(Color("backgroudTextField"), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
            
         }.navigationBarBackButtonHidden(true)
-           
+        .onAppear{
+            if self.isEdit {
+                self.chatUser = ChatManager.shared.getChatById(self.chatUser?.id ?? "")
+            } else {
+                if let chat = self.chatUser{
+                    if chat.id == nil{
+                        ChatManager.shared.addChat(chat: chat){ created in
+                            if created{
+                                if let chatId = ChatManager.shared.chatAddId{
+                                    self.chatUser = ChatManager.shared.getChatById(chatId)
+                                    messageManager.chatId = self.chatUser?.id
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            messageManager.chatId = self.chatUser?.id
+        }
     }
-    
-   
 }
+
 
 #Preview {
     ChatsView(user: User())

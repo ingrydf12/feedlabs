@@ -193,7 +193,7 @@ class UserManager: ObservableObject {
         }
         
         let userFilter = filteredUsers.filter({
-            return $0.name!.uppercased().contains(name.uppercased())
+            return ($0.name ?? "").uppercased().contains(name.uppercased())
         })
         self.searchUsers = userFilter
     }

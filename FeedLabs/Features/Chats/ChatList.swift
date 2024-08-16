@@ -9,39 +9,69 @@ import SwiftUI
 
 struct ChatList: View {
     @State var isSearching: Bool = false
-    @StateObject var userManager = UserManager.shared
-    
+    @StateObject var chatManager = ChatManager.shared
+   
     var body: some View {
         NavigationView{
             Form{
                 HStack{
-                    TextField("", text: $userManager.searchText, prompt: Text("Buscar").foregroundColor(.gray))
+                    TextField("", text: $chatManager.searchText, prompt: Text("Buscar").foregroundColor(.gray))
                         .autocapitalization(.none)
                         .foregroundColor(.gray)
                     
                     Button(action: {
-                        userManager.isSearchingUser = true
+                        chatManager.isSearchingUser = true
                     }, label: {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.gray)
                     })
                 }
-                
-                VStack{
-                    Image("CatListUsers")
-                        .resizable()
-                        .frame(width: 300, height: 300)
+                if !chatManager.filteredUsersByChats.isEmpty {  // !
+                    if !(chatManager.searchText == "") && chatManager.isSearchingUser {
+                        Section(header: Text("Selecionar conversa")){
+                            ForEach(chatManager.filteredUsersByName){ user in
+                                NavigationLink(destination: ChatsView(user: user, chat: getChatWithUser(userId: user.id ?? ""))){
+                                    HStack{
+                                        Image(systemName: "person.circle.fill")
+                                            .font(.largeTitle)
+                                        Text(user.name ?? "")
+                                    }
+                                }
+                            }
+                        }
+                    }else{
+                        Section(header: Text("Selecionar conversa")){
+                            ForEach(chatManager.filteredUsersByChats){ user in
+                                NavigationLink(destination: ChatsView(user: user , chat: getChatWithUser(userId: user.id ?? ""))){
+                                    Image(systemName: "person.circle.fill")
+                                        .font(.largeTitle)
+                                    Text(user.name ?? "")
+                                }
+                            }
+                        }.onAppear{
+                            chatManager.isSearchingUser = false
+                        }
+                    }
                     
-                    Text("Comece um chat pesquisando participantes na barra de busca")
-                        .font(.headline)
-                        .frame(maxWidth: 260)
-                        .foregroundColor(.gray)
-                        .padding(.bottom)
-                    
+                }else{
+                    HStack{
+                        Spacer()
+                        VStack(alignment: .center){
+                            ProgressView()
+                            Image("CatListUsers")
+                                .resizable()
+                                .frame(width: 300, height: 300)
+                            
+                            Text("Comece uma conversa clicando no botão de adicionar chat")
+                                .font(.headline)
+                                .frame(maxWidth: 260)
+                                .foregroundColor(.gray)
+                                .padding(.bottom)
+                        }
+                        Spacer()
+                    }
                 }
-                
             }
-            //.navigationTitle("Chats")
             .toolbar{
                 ToolbarItem(placement: .topBarLeading){
                     Text("Chats").font(.largeTitle)
@@ -60,11 +90,16 @@ struct ChatList: View {
 
                         }.foregroundStyle(Color("darkAqua"))
                     }.onDisappear{
-                        userManager.searchText = ""
+                        chatManager.searchText = ""
                     }
                 }
             }
         }
+    }
+    
+    func getChatWithUser(userId: String) -> ChatUser{
+        return ChatManager.shared.filteredChats.filter{ return $0.toUser == userId}.first ?? ChatUser()
+        
     }
 }
 
