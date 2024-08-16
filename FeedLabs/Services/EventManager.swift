@@ -96,7 +96,24 @@ class EventManager: ObservableObject {
             }
         }
     }
-
+    
+    func removeParticipant(_ userId: String, from eventId: String, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        let eventRef = db.collection("Events").document(eventId)
+        
+        eventRef.updateData([
+            "participants": FieldValue.arrayRemove([userId])
+        ]) { error in
+            if let error = error {
+                print("Error removing participant: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+    
     func updateEvent(_ event: Event) {
         guard let eventId = event.id else {
             print("Event ID is missing")

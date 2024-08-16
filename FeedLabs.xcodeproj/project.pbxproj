@@ -61,6 +61,8 @@
 		B2C2DA6A2C6A30C800EF7E75 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */; };
 		B2C2DA6C2C6A472A00EF7E75 /* FilterGenericPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA6B2C6A472A00EF7E75 /* FilterGenericPage.swift */; };
 		B2C2DA702C6A6A8300EF7E75 /* ChatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA6F2C6A6A8300EF7E75 /* ChatCard.swift */; };
+		B2F56A0E2C6F6B44003FDC4D /* LeaveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F56A0D2C6F6B44003FDC4D /* LeaveEvent.swift */; };
+		B2F56A102C6F8C41003FDC4D /* LeaveEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F56A0F2C6F8C41003FDC4D /* LeaveEventViewModel.swift */; };
 		BC5632DE2C625E550044C09E /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632DD2C625E550044C09E /* buttonView.swift */; };
 		BC5632E02C6264790044C09E /* SucessRedefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632DF2C6264790044C09E /* SucessRedefView.swift */; };
 		BC5632E22C6269230044C09E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5632E12C6269230044C09E /* LoginViewModel.swift */; };
@@ -126,6 +128,8 @@
 		B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		B2C2DA6B2C6A472A00EF7E75 /* FilterGenericPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterGenericPage.swift; sourceTree = "<group>"; };
 		B2C2DA6F2C6A6A8300EF7E75 /* ChatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCard.swift; sourceTree = "<group>"; };
+		B2F56A0D2C6F6B44003FDC4D /* LeaveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveEvent.swift; sourceTree = "<group>"; };
+		B2F56A0F2C6F8C41003FDC4D /* LeaveEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveEventViewModel.swift; sourceTree = "<group>"; };
 		BC5632DD2C625E550044C09E /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = buttonView.swift; path = FeedLabs/Features/Login/buttonView.swift; sourceTree = SOURCE_ROOT; };
 		BC5632DF2C6264790044C09E /* SucessRedefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SucessRedefView.swift; sourceTree = "<group>"; };
 		BC5632E12C6269230044C09E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				7FD1C78B2C5A728D00AAF4B5 /* ChatMessage.swift */,
 				816426FE2C5A71A500B1BD90 /* Invite.swift */,
 				81A5C0FE2C63958C00E62D6C /* Team.swift */,
+				B2F56A0F2C6F8C41003FDC4D /* LeaveEventViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */,
 				CE825DE22C66584E0006A3C3 /* Calendar.swift */,
 				CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */,
+				B2F56A0D2C6F6B44003FDC4D /* LeaveEvent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				7FD1C78E2C5A74B200AAF4B5 /* ChatManager.swift in Sources */,
 				CE825DE52C665FAD0006A3C3 /* DividerComponent.swift in Sources */,
 				7FD1C78A2C5A71CA00AAF4B5 /* Chat.swift in Sources */,
+				B2F56A102C6F8C41003FDC4D /* LeaveEventViewModel.swift in Sources */,
 				B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */,
 				81D5EA002C6116C400CA1443 /* ChatsView.swift in Sources */,
 				816A95492C57BB9E00E881EC /* EventManager.swift in Sources */,
@@ -551,6 +558,7 @@
 				81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */,
 				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
 				B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */,
+				B2F56A0E2C6F6B44003FDC4D /* LeaveEvent.swift in Sources */,
 				CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */,
 				CE825DE72C6664DE0006A3C3 /* HomeViewModel.swift in Sources */,
 				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
