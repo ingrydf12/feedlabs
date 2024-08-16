@@ -41,7 +41,7 @@
 		81A5C1052C63978500E62D6C /* TeamsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C1042C63978500E62D6C /* TeamsManager.swift */; };
 		81A5C1072C63BBDD00E62D6C /* EditTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C1062C63BBDD00E62D6C /* EditTeamView.swift */; };
 		81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8162C5D240D00A10630 /* EventCard.swift */; };
-		81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8182C5D24D100A10630 /* InviteList.swift */; };
+		81A7D8192C5D24D100A10630 /* InviteCardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8182C5D24D100A10630 /* InviteCardList.swift */; };
 		81CF08792C61187F00881B21 /* HomeRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF08782C61187F00881B21 /* HomeRoutes.swift */; };
 		81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */; };
 		81D5E9EE2C61122400CA1443 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */; };
@@ -108,7 +108,7 @@
 		81A5C1042C63978500E62D6C /* TeamsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsManager.swift; sourceTree = "<group>"; };
 		81A5C1062C63BBDD00E62D6C /* EditTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamView.swift; sourceTree = "<group>"; };
 		81A7D8162C5D240D00A10630 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
-		81A7D8182C5D24D100A10630 /* InviteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteList.swift; sourceTree = "<group>"; };
+		81A7D8182C5D24D100A10630 /* InviteCardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteCardList.swift; sourceTree = "<group>"; };
 		81CF08782C61187F00881B21 /* HomeRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoutes.swift; sourceTree = "<group>"; };
 		81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -299,7 +299,7 @@
 				816A954E2C57BC2600E881EC /* AddEvent.swift */,
 				81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */,
 				81A7D8162C5D240D00A10630 /* EventCard.swift */,
-				81A7D8182C5D24D100A10630 /* InviteList.swift */,
+				81A7D8182C5D24D100A10630 /* InviteCardList.swift */,
 				B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */,
 				CE825DE22C66584E0006A3C3 /* Calendar.swift */,
 				CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */,
@@ -539,7 +539,7 @@
 				816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */,
 				B2C2DA6C2C6A472A00EF7E75 /* FilterGenericPage.swift in Sources */,
 				81A5C1032C6395BC00E62D6C /* TeamsViewModel.swift in Sources */,
-				81A7D8192C5D24D100A10630 /* InviteList.swift in Sources */,
+				81A7D8192C5D24D100A10630 /* InviteCardList.swift in Sources */,
 				B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */,
 				81A5C1012C6395A400E62D6C /* TeamCard.swift in Sources */,
 				816A95252C57B63800E881EC /* ContentView.swift in Sources */,
