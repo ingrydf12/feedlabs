@@ -8,7 +8,7 @@ struct EventCard: View {
     @Binding var showingInviteModal: Bool
     @Binding var selectedEvent: String
     var user: String
-
+    
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM dd"
@@ -48,8 +48,8 @@ struct EventCard: View {
                                     .multilineTextAlignment(.leading)
                             }
                         }
-
-
+                        
+                        
                     }
                     
                     
@@ -65,33 +65,33 @@ struct EventCard: View {
                                 RoundedRectangle(cornerRadius: 5)
                                     .stroke(Color.gray.opacity(0.5), lineWidth: 2)
                             )
-
+                        
                         //MARK: - Must to appear when (Team Details)
                         //Image(systemName: "plus.app")
                         
-//                        HStack {
-//                            if event.owners.contains(user) {
-//                                Button {
-//                                    selectedEvent = event.id ?? ""
-//                                    showingInviteModal.toggle()
-//                                } label: {
-//                                    Image(systemName: "person.badge.plus")
-//                                        .foregroundColor(.darkAqua)
-//                                }
-//                                Button {
-//                                    if let id = event.id {
-//                                        eventManager.deleteEvent(id)
-//                                    }
-//                                } label: {
-//                                    Image(systemName: "trash.fill")
-//                                        .foregroundColor(.red)
-//                                }
-//                            }
-//                        }
+                        //                        HStack {
+                        //                            if event.owners.contains(user) {
+                        //                                Button {
+                        //                                    selectedEvent = event.id ?? ""
+                        //                                    showingInviteModal.toggle()
+                        //                                } label: {
+                        //                                    Image(systemName: "person.badge.plus")
+                        //                                        .foregroundColor(.darkAqua)
+                        //                                }
+                        //                                Button {
+                        //                                    if let id = event.id {
+                        //                                        eventManager.deleteEvent(id)
+                        //                                    }
+                        //                                } label: {
+                        //                                    Image(systemName: "trash.fill")
+                        //                                        .foregroundColor(.red)
+                        //                                }
+                        //                            }
+                        //                        }
                         
                         //MARK: - TAG EVENT: Date Formatter
                         HStack (alignment: .center){
-
+                            
                             Image(systemName: "calendar")
                                 .foregroundStyle(Color.black)
                             Text(Self.dateFormatter.string(from: event.date ?? Date()))
@@ -111,9 +111,65 @@ struct EventCard: View {
     }
 }
 
-struct MeetEventView: View {
+struct MeetEventCard: View {
+    @StateObject private var eventManager = EventManager.shared
+    @StateObject private var userManager = UserManager.shared
+    
     var body: some View {
-        Text("teste")
+        HStack(alignment: .center){
+            VStack{
+                Text("EventName")
+                    .font(.tahoma(.bold, size: 24))
+                    .multilineTextAlignment(.center)
+                
+                profileImageView
+                
+            }
+            
+            Spacer()
+            
+            VStack{
+                eventTypeTag
+                    .padding(10)
+                dateTag
+            }
+        }.padding(10)
+            .frame(maxWidth: 370)
+        
+    }
+    
+    private var profileImageView: some View {
+        ZStack {
+            Circle()
+                .fill(Color.purple)
+                .frame(width: 30, height: 30)
+            if let usernameInitial = userManager.user?.name?.first {
+                Text(String(usernameInitial))
+                    .font(.tahoma(.primaryButton))
+                    .foregroundStyle(Color.white)
+            }
+        }
+    }
+    
+    private var eventTypeTag: some View{
+        HStack{
+            Text("Meet/Team Meet")
+                .font(.tahoma(.regular, size: 16))
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+    }
+    
+    private var dateTag: some View{
+        HStack{
+            Image(systemName: "calendar")
+                .frame(width: 20, height: 20)
+                .scaledToFit()
+            
+            Text("26 Jul")
+        }
     }
 }
 
+#Preview{
+    MeetEventCard()
+}

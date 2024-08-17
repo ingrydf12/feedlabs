@@ -17,12 +17,14 @@ enum Status: String {
 struct Invite: Identifiable {
     var id: String
     var eventId: String?
+    var eventName: String?
     var from: String?
     var to: String?
     var status: Status?
     
     init?(id: String, dictionary: [String: Any]) {
         self.id = id
+        self.eventName = dictionary["name"] as? String
         self.eventId = dictionary["for"] as? String
         self.from = dictionary["from"] as? String
         self.to = dictionary["to"] as? String
