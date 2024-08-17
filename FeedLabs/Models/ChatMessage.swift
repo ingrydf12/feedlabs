@@ -14,4 +14,5 @@ struct ChatMessage: Codable, Identifiable {
     var toUser: String?
     var fromUser: String?
     var chatId: String?
+    var timestamp: Timestamp?
 }

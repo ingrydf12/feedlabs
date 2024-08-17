@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ChatsView: View {
     @State var user: User?
@@ -80,7 +81,7 @@ struct ChatsView: View {
                         
                         Button(action: {
                             if message != "" {
-                                let chatMessage = ChatMessage( text: message, toUser: user?.id, fromUser: AuthManager.shared.userId, chatId: self.chatUser?.id)
+                                let chatMessage = ChatMessage( text: message, toUser: user?.id, fromUser: AuthManager.shared.userId, chatId: self.chatUser?.id, timestamp: Timestamp())
                                 
                                 self.message = ""
                                 messageManager.addMessage(message: chatMessage){ success in

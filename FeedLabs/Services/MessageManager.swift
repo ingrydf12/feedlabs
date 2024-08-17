@@ -34,7 +34,7 @@ class MessageManager: ObservableObject{
         let db = Firestore.firestore()
         let ref = db.collection("ChatMessages")
         
-        ref.addSnapshotListener{ snapshot, error in
+        ref.order(by: "timestamp").addSnapshotListener{ snapshot, error in
             if let error = error {
                 print("error", error.localizedDescription)
                 return
