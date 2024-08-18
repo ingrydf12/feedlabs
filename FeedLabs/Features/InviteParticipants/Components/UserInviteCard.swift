@@ -6,7 +6,7 @@ import SwiftUI
 
 struct UserInviteCard: View {
     var user: User
-    var event: Event  // Accepts EventType directly
+    var event: Event
     @StateObject private var userManager = UserManager.shared
     @StateObject private var inviteManager = InviteManager.shared
     @State private var selectedParticipants: Set<String> = []
@@ -14,7 +14,7 @@ struct UserInviteCard: View {
     var body: some View {
         HStack(alignment: .center) {
             // Profile Image
-            profileImageView
+            profileImageView // Perfil
                 .padding(15)
             
             VStack(alignment: .leading, spacing: 8) {
@@ -35,6 +35,7 @@ struct UserInviteCard: View {
                     .padding(10)
             }
             .buttonStyle(InviteButton())
+            .accessibility(label: "Botão para adicionar pessoa no evento")
         }
         .padding(5)
         .frame(maxWidth: 350)
@@ -67,6 +68,7 @@ struct UserInviteCard: View {
                 Text(String(usernameInitial).capitalized)
                     .font(.tahoma(.primaryButton))
                     .foregroundStyle(.white)
+                    .accessibilityLabel("Símbolo do usuário")
             }
         }
     }
