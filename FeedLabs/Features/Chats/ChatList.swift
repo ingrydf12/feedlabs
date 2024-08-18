@@ -27,24 +27,27 @@ struct ChatList: View {
                     })
                 }
                 if !chatManager.filteredUsersByChats.isEmpty {  // !
-                    if !(chatManager.searchText == "") && chatManager.isSearchingUser {
+                    if !(chatManager.searchText == "") &&   chatManager.isSearchingUser {
                         Section(header: Text("Selecionar conversa")){
                             ForEach(chatManager.filteredUsersByName){ user in
                                 NavigationLink(destination: ChatsView(user: user, chat: getChatWithUser(userId: user.id ?? ""))){
-                                    HStack{
+                                  
                                         Image(systemName: "person.circle.fill")
-                                            .font(.largeTitle)
+                                            .font(.largeTitle).foregroundColor(Color("darkAqua") )
                                         Text(user.name ?? "")
-                                    }
+                                    
                                 }
                             }
                         }
                     }else{
+                   
                         Section(header: Text("Selecionar conversa")){
                             ForEach(chatManager.filteredUsersByChats){ user in
                                 NavigationLink(destination: ChatsView(user: user , chat: getChatWithUser(userId: user.id ?? ""))){
                                     Image(systemName: "person.circle.fill")
                                         .font(.largeTitle)
+                                        .foregroundColor(Color("darkAqua") )
+                                        //.cornerRadius(30)
                                     Text(user.name ?? "")
                                 }
                             }
@@ -89,8 +92,6 @@ struct ChatList: View {
                                 .font(.title2)
 
                         }.foregroundStyle(Color("darkAqua"))
-                    }.onDisappear{
-                        chatManager.searchText = ""
                     }
                 }
             }

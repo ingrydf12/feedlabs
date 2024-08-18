@@ -36,6 +36,7 @@ struct ListUsers: View {
                             NavigationLink(destination: ChatsView(user: user)){
                                 HStack{
                                     Image(systemName: "person.circle.fill")
+                                        .foregroundColor(Color("darkAqua") )
                                         .font(.largeTitle)
                                     Text(user.name ?? "")
                                 }
@@ -48,6 +49,7 @@ struct ListUsers: View {
                         ForEach(userManager.filteredUsers){ user in
                             NavigationLink(destination: ChatsView(user: user)){
                                 Image(systemName: "person.circle.fill")
+                                    .foregroundColor(Color("darkAqua") )
                                     .font(.largeTitle)
                                 Text(user.name ?? "")
                             }

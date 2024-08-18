@@ -15,7 +15,6 @@ class ChatManager: ObservableObject{
     
     @Published private var chats: [ChatUser]?
     @Published var filteredChats: [ChatUser] = []
-    //@Published var chatsWithMe: [ChatUser] = []
     @Published var filteredUsersByChats: [User] = []
     @Published var filteredUsersByName: [User] = []
     @Published var searchText: String = ""
