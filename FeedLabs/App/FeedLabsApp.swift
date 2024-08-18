@@ -24,6 +24,7 @@ struct FeedLabsApp: App {
     
     var body: some Scene {
         WindowGroup {
+            //InviteMember(event: .constant(.meet))
             ContentView()
         }
     }

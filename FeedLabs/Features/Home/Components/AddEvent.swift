@@ -13,11 +13,9 @@ struct AddEvent: View {
     @State private var isPrivate: Bool = false
     @State private var description: String = ""
     @State private var date: Date = Date()
-    @State private var type: EventType = .meet
+    //@State private var estimatedTime: Int = 0
     @State private var selectedParticipants: Set<String> = []
-    @StateObject private var userManager = UserManager.shared
-    @State private var showConfirmEvent = false
-
+    
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -37,11 +35,11 @@ struct AddEvent: View {
                 }
                 
                 Section(header: Text("Tipo de Evento")) {
-                    Picker("Escolha uma opção", selection: $type) {
-                        ForEach(EventType.allCases, id: \.self) { eventType in
-                            Text(eventType.rawValue)
-                        }
+                    Picker("Escolha uma opção", selection: $isPrivate) {
+                        Text("Privado").tag(true)
+                        Text("Público").tag(false)
                     }
+                    .pickerStyle(SegmentedPickerStyle())
                     .padding()
                 }
                 
@@ -76,13 +74,24 @@ struct AddEvent: View {
                                 }
                             }
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if selectedParticipants.contains(user.id ?? "") {
+                                selectedParticipants.remove(user.id ?? "")
+                            } else {
+                                selectedParticipants.insert(user.id ?? "")
+                            }
+                        }
+                        
                     }
                 }
+                
                 
                 //MARK: Action Button
                 Button(action: {
                     guard let userId = AuthManager.shared.userId else{return}
                     print(selectedParticipants)
+                    
                     let newEvent = Event(
                         isPrivate: isPrivate,
                         participants: Array(selectedParticipants) + [userId],
@@ -90,11 +99,9 @@ struct AddEvent: View {
                         name: name,
                         description: description,
                         createdAt: Date(),
-                        date: date, type: type
+                        date: date
                     )
                     EventManager.shared.addEvent(newEvent)
-                    showConfirmEvent = true // Popup
-                    
                     //presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Criar evento")
@@ -102,10 +109,6 @@ struct AddEvent: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .buttonStyle(PrimaryButton())
-                .sheet(isPresented: $showConfirmEvent) {
-                    ConfirmEvent()
-                }
-
             }
             .navigationTitle("Criar evento")
             .navigationBarItems(leading: Button(action: {
@@ -115,7 +118,6 @@ struct AddEvent: View {
             })
 
         }
-        .background(Color.clear)
     }
 }
 

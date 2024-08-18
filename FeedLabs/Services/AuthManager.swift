@@ -27,12 +27,13 @@ class AuthManager: ObservableObject {
     
     func signOut() {
         do {
+            InviteManager.shared.handleLogout()
             try Auth.auth().signOut()
             
             self.isAuthenticated = false
             self.userId = nil
             
-            EventManager.shared.events?.removeAll()
+            EventManager.shared.events.removeAll()
             
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)

@@ -68,7 +68,38 @@ class TeamsManager {
             completion(false)
         }
     }
-    
+    func updateTeam(_ team: Team, completion: @escaping (Bool) -> Void) {
+        guard let teamId = team.id else {
+            print("Error: Team ID is missing")
+            completion(false)
+            return
+        }
+        
+        let teamRef = db.collection(collection).document(teamId)
+        var updateData: [String: Any] = [:]
+        
+        updateData["name"] = team.name
+        
+        if let description = team.description {
+            updateData["description"] = description
+        }
+        if let participants = team.participants {
+            updateData["participants"] = participants
+        }
+        if let owners = team.owners {
+            updateData["owners"] = owners
+        }
+
+        teamRef.updateData(updateData) { error in
+            if let error = error {
+                print("Error updating team: \(error)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+
     func addParticipant(_ userId: String, to teamID: String, completion: @escaping (Bool) -> Void) {
         let teamRef = db.collection(collection).document(teamID)
         
@@ -92,6 +123,18 @@ class TeamsManager {
         ]) { error in
             if let error = error {
                 print("Error removing participant: \(error)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    func deleteTeam(_ teamID: String, completion: @escaping (Bool) -> Void) {
+        let teamRef = db.collection(collection).document(teamID)
+        
+        teamRef.delete { error in
+            if let error = error {
+                print("Error deleting team: \(error)")
                 completion(false)
             } else {
                 completion(true)

@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
-
 struct HomeRoutes: View {
-
+    
+    @ObservedObject private var inviteManager = InviteManager.shared
+    @State private var selectedTab: Int = 1
+    
     var body: some View {
-        TabView {
-            TeamsView()
-                .tabItem {
+        TabView(selection: $selectedTab){
+            NavigationStack{
+                TeamsView()
+            }
+            .tag(0)
+            .tabItem {
                     Image(systemName: "person.3")
                     Label("Teams", systemImage: "1.circle")
                 }
@@ -28,8 +33,9 @@ struct HomeRoutes: View {
                     Image(systemName: "ellipsis.bubble")
                     Label("Chats", systemImage: "3.circle")
                     
-                }
-        }.tint(.mint)
+                }.badge(inviteManager.pendingInvitesCount > 0 ? "\(inviteManager.pendingInvitesCount)" : nil)
+        }
+        .tint(.accent)
     }
 }
 

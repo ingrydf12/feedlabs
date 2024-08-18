@@ -23,6 +23,8 @@ struct AuthRoutes: View {
                 authCoordinator.recoverPasswordView
             case .sucessRedefView:
                 authCoordinator.sucessRedefView
+        case .sucessRegisterView:
+                authCoordinator.sucessRegisterView
         }
     }
 }
