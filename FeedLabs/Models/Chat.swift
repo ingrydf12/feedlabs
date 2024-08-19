@@ -8,15 +8,11 @@
 import Foundation
 import FirebaseFirestore
 
-struct ChatUser: Identifiable{
-    var id: String?
-    //var messages: [ChatMessage]?
-    var email: String?
-    
-    init(user: User){
-        self.id = user.id
-        //self.messages = []
-        self.email = user.email
-    }
+struct ChatUser: Codable, Identifiable {
+    @DocumentID var id: String?
+    var messages: [String]?
+    //var userName: String?
+    var fromUser: String?
+    var toUser: String?
 }
 

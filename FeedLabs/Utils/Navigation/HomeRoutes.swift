@@ -8,7 +8,7 @@
 import SwiftUI
 struct HomeRoutes: View {
     
-    @ObservedObject private var inviteManager = InviteManager.shared
+    @State var inviteManager = InviteManager.shared
     @State private var selectedTab: Int = 1
     
     var body: some View {
@@ -22,17 +22,13 @@ struct HomeRoutes: View {
                     Label("Teams", systemImage: "1.circle")
                 }
 
-            NavigationStack {
-                HomeView()
-            }
-            .tag(1)
-            .tabItem {
-                Image(systemName: "calendar")
-                Label("Home", systemImage: "2.circle")
-            }
-            
-            ListUsers()
-                .tag(2)
+            HomeView()
+                .tabItem {
+                    Image(systemName: "calendar")
+                    Label("Home", systemImage: "2.circle")
+                }
+
+            ChatList()
                 .tabItem {
                     Image(systemName: "ellipsis.bubble")
                     Label("Chats", systemImage: "3.circle")

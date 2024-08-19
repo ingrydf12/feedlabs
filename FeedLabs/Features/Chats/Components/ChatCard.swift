@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChatCard: View {
-    @StateObject private var userManager = UserManager.shared
+    private var userManager = UserManager.shared
 
     var body: some View {
         HStack(alignment: .center) {

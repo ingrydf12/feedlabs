@@ -113,7 +113,7 @@ struct EventCard: View {
 
 struct MeetEventCard: View {
     private var eventManager = EventManager.shared
-    @StateObject private var userManager = UserManager.shared
+    @State var userManager = UserManager.shared
     
     var body: some View {
         HStack(alignment: .center){

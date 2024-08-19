@@ -151,6 +151,7 @@ struct DescriptionView: View {
             if viewModel.isMeetDescription {
                 Button("Convidar para a reunião") {
                     dismiss()
+
                 }
                 .buttonStyle(PrimaryButton())
                 Button("Cancelar reunião") {

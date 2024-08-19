@@ -7,11 +7,12 @@
 
 import FirebaseAuth
 
-class AuthManager: ObservableObject {
+@Observable
+class AuthManager {
     static let shared = AuthManager()
 
-    @Published var isAuthenticated: Bool = false
-    @Published var userId: String?
+    var isAuthenticated: Bool = false
+    var userId: String?
 
     private init() {
         print("init Auth Manager")

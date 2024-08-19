@@ -9,8 +9,11 @@ struct UserInviteCard: View {
     var event: Event
     @StateObject private var userManager = UserManager.shared
     @StateObject private var inviteManager = InviteManager.shared
+    @State private var showAlert = false
+    @State private var userManager = UserManager.shared
+    @State private var inviteManager = InviteManager.shared
     @State private var selectedParticipants: Set<String> = []
-    
+
     var body: some View {
         HStack(alignment: .center) {
             // Profile Image
@@ -29,13 +32,22 @@ struct UserInviteCard: View {
             
             // Invite Button
             Button {
-                addUserToEvent()
+                showAlert = true
             } label: {
                 Image(systemName: "person.fill.badge.plus")
                     .padding(10)
             }
             .buttonStyle(InviteButton())
-            //.accessibility(label: "Botão para adicionar pessoa no evento")
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Confirmar Convite"),
+                    message: Text("Deseja convidar \(user.name ?? "este usuário") para o evento?"),
+                    primaryButton: .default(Text("Convidar")) {
+                        addUserToEvent()
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
         .padding(5)
         .frame(maxWidth: 350)
@@ -47,15 +59,11 @@ struct UserInviteCard: View {
         )
     }
     
-    //MARK: - addUserToEvent function
-    // Handle the action to add user to event
+    // MARK: - addUserToEvent function
     private func addUserToEvent() {
         guard let userId = user.id else { return }
-        
         guard let eventId = event.id else { return }
-        
         inviteManager.createInvite(for: eventId, to: userId)
-        selectedParticipants.insert(userId)
     }
     
     // MARK: - Profile Image View
@@ -89,4 +97,3 @@ struct UserInviteCard: View {
         }
     }
 }
-

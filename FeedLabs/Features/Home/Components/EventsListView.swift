@@ -16,23 +16,10 @@ struct EventsListView: View {
                 NoEventCard()
             } else {
                 ForEach(groupedEvents.keys.sorted { Int($0)! < Int($1)!}, id: \.self) { hour in
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(spacing: 8) {
                         DividerComponent(text: "\(hour):00")
                         ForEach(groupedEvents[hour]!) { event in
-                            
-                            VStack {
-                                Text("\(event.id!)")
-                                Text("\(event.name!)")
-                                Text("\(event.date!.formatted())")
-                            }
-                            .frame(maxWidth: .infinity , alignment: .center)
-                            .padding()
-                            .background {
-                                
-                                RoundedRectangle(cornerRadius: 20.0)
-                                    .stroke()
-                            }
-//                             EventRowView(event: event)
+                            TeamMeetCard(event: event)
                         }
                     }
                 }
