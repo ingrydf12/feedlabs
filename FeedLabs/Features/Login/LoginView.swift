@@ -17,142 +17,115 @@ struct LoginView: View {
     }
     
     var body: some View {
-        VStack{
-            VStack{
+        VStack {
+            VStack {
                 Image("Login")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 243, height: 210.51)
-                   
-                Spacer()
+                    .frame(width: 240,height: 210)
             }
-            
             .padding()
-            .padding(.top,10)
-            .overlay(
-                Color.black.opacity(0.03)
-            )
+            .frame(maxWidth: .infinity)
+            .background(Color.black.opacity(0.03))
             
-            VStack{
-                HStack{
-                Text("Login")
+            VStack {
+                HStack {
+                    Text("Login")
                         .font(.tahoma(.title))
-                    .bold()
-                    .padding(.leading,10)
-                Spacer()
-            }
-            .padding()
-                
-            VStack{
-                HStack{
-                    Text("E-mail")
-                        .font(.tahoma(.secondaryButton))
-                        .padding(.leading, 25)
-                      
+                        .bold()
+                        .padding(.leading, 10)
                     Spacer()
                 }
-               
+                .padding(.bottom)
                 
-                HStack{
-                    TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail").foregroundColor(.gray))
-                        .foregroundColor(.gray)
-                        .autocapitalization(.none)
-                        .padding(.leading, 20)
-                }
-                .frame(width: 344, height: 46)
-                .overlay{
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(viewModel.emailError != nil ? Color.red : Color.gray,lineWidth: 1)
-                }
-                
-                if let emailError = viewModel.emailError {
-                    Text(emailError)
-                        .foregroundStyle(Color.red)
-                        .padding(.leading,25)
-                        .padding(.top,5)
-                }
-
-            }
-            Spacer()
-              .padding(.bottom,10)
-            
-            
-            VStack{
-                HStack{
-                    Text("Senha")
-                        .font(.tahoma(.secondaryButton))
-                        .padding(.leading,25)
-                    Spacer()
-                }
-                HStack{
-                    showPassword(text: $viewModel.password, title: "Insira sua senha")
-                        .foregroundStyle(Color.gray)
-                        .autocapitalization(.none)
-                        .padding(.leading,20)
-                }
-                        .frame(width: 344, height: 46)
-                        .overlay{
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(viewModel.passwordError != nil ? Color.red : Color.gray,lineWidth: 1)
-                            
-                        }
+                VStack(spacing: 10) {
+                    HStack {
+                        Text("E-mail")
+                            .font(.tahoma(.secondaryButton))
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail").foregroundColor(.gray))
+                            .foregroundColor(.gray)
+                            .autocapitalization(.none)
+                            .padding(.leading, 20)
+                    }
+                    .frame(width: 344, height: 46)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(viewModel.emailError != nil ? Color.red : Color.gray, lineWidth: 1)
+                    )
+                    
+                    if let emailError = viewModel.emailError {
+                        Text(emailError)
+                            .foregroundStyle(Color.red)
+                            .padding(.leading, 25)
+                            .padding(.top, 5)
+                    }
+                    
+                    HStack {
+                        Text("Senha")
+                            .font(.tahoma(.secondaryButton))
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        showPassword(text: $viewModel.password, title: "Insira sua senha")
+                            .foregroundStyle(Color.gray)
+                            .autocapitalization(.none)
+                            .padding()
+                    }
+                    .frame(width: 344, height: 46)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(viewModel.passwordError != nil ? Color.red : Color.gray, lineWidth: 1)
+                    )
+                    
                     if let passwordError = viewModel.passwordError {
                         Text(passwordError)
                             .foregroundStyle(Color.red)
-                            .padding(.leading,25)
-                            .padding(.top,5)
+                            .padding(.leading, 25)
+                            .padding(.top, 5)
                     }
-                    
-                
-
-            
-            }
-            Spacer()
-                
-            
-           
-            HStack{
-                Spacer()
-                Text("Esqueceu sua senha?").foregroundStyle(Color.darkAqua).font(.tahoma(.secondaryButton))
-                    .onTapGesture {
-                        viewModel.coordinator.navigateTo(screen: .passwordRecovery)
-                    }
-                
-            }
-            .padding(.trailing,25)
-            
-            VStack(){
-                Spacer()
-                    .padding()
-                buttonView(name: "Entrar", background: Color.darkAqua) {
-                    
-                        viewModel.handleLogin()
-                    
                 }
-                .font(.tahoma(.secondaryButton))
-               
-                Spacer()
-                HStack{
-                    Text("Não tem uma conta?")
+                
+                HStack {
+                    Spacer()
+                    Text("Esqueceu sua senha?")
+                        .foregroundStyle(Color.darkAqua)
                         .font(.tahoma(.secondaryButton))
-                    Button {
-                        viewModel.coordinator.navigateTo(screen: .register)
-                    } label: {
-                        Text("Cadastre-se").foregroundStyle(Color.darkAqua).font(.tahoma(.subtitle))
-                        
+                        .onTapGesture {
+                            viewModel.coordinator.navigateTo(screen: .passwordRecovery)
                         }
-                    
-                    }
+                }
+                .padding(.trailing)
+                .padding(.top,5)
                 
+                VStack {
+                    buttonView(name: "Entrar", background: Color.darkAqua) {
+                        viewModel.handleLogin()
+                    }
+                    .font(.tahoma(.secondaryButton))
+                    
+                    HStack {
+                        Text("Não tem uma conta?")
+                            .font(.tahoma(.secondaryButton))
+                        Button {
+                            viewModel.coordinator.navigateTo(screen: .register)
+                        } label: {
+                            Text("Cadastre-se")
+                                .foregroundStyle(Color.darkAqua)
+                                .font(.tahoma(.secondaryButton))
+                        }
+                    }
                 }
             }
+            .padding()
             Spacer()
-            
         }
-        Spacer()
-       
     }
-   
 }
 
 struct LoginViewContainer: View {
@@ -167,4 +140,3 @@ struct LoginViewContainer: View {
 #Preview {
     LoginViewContainer()
 }
-

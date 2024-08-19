@@ -8,20 +8,17 @@
 import SwiftUI
 
 struct HomeView: View {
+    
     @State private var viewModel = HomeViewModel()
 
     var body: some View {
         VStack{
             CalendarView(selectedDate: $viewModel.selectedDate)
                 Spacer()
-                
-            Text("Eventos de hoje")
-                .font(.tahoma(.subtitle))
 
             EventsListView(groupedEvents: viewModel.groupedEventsByHour())
-                .frame(alignment: .center)
         }
-        .navigationTitle("Eventos")
+        .navigationTitle("Reuniões")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -35,8 +32,7 @@ struct HomeView: View {
                 })
             }
 
-        }
-        .padding(.horizontal, 16)
+        }.padding()
         .background(Color.background)
     }
 }

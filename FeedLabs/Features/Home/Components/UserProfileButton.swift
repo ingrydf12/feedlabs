@@ -12,7 +12,7 @@ struct UserProfileButton: View {
     
     var body: some View {
         Button {
-            // Alguma ação
+            // mostrar modal com opcoes de logout, e ver convites
             AuthManager.shared.signOut()
         } label: {
             if let username = viewModel.user?.name, !username.isEmpty {
@@ -28,7 +28,7 @@ struct UserProfileButton: View {
                             .foregroundColor(Color.accentColor).opacity(0.8)
                     }
             } else {
-                Text("NN")
+                Text("")
                     .font(.tahoma(.primaryButton))
                     .foregroundColor(Color(uiColor: .systemBackground))
                     .frame(width: 45, height: 45)

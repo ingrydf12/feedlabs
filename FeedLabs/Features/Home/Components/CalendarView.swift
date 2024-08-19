@@ -30,7 +30,3 @@ struct CalendarView: View {
         .padding(.top, 12)
     }
 }
-
-//#Preview {
-//    CalendarView(selectedDate: Date())
-//}

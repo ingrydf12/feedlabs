@@ -31,11 +31,7 @@
 		816A95482C57BB9E00E881EC /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95452C57BB9D00E881EC /* AuthManager.swift */; };
 		816A95492C57BB9E00E881EC /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95462C57BB9E00E881EC /* EventManager.swift */; };
 		816A954A2C57BB9E00E881EC /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95472C57BB9E00E881EC /* UserManager.swift */; };
-		816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A954D2C57BC2600E881EC /* TestHomeView.swift */; };
 		816A95532C57BC2600E881EC /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A954E2C57BC2600E881EC /* AddEventView.swift */; };
-		816A95542C57BC2600E881EC /* TestRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A954F2C57BC2600E881EC /* TestRegisterView.swift */; };
-		816A95552C57BC2600E881EC /* TestRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95502C57BC2600E881EC /* TestRoutes.swift */; };
-		816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816A95512C57BC2600E881EC /* TestLoginView.swift */; };
 		818313132C624D630035180F /* AuthRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313122C624D630035180F /* AuthRoutes.swift */; };
 		818313152C6256830035180F /* RecoverPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313142C6256820035180F /* RecoverPasswordView.swift */; };
 		818313172C62658A0035180F /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818313162C62658A0035180F /* PrimaryButton.swift */; };
@@ -77,13 +73,16 @@
 		CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0295252C63C8DA008E1EC7 /* Font+Extension.swift */; };
 		CE825DD52C64EE2B0006A3C3 /* Tahoma-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */; };
 		CE825DD62C64EE2B0006A3C3 /* Tahoma-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */; };
-		CE825DE32C66584E0006A3C3 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE22C66584E0006A3C3 /* Calendar.swift */; };
+		CE825DE32C66584E0006A3C3 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE22C66584E0006A3C3 /* CalendarView.swift */; };
 		CE825DE52C665FAD0006A3C3 /* DividerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */; };
 		CE825DE72C6664DE0006A3C3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */; };
 		CE825DE92C6A69DA0006A3C3 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */; };
 		CE825DED2C6A6B790006A3C3 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */; };
 		CE825DF12C6A72470006A3C3 /* UserProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */; };
 		F67792492C717EEE00D8F40F /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67792482C717EEE00D8F40F /* DescriptionViewModel.swift */; };
+		F677924C2C72A1F700D8F40F /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677924B2C72A1F700D8F40F /* InputField.swift */; };
+		F677924E2C72A59000D8F40F /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677924D2C72A59000D8F40F /* SearchViewModel.swift */; };
+		F67792502C72B07C00D8F40F /* InviteMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677924F2C72B07C00D8F40F /* InviteMemberViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,11 +107,7 @@
 		816A95452C57BB9D00E881EC /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		816A95462C57BB9E00E881EC /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		816A95472C57BB9E00E881EC /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		816A954D2C57BC2600E881EC /* TestHomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHomeView.swift; sourceTree = "<group>"; };
 		816A954E2C57BC2600E881EC /* AddEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
-		816A954F2C57BC2600E881EC /* TestRegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRegisterView.swift; sourceTree = "<group>"; };
-		816A95502C57BC2600E881EC /* TestRoutes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRoutes.swift; sourceTree = "<group>"; };
-		816A95512C57BC2600E881EC /* TestLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestLoginView.swift; sourceTree = "<group>"; };
 		818313122C624D630035180F /* AuthRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRoutes.swift; sourceTree = "<group>"; };
 		818313142C6256820035180F /* RecoverPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordView.swift; sourceTree = "<group>"; };
 		818313162C62658A0035180F /* PrimaryButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
@@ -155,7 +150,7 @@
 		CE825DD32C64EE2B0006A3C3 /* Tahoma-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Bold.ttf"; sourceTree = "<group>"; };
 		CE825DD42C64EE2B0006A3C3 /* Tahoma-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tahoma-Regular.ttf"; sourceTree = "<group>"; };
 		CE825DDE2C64F0B20006A3C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CE825DE22C66584E0006A3C3 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		CE825DE22C66584E0006A3C3 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerComponent.swift; sourceTree = "<group>"; };
 		CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
@@ -163,6 +158,9 @@
 		CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
 		CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileButton.swift; sourceTree = "<group>"; };
 		F67792482C717EEE00D8F40F /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
+		F677924B2C72A1F700D8F40F /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
+		F677924D2C72A59000D8F40F /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		F677924F2C72B07C00D8F40F /* InviteMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,7 +314,6 @@
 			isa = PBXGroup;
 			children = (
 				816A95592C57BC6700E881EC /* Components */,
-				816A954D2C57BC2600E881EC /* TestHomeView.swift */,
 				81D5E9F72C61150600CA1443 /* HomeView.swift */,
 				CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */,
 			);
@@ -327,8 +324,6 @@
 			isa = PBXGroup;
 			children = (
 				816A955A2C57BC7800E881EC /* Components */,
-				816A95512C57BC2600E881EC /* TestLoginView.swift */,
-				816A954F2C57BC2600E881EC /* TestRegisterView.swift */,
 				81D5E9F32C61131F00CA1443 /* EntryView.swift */,
 				81D5E9F92C6115C700CA1443 /* LoginView.swift */,
 				BC5632E12C6269230044C09E /* LoginViewModel.swift */,
@@ -341,7 +336,7 @@
 			children = (
 				81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */,
 				81A7D8162C5D240D00A10630 /* EventCard.swift */,
-				CE825DE22C66584E0006A3C3 /* Calendar.swift */,
+				CE825DE22C66584E0006A3C3 /* CalendarView.swift */,
 				CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */,
 				B2F56A0D2C6F6B44003FDC4D /* LeaveEvent.swift */,
 				CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */,
@@ -365,7 +360,6 @@
 		816A955B2C57BCA100E881EC /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				816A95502C57BC2600E881EC /* TestRoutes.swift */,
 				81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */,
 				81CF08782C61187F00881B21 /* HomeRoutes.swift */,
 				818313122C624D630035180F /* AuthRoutes.swift */,
@@ -387,6 +381,7 @@
 		81D5E9EA2C60FFA800CA1443 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				F677924A2C72A1E200D8F40F /* Components */,
 				BCC72BBA2C63900200FE3581 /* RegisterViewModel.swift */,
 				81D5E9FB2C6115DB00CA1443 /* RegisterView.swift */,
 				BC1A29392C6B95E700422930 /* SucessRegisterView.swift */,
@@ -420,6 +415,7 @@
 			children = (
 				B2C2DA6D2C6A6A6900EF7E75 /* Components */,
 				81D5E9FF2C6116C400CA1443 /* ChatsView.swift */,
+				F677924D2C72A59000D8F40F /* SearchViewModel.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -437,6 +433,7 @@
 			children = (
 				B2358A5F2C6B8FD400BA0F64 /* Components */,
 				B2358A5D2C6B8FCF00BA0F64 /* InviteMember.swift */,
+				F677924F2C72B07C00D8F40F /* InviteMemberViewModel.swift */,
 			);
 			path = InviteParticipants;
 			sourceTree = "<group>";
@@ -484,6 +481,14 @@
 				CE0295252C63C8DA008E1EC7 /* Font+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		F677924A2C72A1E200D8F40F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F677924B2C72A1F700D8F40F /* InputField.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -577,7 +582,8 @@
 				816A95492C57BB9E00E881EC /* EventManager.swift in Sources */,
 				81A5C1052C63978500E62D6C /* TeamsManager.swift in Sources */,
 				81A5C0FF2C63958C00E62D6C /* Team.swift in Sources */,
-				816A95542C57BC2600E881EC /* TestRegisterView.swift in Sources */,
+				F67792502C72B07C00D8F40F /* InviteMemberViewModel.swift in Sources */,
+				F677924C2C72A1F700D8F40F /* InputField.swift in Sources */,
 				CE825DED2C6A6B790006A3C3 /* EventRowView.swift in Sources */,
 				818313152C6256830035180F /* RecoverPasswordView.swift in Sources */,
 				81A5C1072C63BBDD00E62D6C /* EditTeamView.swift in Sources */,
@@ -596,24 +602,21 @@
 				816A95232C57B63800E881EC /* FeedLabsApp.swift in Sources */,
 				7F20D42E2C5BC3E4009D2EE5 /* ListUsers.swift in Sources */,
 				7FD1C78C2C5A728D00AAF4B5 /* ChatMessage.swift in Sources */,
-				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
-				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				81D5E9F42C61131F00CA1443 /* EntryView.swift in Sources */,
 				BC5632DE2C625E550044C09E /* buttonView.swift in Sources */,
 				81D5E9FA2C6115C700CA1443 /* LoginView.swift in Sources */,
 				81D5E9FC2C6115DB00CA1443 /* RegisterView.swift in Sources */,
-				CE825DE32C66584E0006A3C3 /* Calendar.swift in Sources */,
+				CE825DE32C66584E0006A3C3 /* CalendarView.swift in Sources */,
 				BCC72BBD2C63A70600FE3581 /* RecoverPasswordViewModel.swift in Sources */,
 				815E2C672C6A379F00DCABFE /* AddEventViewModel.swift in Sources */,
 				81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */,
 				CE825DE92C6A69DA0006A3C3 /* EventsListView.swift in Sources */,
-				816A95562C57BC2600E881EC /* TestLoginView.swift in Sources */,
 				B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */,
+				F677924E2C72A59000D8F40F /* SearchViewModel.swift in Sources */,
 				B2F56A0E2C6F6B44003FDC4D /* LeaveEvent.swift in Sources */,
 				CE825DF12C6A72470006A3C3 /* UserProfileButton.swift in Sources */,
 				CE0295262C63C8DA008E1EC7 /* Font+Extension.swift in Sources */,
 				CE825DE72C6664DE0006A3C3 /* HomeViewModel.swift in Sources */,
-				816A95522C57BC2600E881EC /* TestHomeView.swift in Sources */,
 				816426FF2C5A71A500B1BD90 /* Invite.swift in Sources */,
 				BCC72BBB2C63900200FE3581 /* RegisterViewModel.swift in Sources */,
 				816A95532C57BC2600E881EC /* AddEventView.swift in Sources */,
@@ -629,7 +632,6 @@
 				815E2C6A2C6A3B7C00DCABFE /* ParticipantsList.swift in Sources */,
 				815E2C6C2C6A563200DCABFE /* TeamMeetCard.swift in Sources */,
 				BC1A293A2C6B95E700422930 /* SucessRegisterView.swift in Sources */,
-				816A95552C57BC2600E881EC /* TestRoutes.swift in Sources */,
 				816A95432C57BB3B00E881EC /* User.swift in Sources */,
 				81CF08792C61187F00881B21 /* HomeRoutes.swift in Sources */,
 				81D5E9EE2C61122400CA1443 /* AuthCoordinator.swift in Sources */,

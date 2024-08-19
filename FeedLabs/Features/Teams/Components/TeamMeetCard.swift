@@ -25,7 +25,8 @@ struct TeamMeetCard: View {
                     if let name = event.name {
                         Text(name)
                         //Change font to Tahoma 32 (title)
-                            .font(.tahoma(.bold, size: 32))
+                            .font(.tahoma(.bold, size: 28))
+                            .padding(.leading,0)
                     }
                     
                     //Texto bonito lá pra participantes do evento

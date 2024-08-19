@@ -7,49 +7,45 @@
 import SwiftUI
 
 struct InviteMember: View {
-    var user: User
-    @State private var searchItem: String = ""
-    @Binding var event: EventType 
-    @StateObject private var userManager = UserManager.shared
-    @StateObject private var inviteManager = InviteManager.shared
     
+    @StateObject private var viewModel: InviteMemberViewModel
     @Environment(\.presentationMode) var presentationMode
     
-    // MARK: - Filtragem
-    private var filteredUsers: [User] {
-        if searchItem.isEmpty {
-            return userManager.users
-        } else {
-            return userManager.users.filter { user in
-                user.name?.localizedStandardContains(searchItem) ?? false
-            }
-        }
+    init(toMeet meet: Event){
+        _viewModel = StateObject(wrappedValue: InviteMemberViewModel(toMeet: meet))
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                SearchBar(text: $searchItem, placeholder: "Buscar membros")
-                
-                // MARK: - Scroll com users
-                ScrollView {
-//                    VStack {
-//                        ForEach(filteredUsers, id: \.id) { user in
-//                            if (userManager.user?.id)! != user.id {
-//                                UserInviteCard(user: user, event: event)
-//                                    .onTapGesture {
-//                                        inviteManager.createInvite(for: event.id, to: user.id ?? "")
-//                                    }
-//                            }
-//                        }
-//                    }
+        VStack(spacing: 10) {
+            HStack {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(.black)
                 }
+                Spacer()
+                Text("Convidar Membro")
+                    .font(.headline)
+                    .foregroundColor(.black)
+                Spacer()
             }
-            .navigationTitle("Convidar Membros")
-            .navigationBarItems(trailing: Button("Close") {
-                presentationMode.wrappedValue.dismiss()
-            })
-            .padding()
+            .padding(.horizontal)
+            
+            SearchBar(text: $viewModel.searchItem, placeholder: "Buscar membros")
+            
+            // MARK: - Scroll com users
+            ScrollView {
+                VStack {
+                    ForEach(viewModel.filteredUsers) { user in
+                        if viewModel.userManager.user?.id != user.id {
+                            UserInviteCard(user: user, event: viewModel.event)
+                        }
+                    }.padding(.horizontal,9)
+                }.padding(.vertical)
+            }
         }
+        .navigationBarBackButtonHidden()
+        .padding()
     }
 }

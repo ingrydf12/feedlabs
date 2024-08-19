@@ -10,12 +10,13 @@ import Foundation
 import Firebase
 import FirebaseDatabaseInternal
 
-class InviteManager: ObservableObject {
+@Observable
+class InviteManager {
     
     static let shared = InviteManager()
     
-    @Published var invites: [Invite] = []
-    @Published var pendingInvitesCount: Int = 0
+    var invites: [Invite] = []
+    var pendingInvitesCount: Int = 0
 
     private var invitesRef: DatabaseReference?
     private var invitesHandle: DatabaseHandle? // Observador
@@ -84,34 +85,53 @@ class InviteManager: ObservableObject {
         }
         
         let ref = Database.database().reference()
-        let inviteId = ref.child("invites").childByAutoId().key
+        let invitesRef = ref.child("invites")
         
-        let inviteData: [String: Any] = [
-            "for": eventId,
-            "from": from,
-            "to": userId,
-            "status": Status.pendente.rawValue
-        ]
-        
-        guard let inviteId = inviteId else {
-            print("Failed to generate invite ID")
-            return
-        }
-        
-        let updates = [
-            "invites/\(inviteId)": inviteData,
-            "users/\(from)/invites/\(inviteId)": true,
-            "users/\(userId)/invites/\(inviteId)": true
-        ] as [String : Any]
-        
-        ref.updateChildValues(updates) { error, _ in
-            if let error = error {
-                print("Failed to create invite: \(error.localizedDescription)")
-            } else {
-                print("Invite created successfully")
+        // Query to check if an invite already exists for this event and user
+        invitesRef.queryOrdered(byChild: "for").queryEqual(toValue: eventId).observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                for child in snapshot.children.allObjects as! [DataSnapshot] {
+                    if let inviteData = child.value as? [String: Any],
+                       let inviteTo = inviteData["to"] as? String,
+                       inviteTo == userId {
+                        // An invite already exists for this event and user
+                        print("Invite already exists for this event and user.")
+                        return
+                    }
+                }
+            }
+            
+            // No existing invite found, proceed to create a new invite
+            let inviteId = invitesRef.childByAutoId().key
+            
+            let inviteData: [String: Any] = [
+                "for": eventId,
+                "from": from,
+                "to": userId,
+                "status": Status.pendente.rawValue
+            ]
+            
+            guard let inviteId = inviteId else {
+                print("Failed to generate invite ID")
+                return
+            }
+            
+            let updates = [
+                "invites/\(inviteId)": inviteData,
+                "users/\(from)/invites/\(inviteId)": true,
+                "users/\(userId)/invites/\(inviteId)": true
+            ] as [String : Any]
+            
+            ref.updateChildValues(updates) { error, _ in
+                if let error = error {
+                    print("Failed to create invite: \(error.localizedDescription)")
+                } else {
+                    print("Invite created successfully")
+                }
             }
         }
     }
+
     
     func updateInviteStatus(_ invite: Invite, status: Status) {
         

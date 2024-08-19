@@ -120,10 +120,11 @@ struct DescriptionView: View {
                     }
                 }
                 if isMeetDescription && viewModel.userCanEdit {
-                    Button("Convidar para a reunião"){
-                        presentationMode.wrappedValue.dismiss()
-
-                    }.buttonStyle(PrimaryButton())
+                    if let meet = viewModel.meet {
+                        NavigationLink(destination: InviteMember(toMeet: meet)){
+                            Text("Convidar para a reunião")
+                        }.buttonStyle(PrimaryButton())
+                    }
                     Button("Cancelar reunião"){
                         viewModel.deleteMeet()
                         presentationMode.wrappedValue.dismiss()
@@ -132,10 +133,12 @@ struct DescriptionView: View {
                     .padding(.top,-15)
                     .buttonStyle(SecondaryButton())
                 }else if viewModel.userCanEdit {
-                    Button("Editar Team"){
-                        presentationMode.wrappedValue.dismiss()
+                    NavigationLink(destination: EditTeamView(team: viewModel.team)){
+                        Button("Editar Team"){
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        .buttonStyle(SecondaryButton())
                     }
-                    .buttonStyle(SecondaryButton())
                 }
                 
             }.padding(20)
