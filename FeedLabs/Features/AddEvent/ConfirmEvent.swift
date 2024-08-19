@@ -31,7 +31,7 @@ struct ConfirmEvent: View {
                                     .foregroundColor(.blue)
                                     .frame(width: 30, height: 30)
                             }
-                            .accessibility(label: "Botão para fechar popup e voltar a tela inicial")
+                            //.acessibility
                             .padding(),
                             alignment: .topTrailing
                         )
