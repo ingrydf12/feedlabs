@@ -35,7 +35,7 @@ struct UserInviteCard: View {
                     .padding(10)
             }
             .buttonStyle(InviteButton())
-            .accessibility(label: "Botão para adicionar pessoa no evento")
+            //.accessibility(label: "Botão para adicionar pessoa no evento")
         }
         .padding(5)
         .frame(maxWidth: 350)

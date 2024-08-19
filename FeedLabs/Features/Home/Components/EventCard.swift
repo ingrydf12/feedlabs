@@ -112,7 +112,7 @@ struct EventCard: View {
 }
 
 struct MeetEventCard: View {
-    @StateObject private var eventManager = EventManager.shared
+    private var eventManager = EventManager.shared
     @StateObject private var userManager = UserManager.shared
     
     var body: some View {

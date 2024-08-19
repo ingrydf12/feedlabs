@@ -9,12 +9,12 @@ import SwiftUI
 
 struct TeamsView: View {
     
-    private var viewModel = TeamsViewModel.shared //removido o @ObservableObject -> TeamsVM está como final class e @Observable 
+    private var viewModel = TeamsViewModel.shared // Removido o @ObservableObject -> TeamsVM está como final class e @Observable (Ingryd)
     
     var body: some View {
         VStack {
             HStack {
-                Text("Meets") // buscar nos eventos do usuario eventos do tipo team meet
+                Text("Meets") // Buscar nos eventos do usuário eventos do tipo team meet
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
                 NavigationLink(destination: AddEventView()) {
@@ -34,8 +34,8 @@ struct TeamsView: View {
                         }
                         .padding(.vertical)
                     } else {
-                        NoEventCard()
-                            .accessibilityLabel("Nenhum evento Hoje")
+                        NoFilterResult()
+                            .accessibilityLabel("Nenhum evento de time próximo.")
                             .padding()
                     }
                     
@@ -59,10 +59,16 @@ struct TeamsView: View {
                     }
                     .padding(.bottom, 10)
 
-                    ForEach(viewModel.teams) { team in
-                        TeamCard(team: team, role: viewModel.role ?? .student)
-                            .padding(.vertical, 7)
-                            .padding(.horizontal, 9)
+                    //Alterei pra aparecer o card NoEvent (ingryd)
+                    if viewModel.teams.isEmpty {
+                        NoTeamCard()
+                            .padding(.vertical, 20)
+                    } else {
+                        ForEach(viewModel.teams) { team in
+                            TeamCard(team: team, role: viewModel.role ?? .student)
+                                .padding(.vertical, 7)
+                                .padding(.horizontal, 9)
+                        }
                     }
                     Spacer()
                 }
@@ -77,3 +83,4 @@ struct TeamsView: View {
 #Preview {
     TeamsView()
 }
+
