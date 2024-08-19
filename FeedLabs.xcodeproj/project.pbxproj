@@ -84,6 +84,7 @@
 		CE825DE92C6A69DA0006A3C3 /* EventsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */; };
 		CE825DED2C6A6B790006A3C3 /* EventRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */; };
 		CE825DF12C6A72470006A3C3 /* UserProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */; };
+		F67792492C717EEE00D8F40F /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67792482C717EEE00D8F40F /* DescriptionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +93,6 @@
 		7FD1C78B2C5A728D00AAF4B5 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		7FD1C78D2C5A74B200AAF4B5 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
 		811711772C6B7954006AFB3C /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
-		8117117A2C6B79DC006AFB3C /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
 		815E2C662C6A379F00DCABFE /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
 		815E2C692C6A3B7C00DCABFE /* ParticipantsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsList.swift; sourceTree = "<group>"; };
 		815E2C6B2C6A563200DCABFE /* TeamMeetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMeetCard.swift; sourceTree = "<group>"; };
@@ -163,6 +163,7 @@
 		CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsView.swift; sourceTree = "<group>"; };
 		CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
 		CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileButton.swift; sourceTree = "<group>"; };
+		F67792482C717EEE00D8F40F /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				811711772C6B7954006AFB3C /* DescriptionView.swift */,
-				8117117A2C6B79DC006AFB3C /* DescriptionViewModel.swift */,
+				F67792482C717EEE00D8F40F /* DescriptionViewModel.swift */,
 			);
 			path = Description;
 			sourceTree = "<group>";
