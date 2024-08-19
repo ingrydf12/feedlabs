@@ -7,6 +7,8 @@ import SwiftUI
 struct UserInviteCard: View {
     var user: User
     var event: Event
+    @StateObject private var userManager = UserManager.shared
+    @StateObject private var inviteManager = InviteManager.shared
     @State private var showAlert = false
     @State private var userManager = UserManager.shared
     @State private var inviteManager = InviteManager.shared
@@ -15,7 +17,7 @@ struct UserInviteCard: View {
     var body: some View {
         HStack(alignment: .center) {
             // Profile Image
-            profileImageView
+            profileImageView // Perfil
                 .padding(15)
             
             VStack(alignment: .leading, spacing: 8) {
@@ -74,6 +76,7 @@ struct UserInviteCard: View {
                 Text(String(usernameInitial).capitalized)
                     .font(.tahoma(.primaryButton))
                     .foregroundStyle(.white)
+                    .accessibilityLabel("Símbolo do usuário")
             }
         }
     }

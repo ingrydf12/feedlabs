@@ -44,7 +44,7 @@ struct TeamMeetCard: View {
                     
                     
                 }
-                .padding()
+                Spacer()
                 
                 VStack(alignment: .trailing ,spacing: 15) {
                     //TAG EVENT: EventType

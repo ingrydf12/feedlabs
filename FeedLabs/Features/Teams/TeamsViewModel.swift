@@ -12,15 +12,18 @@ enum TeamStatus: String {
     case prazo = "No prazo"
 }
 
-class TeamsViewModel: ObservableObject {
+//@Observable class
+
+@Observable // improve performance
+final class TeamsViewModel {
     
     static let shared = TeamsViewModel() // Global instance
     
     var teamManager = TeamsManager()
 
-    @Published var teams: [Team] = []
-    @Published var teamMeets: [Event] = []
-    @Published var role: Role?
+    var teams: [Team] = []
+    var teamMeets: [Event] = []
+    var role: Role?
     
     private init(){
         print("Initializing TeamsViewModel")
