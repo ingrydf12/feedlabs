@@ -20,7 +20,12 @@ struct HomeView: View {
     var body: some View {
         VStack {
             CalendarView(selectedDate: $viewModel.selectedDate)
+
             Spacer()
+            
+            Text("Eventos de hoje")
+                .font(.tahoma(.bold, size: 24))
+            
             EventsListView(groupedEvents: viewModel.groupedEventsByHour())
            
             NavigationLink(destination: InvitesView(), isActive: $navigateToInvites) {
