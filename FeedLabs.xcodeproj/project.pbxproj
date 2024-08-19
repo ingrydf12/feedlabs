@@ -184,13 +184,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7F099F1A2C663C4000ABECCA /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		811711792C6B79C2006AFB3C /* Description */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +265,6 @@
 		816A953D2C57B9FF00E881EC /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				7F099F1A2C663C4000ABECCA /* New Group */,
 				811711792C6B79C2006AFB3C /* Description */,
 				815E2C682C6A3AAA00DCABFE /* AddEvent */,
 				B2358A5C2C6B8FA600BA0F64 /* InviteParticipants */,
