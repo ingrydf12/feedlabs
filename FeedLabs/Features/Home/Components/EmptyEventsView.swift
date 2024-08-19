@@ -2,7 +2,7 @@
 //  EmptyEventsView.swift
 //  FeedLabs
 //
-//  Created by User on 12/08/24.
+//  Created by João Pedro Borges on 19/08/24.
 //
 
 import SwiftUI

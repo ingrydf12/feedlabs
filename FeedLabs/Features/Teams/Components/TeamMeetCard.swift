@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamMeetCard: View {
     
     var event: Event
+    @State var userManager = UserManager.shared
     
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -32,7 +33,7 @@ struct TeamMeetCard: View {
                     //Texto bonito lá pra participantes do evento
                     HStack {
                         if let firstParticipantId = event.participants.first,
-                           let firstParticipant = UserManager.shared.getUserById(firstParticipantId) {
+                           let firstParticipant = userManager.getUserById(firstParticipantId) {
                             
                             let remainingParticipantsCount = event.participants.count - 1
                             
