@@ -59,6 +59,7 @@ struct LoginView: View {
                         .autocapitalization(.none)
                         .padding(.leading, 20)
                 }
+                .accessibilityHint("Insira seu e-email")
                 .frame(width: 344, height: 46)
                 .overlay{
                     RoundedRectangle(cornerRadius: 10)
@@ -113,7 +114,9 @@ struct LoginView: View {
            
             HStack{
                 Spacer()
-                Text("Esqueceu sua senha?").foregroundStyle(Color.darkAqua).font(.tahoma(.secondaryButton))
+                Text("Esqueceu sua senha?")
+                    .accessibilityLabel("Botão de redefinir a senha")
+                    .foregroundStyle(Color.darkAqua).font(.tahoma(.secondaryButton))
                     .onTapGesture {
                         viewModel.coordinator.navigateTo(screen: .passwordRecovery)
                     }
@@ -129,6 +132,7 @@ struct LoginView: View {
                         viewModel.handleLogin()
                     
                 }
+                .accessibilityLabel("Botão de entrar")
                 .font(.tahoma(.secondaryButton))
                
                 Spacer()
@@ -139,7 +143,7 @@ struct LoginView: View {
                         viewModel.coordinator.navigateTo(screen: .register)
                     } label: {
                         Text("Cadastre-se").foregroundStyle(Color.darkAqua).font(.tahoma(.subtitle))
-                        
+                            .accessibilityLabel("Botão de cadastro")
                         }
                     
                     }

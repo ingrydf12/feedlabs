@@ -23,7 +23,8 @@ struct RegisterView: View {
             HStack{
                 Button(action:{
                     viewModel.coordinator.navigateTo(screen: .login)
-                }){
+                })
+                {
                     
                     Image("Back")
                         .resizable()
@@ -31,6 +32,7 @@ struct RegisterView: View {
                         .frame(width: 25, height: 25)
                     
                 }
+                .accessibilityLabel("Botão de voltar")
                 .padding(.leading,35)
                 Spacer()
                 VStack{
@@ -64,7 +66,7 @@ struct RegisterView: View {
                                 .frame(width: 160, height: 168)
                                 .background(viewModel.role == "Residente" ? Color.darkAqua.opacity(2) : Color.clear)
                         }
-                        
+                        .accessibilityLabel("Residente foi escolhido")
                         Button(action: {
                             
                             viewModel.role = "Mentor"
@@ -79,6 +81,7 @@ struct RegisterView: View {
                         }
                     
                 }
+                .accessibilityLabel("Mentor foi escolhido")
                 Spacer()
                     if let roleError = viewModel.roleError {
                         Text(roleError)
@@ -98,6 +101,7 @@ struct RegisterView: View {
                     
                     HStack{
                         TextField("", text: $viewModel.name, prompt: Text("Insira seu nome").foregroundColor(.gray))
+                            .accessibilityHint("Insira seu nome")
                             .foregroundColor(.gray)
                             .autocorrectionDisabled()
                             .padding(.leading, 20)
@@ -125,6 +129,7 @@ struct RegisterView: View {
                 
                 HStack{
                     TextField("", text:$viewModel.email, prompt: Text("Insira seu e-mail").foregroundColor(.gray))
+                        .accessibilityHint("Insira seu e-email")
                         .foregroundColor(.gray)
                         .autocorrectionDisabled()
                         .padding(.leading, 20)
@@ -176,6 +181,7 @@ struct RegisterView: View {
                     viewModel.handleRegister()
                     
                 }
+                .accessibilityLabel("Botão de entrar")
                 .font(.tahoma(.secondaryButton))
             }
         }

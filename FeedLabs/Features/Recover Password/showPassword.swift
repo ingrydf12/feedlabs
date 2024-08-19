@@ -24,10 +24,12 @@ struct showPassword: View {
                 Group{
                     if isSecured {
                                 SecureField(title, text: $text).foregroundStyle(Color.gray)
+                            .accessibilityHint("Esconder senha")
                             .autocorrectionDisabled()
                                  
                     } else {
                                 TextField(title, text: $text).foregroundStyle(Color.gray)
+                            .accessibilityHint("Mostrar senha")
                             .autocorrectionDisabled()
                     }
                 }
@@ -42,6 +44,7 @@ struct showPassword: View {
                     
                     
                 }
+                .accessibilityHint("Insira sua senha")
                
             }
             

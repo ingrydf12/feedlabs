@@ -32,6 +32,7 @@ struct RecoverPasswordView: View {
                             .frame(width: 25, height: 25)
                         
                     }
+                    .accessibilityLabel("Botão de voltar")
                     .padding(.leading,35)
                     Spacer()
                 }
@@ -56,6 +57,7 @@ struct RecoverPasswordView: View {
                     HStack{
                         TextField("", text: $viewModel.email,prompt: Text("Insira seu e-mail")
                         .foregroundColor(.gray)
+                        .accessibilityLabel("Insira seu e-email")
                                   )
                         .padding(10)
                         .foregroundColor(.gray)
@@ -81,6 +83,7 @@ struct RecoverPasswordView: View {
                     
                     
                 }
+                .accessibilityLabel("Botão de recuperar senha")
                 .font(.tahoma(.secondaryButton))
                 Spacer()
 
