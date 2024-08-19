@@ -21,7 +21,7 @@ struct TeamsView: View {
                     Image(systemName: "plus")
                         .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(.darkAqua)
-                }
+                }.accessibilityLabel(Text("Adicionar"))
             }
             .padding(.bottom, 10)
 

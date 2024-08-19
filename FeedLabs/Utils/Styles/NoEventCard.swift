@@ -39,7 +39,7 @@ struct NoTeamCard: View {
 struct NoFilterResult: View {
     var body: some View {
         VStack(alignment: .center, spacing: 10){
-            Image("catListUsers")
+            Image("CatListUsers")
                 .resizable()
                 .scaledToFit()
             Text("Parece que você não tem nenhum evento próximo")
