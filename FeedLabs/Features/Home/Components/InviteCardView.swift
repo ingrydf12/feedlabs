@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InviteCardView: View {
     
-    @State var inviteManager = InviteManager.shared
+    @State private var inviteManager = InviteManager.shared
     var user: String
     
     var body: some View {
@@ -23,7 +23,7 @@ struct InviteCardView: View {
                             .foregroundColor(.black)
                         
                         //Event Name (ERROR)
-                        Text("Evento: \(invite.eventName ?? "Desconhecido")")
+                        Text("\(inviteManager.getEventById(eventId: invite.eventId ?? "") ?? "Desconhecido")")
                             .font(.tahoma(.bold, size: 24))
                             .foregroundColor(.primary)
                         
@@ -44,14 +44,14 @@ struct InviteCardView: View {
                                     Button("Aceitar") {
                                         inviteManager.updateInviteStatus(invite, status: .aceito)
                                     }
-                                    .foregroundStyle(.green.opacity(0.15))
+                                    .foregroundStyle(.green)
                                     .buttonStyle(BorderlessButtonStyle())
                                     .padding(.trailing, 5)
                                     
                                     Button("Recusar") {
                                         inviteManager.updateInviteStatus(invite, status: .recusado)
                                     }
-                                    .foregroundStyle(.red.opacity(0.15))
+                                    .foregroundStyle(.red)
                                     .buttonStyle(BorderlessButtonStyle())
                                 } else {
                                     Button("Cancelar") {
@@ -64,6 +64,7 @@ struct InviteCardView: View {
                         }
                     }
                     .padding()
+                    .frame(maxWidth: .infinity)
                     .background(Color.white)
                     .cornerRadius(10)
                     .shadow(radius: 2)

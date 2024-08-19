@@ -11,7 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 @Observable
-class UserManager {
+final class UserManager {
     
     static let shared = UserManager()
     

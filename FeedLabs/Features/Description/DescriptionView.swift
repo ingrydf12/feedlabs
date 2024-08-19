@@ -134,11 +134,8 @@ struct DescriptionView: View {
                     .buttonStyle(SecondaryButton())
                 }else if viewModel.userCanEdit {
                     NavigationLink(destination: EditTeamView(team: viewModel.team)){
-                        Button("Editar Team"){
-                            presentationMode.wrappedValue.dismiss()
-                        }
-                        .buttonStyle(SecondaryButton())
-                    }
+                        Text("Editar Team")
+                    }.buttonStyle(SecondaryButton())
                 }
                 
             }.padding(20)

@@ -68,7 +68,8 @@ class InviteManager {
         })
     }
     private func updatePendingInvitesCount() {
-        let count = invites.filter { $0.status == .pendente }.count
+        let userId = AuthManager.shared.userId ?? ""
+        let count = invites.filter { $0.status == .pendente && $0.to == userId }.count
         self.pendingInvitesCount = count
     }
     func removeObserver() {
@@ -168,5 +169,8 @@ class InviteManager {
         print("saindo do observador")
         removeObserver() // Remove Firebase observers
         resetInvitesData() // Clear invites and pending count
+    }
+    func getEventById(eventId: String) -> String? {
+        return EventManager.shared.events.first(where: { $0.id == eventId })?.name
     }
 }

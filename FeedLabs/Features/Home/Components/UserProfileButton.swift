@@ -13,7 +13,6 @@ struct UserProfileButton: View {
     var body: some View {
         Button {
             // mostrar modal com opcoes de logout, e ver convites
-            AuthManager.shared.signOut()
         } label: {
             if let username = viewModel.user?.name, !username.isEmpty {
                 let nameComponents = username.split(separator: " ")
