@@ -21,19 +21,23 @@ struct HomeRoutes: View {
                     Image(systemName: "person.3")
                     Label("Teams", systemImage: "1.circle")
                 }
-
-            HomeView()
+            NavigationStack{
+                HomeView()
+            }
+            .tag(1)
+            .tabItem {
+                Image(systemName: "calendar")
+                Label("Home", systemImage: "2.circle")
+            }
+            
+            NavigationStack{
+                ChatList()
+            }.tag(2)
                 .tabItem {
-                    Image(systemName: "calendar")
-                    Label("Home", systemImage: "2.circle")
-                }
-
-            ChatList()
-                .tabItem {
-                    Image(systemName: "ellipsis.bubble")
-                    Label("Chats", systemImage: "3.circle")
-                    
-                }.badge(inviteManager.pendingInvitesCount > 0 ? "\(inviteManager.pendingInvitesCount)" : nil)
+                Image(systemName: "ellipsis.bubble")
+                Label("Chats", systemImage: "3.circle")
+                
+            }.badge(inviteManager.pendingInvitesCount > 0 ? "\(inviteManager.pendingInvitesCount)" : nil)
         }
         .tint(.accent)
     }
