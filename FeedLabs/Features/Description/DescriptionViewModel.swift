@@ -32,6 +32,7 @@ class DescriptionViewModel: ObservableObject {
         self.participants = meet.participants
         self.owners = meet.owners
         self.createdAt = meet.createdAt
+        self.date = meet.date
         self.doneAt = meet.doneAt
         self.type = meet.type
         if meet.owners.contains(user?.id ?? ""){

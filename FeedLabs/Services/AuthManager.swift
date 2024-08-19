@@ -22,8 +22,15 @@ class AuthManager {
         Auth.auth().addStateDidChangeListener { _, user in
             self.isAuthenticated = user != nil
             self.userId = user?.uid
+            if self.isAuthenticated {
+                EventManager.shared.getEvents()
+            }
             UserManager.shared.fetchUser()
         }
+    }
+    
+    func handleLogin(){
+        
     }
     
     func signOut() {

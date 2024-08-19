@@ -10,6 +10,7 @@ import SwiftUI
 struct TeamsView: View {
     
     @ObservedObject private var viewModel = TeamsViewModel.shared
+    @State private var userManager = UserManager.shared
     
     var body: some View {
         VStack {

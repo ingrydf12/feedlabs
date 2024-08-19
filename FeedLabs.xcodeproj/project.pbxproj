@@ -42,6 +42,7 @@
 		81A5C1072C63BBDD00E62D6C /* EditTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5C1062C63BBDD00E62D6C /* EditTeamView.swift */; };
 		81A7D8172C5D240D00A10630 /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A7D8162C5D240D00A10630 /* EventCard.swift */; };
 		81AE6F4F2C73629F004CB928 /* InvitesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6F4E2C73629F004CB928 /* InvitesView.swift */; };
+		81AE6F512C737447004CB928 /* EmptyEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AE6F502C737447004CB928 /* EmptyEventsView.swift */; };
 		81CF08792C61187F00881B21 /* HomeRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81CF08782C61187F00881B21 /* HomeRoutes.swift */; };
 		81D04DAE2C5BB891001F5C44 /* InviteUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */; };
 		81D5E9EE2C61122400CA1443 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */; };
@@ -119,6 +120,7 @@
 		81A5C1062C63BBDD00E62D6C /* EditTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTeamView.swift; sourceTree = "<group>"; };
 		81A7D8162C5D240D00A10630 /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
 		81AE6F4E2C73629F004CB928 /* InvitesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitesView.swift; sourceTree = "<group>"; };
+		81AE6F502C737447004CB928 /* EmptyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsView.swift; sourceTree = "<group>"; };
 		81CF08782C61187F00881B21 /* HomeRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoutes.swift; sourceTree = "<group>"; };
 		81D04DAD2C5BB891001F5C44 /* InviteUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersView.swift; sourceTree = "<group>"; };
 		81D5E9ED2C61122400CA1443 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -156,7 +158,6 @@
 		CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerComponent.swift; sourceTree = "<group>"; };
 		CE825DE62C6664DE0006A3C3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsListView.swift; sourceTree = "<group>"; };
-		CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventsView.swift; sourceTree = "<group>"; };
 		CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRowView.swift; sourceTree = "<group>"; };
 		CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileButton.swift; sourceTree = "<group>"; };
 		F67792482C717EEE00D8F40F /* DescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewModel.swift; sourceTree = "<group>"; };
@@ -343,10 +344,10 @@
 				CE825DE42C665FAD0006A3C3 /* DividerComponent.swift */,
 				B2F56A0D2C6F6B44003FDC4D /* LeaveEvent.swift */,
 				CE825DE82C6A69DA0006A3C3 /* EventsListView.swift */,
-				CE825DEA2C6A6B4C0006A3C3 /* EmptyEventsView.swift */,
 				CE825DEC2C6A6B790006A3C3 /* EventRowView.swift */,
 				CE825DF02C6A72470006A3C3 /* UserProfileButton.swift */,
 				B2F56A112C6FB418003FDC4D /* InviteCardView.swift */,
+				81AE6F502C737447004CB928 /* EmptyEventsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -582,6 +583,7 @@
 				B2F56A102C6F8C41003FDC4D /* LeaveEventViewModel.swift in Sources */,
 				B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */,
 				81D5EA002C6116C400CA1443 /* ChatsView.swift in Sources */,
+				81AE6F512C737447004CB928 /* EmptyEventsView.swift in Sources */,
 				816A95492C57BB9E00E881EC /* EventManager.swift in Sources */,
 				81A5C1052C63978500E62D6C /* TeamsManager.swift in Sources */,
 				81A5C0FF2C63958C00E62D6C /* Team.swift in Sources */,

@@ -9,7 +9,11 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var viewModel = HomeViewModel()
+    
     @State private var inviteManager = InviteManager.shared
+    @State private var userManager = UserManager.shared
+    @State private var eventManager = EventManager.shared
+    
     @State private var showAlert = false
     @State private var navigateToInvites = false
     

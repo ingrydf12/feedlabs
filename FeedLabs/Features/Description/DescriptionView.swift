@@ -11,6 +11,7 @@ struct DescriptionView: View {
     
     private var isMeetDescription = false
     @StateObject private var viewModel: DescriptionViewModel
+    @State var userManager = UserManager.shared
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -81,11 +82,11 @@ struct DescriptionView: View {
                         .cornerRadius(10)
                 }
                 
-                if let doneAt = viewModel.doneAt {
+                if let date = viewModel.date {
                     HStack(alignment: .center) {
                         Image(systemName: "checkmark.circle")
                             .foregroundStyle(Color.black)
-                        Text(viewModel.dateFormatter.string(from: doneAt)) // Data em que foi feito
+                        Text(viewModel.dateFormatter.string(from: date)) // Data em que foi feito
                             .font(.tahoma(.regular, size: 16))
                             .foregroundStyle(Color.black)
                             .cornerRadius(10)
@@ -98,7 +99,7 @@ struct DescriptionView: View {
                         .foregroundColor(.black)
                     
                     ForEach(viewModel.participants, id: \.self) { participantId in
-                        if let participant = UserManager.shared.getUserById(participantId) {
+                        if let participant = userManager.getUserById(participantId) {
                             Text(participant.name ?? "")
                                 .font(.body)
                                 .foregroundColor(.black)
@@ -112,7 +113,7 @@ struct DescriptionView: View {
                         .foregroundColor(.black)
                     
                     ForEach(viewModel.owners, id: \.self) { participantId in
-                        if let participant = UserManager.shared.getUserById(participantId) {
+                        if let participant = userManager.getUserById(participantId) {
                             Text(participant.name ?? "")
                                 .font(.body)
                                 .foregroundColor(.black)

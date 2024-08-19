@@ -35,7 +35,6 @@ final class UserManager {
     private init () {
         print("init User Manager")
         getUsers()
-        
     }
     
     func fetchUser() {

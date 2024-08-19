@@ -8,11 +8,6 @@ class EventManager {
     
     var events: [Event] = []
     
-    private init() {
-        print("init Event Manager")
-        getEvents()
-    }
-    
     func getEvents() {
         guard let userId = AuthManager.shared.userId else {
             print("User is not authenticated")
