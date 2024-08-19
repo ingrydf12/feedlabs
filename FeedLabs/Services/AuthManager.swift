@@ -7,11 +7,12 @@
 
 import FirebaseAuth
 
-class AuthManager: ObservableObject {
+@Observable
+class AuthManager {
     static let shared = AuthManager()
 
-    @Published var isAuthenticated: Bool = false
-    @Published var userId: String?
+    var isAuthenticated: Bool = false
+    var userId: String?
 
     private init() {
         print("init Auth Manager")
@@ -27,12 +28,13 @@ class AuthManager: ObservableObject {
     
     func signOut() {
         do {
+            InviteManager.shared.handleLogout()
             try Auth.auth().signOut()
             
             self.isAuthenticated = false
             self.userId = nil
             
-            EventManager.shared.events?.removeAll()
+            EventManager.shared.events.removeAll()
             
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)

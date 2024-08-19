@@ -24,9 +24,9 @@ struct Event: Codable,Identifiable {
 }
 
 enum EventType: String, Codable, CaseIterable {
-    case meet = "Meet (Privada)"
-    case talk = "Talk (Pública)"
-    case oneOnOne = "One a One (Privado)"
-    case teamMeet = "Team Meet (Privado)"
-    case particular = "Particular (Público)"
+    case meet = "Meet"
+    case talk = "Talk"
+    case oneOnOne = "One a One"
+    case teamMeet = "Team Meet"
+    case particular = "Particular"
 }

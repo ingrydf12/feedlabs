@@ -11,8 +11,8 @@ struct InviteUsersView: View {
     
     @Binding var event: String
     
-    @StateObject private var userManager = UserManager.shared
-    @StateObject private var inviteManager = InviteManager.shared
+    @State var userManager = UserManager.shared
+    @State var inviteManager = InviteManager.shared
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {

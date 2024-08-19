@@ -10,55 +10,63 @@ import SwiftUI
 struct TeamCard: View {
     
     let team: Team
+    let role: Role
     
     private let maxParticipantsToShow = 3
     
     var body: some View {
-        HStack{
+        NavigationLink(destination: DescriptionView(team: team)){
             VStack(alignment: .leading){
-                HStack{
-                    Text("No prazo")
-                        .padding(.horizontal,10)
-                        .padding(.vertical,4)
-                }.overlay{
-                    RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                        .foregroundColor(.green)
-                }
-                
-                Text("\(team.name)")
-                    .font(.system(size: 32,weight: .bold))
-                    .padding(.bottom,4)
-                HStack {
-                    Text("Members:")
-                    let participants = team.participants ?? []
-                    let displayParticipants = Array(participants.prefix(maxParticipantsToShow))
-                    ForEach(displayParticipants, id: \.self) { participantId in
-                        if let participant = UserManager.shared.getUserById(participantId) {
-                            Text("\(participant.name ?? "nnn")")
-                                .font(.system(size: 16))
+                HStack(alignment:.top){
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text("No prazo")
+                                .font(.tahoma(.regular, size: 16))
+                                .padding(.horizontal,10)
+                                .padding(.vertical,4)
+                        }.overlay{
+                            RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
+                                .foregroundColor(.green)
+                        }
+                        
+                        Text("\(team.name)")
+                            .font(.tahoma(.bold, size: 32))
+                    }
+                    Spacer()
+                }.padding()
+                VStack(alignment: .leading){
+                    HStack {
+                        let participants = team.participants ?? []
+                        let displayParticipants = Array(participants.prefix(maxParticipantsToShow))
+                        ForEach(displayParticipants, id: \.self) { participantId in
+                            if let participant = UserManager.shared.getUserById(participantId) {
+                                Text("\(participant.name ?? "nnn"),")
+                                    .font(.tahoma(.regular, size: 16))
+                            }
+                        }
+                        if participants.count > maxParticipantsToShow {
+                            Text("e mais \(participants.count - maxParticipantsToShow)")
+                                .font(.tahoma(.regular, size: 16))
+                                .italic()
                         }
                     }
-                    if participants.count > maxParticipantsToShow {
-                        Text("e mais \(participants.count - maxParticipantsToShow)")
-                            .font(.system(size: 16))
-                            .italic()
-                    }
+                    Text("\(team.description?.capitalized ?? "")")
+                        .foregroundStyle(.darkAqua)
                 }
-                .padding(.bottom, 4)
-                Text("\(team.description ?? "")")
-                    .foregroundStyle(.darkAqua)
+                .padding(.horizontal)
+                .padding(.bottom)
+                .padding(.top,-5)
             }
-            .padding()
-            Spacer().frame(maxWidth: .infinity)
-        }
-        .frame(maxWidth: .infinity)
-        .overlay{
-            RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                .foregroundColor(.darkAqua)
+            .foregroundColor(.black)
+            .frame(maxWidth: .infinity)
+            .overlay{
+                RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
+                    .foregroundColor(.darkAqua)
+            }
         }
     }
 }
 
 #Preview {
-    TeamCard(team: Team(name: "Time 1", participants: ["7k0h9RLmNmOqFXSGsuQsnSbBzun1"]))
+    TeamCard(team: Team(name: "Time 1", participants: ["7k0h9RLmNmOqFXSGsuQsnSbBzun1"]),role: .mentor)
 }

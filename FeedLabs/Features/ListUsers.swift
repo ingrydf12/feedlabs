@@ -10,7 +10,7 @@ import SwiftUI
 class CreatingNewMessageView: ObservableObject{
     @Published var users = [ChatUser]()
     @Published var erroMessage: String = ""
-    @StateObject var userManager = UserManager.shared
+    @State var userManager = UserManager.shared
     
     init(){
         fetchAllUsers()
@@ -34,7 +34,7 @@ struct ListUsers: View {
 
     @State var isSearching: Bool = false
     @State var search: Bool = false
-    @StateObject var userManager = UserManager.shared
+    @State var userManager = UserManager.shared
     @State private var isPrivate: Bool = false
     //@State private var hideToolbarItem = false
     @Environment(\.presentationMode) var presentationMode

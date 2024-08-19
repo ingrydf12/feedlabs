@@ -1,21 +1,16 @@
-//
-//  EventManager.swift
-//  testFireStorage
-//
-//  Created by João Pedro Borges on 25/07/24.
-//
-
 import Foundation
 import FirebaseFirestore
 
-class EventManager: ObservableObject {
+@Observable
+class EventManager {
     
     static let shared = EventManager()
     
-    @Published var events: [Event]? = []
+    var events: [Event] = []
     
-    private init () {
+    private init() {
         print("init Event Manager")
+        getEvents()
     }
     
     func getEvents() {
@@ -28,55 +23,69 @@ class EventManager: ObservableObject {
         let ref = db.collection("Events")
         
         ref.getDocuments { snapshot, error in
-            if let error = error {
-                print("Error fetching events:", error.localizedDescription)
-                return
-            }
-            
-            if let snapshot = snapshot {
-                self.events = snapshot.documents.compactMap { document in
-                    do {
-                        let event = try document.data(as: Event.self)
-                        if self.haveAcess(of: userId, to: event){
-                            return event
-                        }else{
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let error = error {
+                    print("Error fetching events:", error.localizedDescription)
+                    return
+                }
+                
+                if let snapshot = snapshot {
+                    let fetchedEvents = snapshot.documents.compactMap { document in
+                        do {
+                            let event = try document.data(as: Event.self)
+                            return self.haveAcess(of: userId, to: event) ? event : nil
+                        } catch {
                             return nil
                         }
-                    } catch {
-                        return nil
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.events = fetchedEvents
+                        NotificationCenter.default.post(name: NSNotification.Name("EventsUpdated"), object: nil)
+                        print("Events fetched successfully")
                     }
                 }
-                print("Events fetched successfully")
             }
         }
     }
     
     private func haveAcess(of user: String, to event: Event) -> Bool {
         if event.isPrivate {
-            if event.participants.contains(user) || event.owners.contains(user){
-                return true
-            }else {
-                return false
-            }
-        }else{
+            return event.participants.contains(user) || event.owners.contains(user)
+        } else {
             return true
         }
     }
     
-    func addEvent(_ event: Event) {
+    func addEvent(_ event: Event) -> String? {
+        print("adicionando evento")
         let db = Firestore.firestore()
+        let documentId = db.collection("Events").document().documentID // Gerar o ID do documento
+
+        var eventWithId = event
+        eventWithId.id = documentId // Atribuir o ID gerado ao evento
+        
         do {
-            let _ = try db.collection("Events").addDocument(from: event) { error in
-                if let error = error {
-                    print("Error adding event: \(error.localizedDescription)")
-                } else {
-                    self.getEvents()
+            try db.collection("Events").document(documentId).setData(from: eventWithId) { error in
+                DispatchQueue.global(qos: .userInitiated).async {
+                    if let error = error {
+                        print("Error adding event: \(error.localizedDescription)")
+                        return
+                    } else {
+                        DispatchQueue.main.async {
+                            self.getEvents()
+                            print("evento adicionado")
+                        }
+                    }
                 }
             }
+            return documentId // Retornar o ID do documento criado
         } catch let error {
             print("Error adding event to Firestore: \(error.localizedDescription)")
+            return nil
         }
     }
+
     
     func addParticipant(userId: String, to eventId: String) {
         let db = Firestore.firestore()
@@ -85,15 +94,37 @@ class EventManager: ObservableObject {
         eventRef.updateData([
             "participants": FieldValue.arrayUnion([userId])
         ]) { error in
-            if let error = error {
-                print("Error adding participant: \(error.localizedDescription)")
-            } else {
-                print("Participant added successfully")
-                self.getEvents() // Atualiza os eventos após adicionar o participante
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let error = error {
+                    print("Error adding participant: \(error.localizedDescription)")
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        print("Participant added successfully")
+                        self.getEvents() // Atualiza os eventos após adicionar o participante
+                    }
+                }
             }
         }
     }
-
+    
+    func removeParticipant(_ userId: String, from eventId: String, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        let eventRef = db.collection("Events").document(eventId)
+        
+        eventRef.updateData([
+            "participants": FieldValue.arrayRemove([userId])
+        ]) { error in
+            if let error = error {
+                print("Error removing participant: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                completion(true)
+            }
+        }
+    }
+    
+    
     func updateEvent(_ event: Event) {
         guard let eventId = event.id else {
             print("Event ID is missing")
@@ -103,10 +134,15 @@ class EventManager: ObservableObject {
         let db = Firestore.firestore()
         do {
             try db.collection("Events").document(eventId).setData(from: event, merge: true) { error in
-                if let error = error {
-                    print("Error updating event: \(error.localizedDescription)")
-                } else {
-                    self.getEvents()
+                DispatchQueue.global(qos: .userInitiated).async {
+                    if let error = error {
+                        print("Error updating event: \(error.localizedDescription)")
+                        return
+                    } else {
+                        DispatchQueue.main.async {
+                            self.getEvents()
+                        }
+                    }
                 }
             }
         } catch let error {
@@ -118,10 +154,15 @@ class EventManager: ObservableObject {
         let db = Firestore.firestore()
         
         db.collection("Events").document(eventId).delete { error in
-            if let error = error {
-                print("Error deleting event: \(error.localizedDescription)")
-            } else {
-                self.getEvents() 
+            DispatchQueue.global(qos: .userInitiated).async {
+                if let error = error {
+                    print("Error deleting event: \(error.localizedDescription)")
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        self.getEvents()
+                    }
+                }
             }
         }
     }
