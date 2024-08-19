@@ -94,6 +94,7 @@ struct LoginView: View {
                 HStack {
                     Spacer()
                     Text("Esqueceu sua senha?")
+                        .accessibilityLabel("Botão para redefinir senha")
                         .foregroundStyle(Color.darkAqua)
                         .font(.tahoma(.secondaryButton))
                         .onTapGesture {
@@ -107,6 +108,7 @@ struct LoginView: View {
                     buttonView(name: "Entrar", background: Color.darkAqua) {
                         viewModel.handleLogin()
                     }
+                    .accessibilityHint("Botão de entrar")
                     .font(.tahoma(.secondaryButton))
                     
                     HStack {
@@ -116,6 +118,7 @@ struct LoginView: View {
                             viewModel.coordinator.navigateTo(screen: .register)
                         } label: {
                             Text("Cadastre-se")
+                                .accessibilityHint("Botão de cadastro")
                                 .foregroundStyle(Color.darkAqua)
                                 .font(.tahoma(.secondaryButton))
                         }

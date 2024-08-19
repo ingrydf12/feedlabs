@@ -28,6 +28,7 @@ struct RegisterView: View {
                         .foregroundStyle(Color.darkAqua)
                         .padding(.leading)
                 }
+                .accessibilityHint("Botão de voltar")
                 Spacer()
                 Text("Cadastro")
                     .font(.tahoma(.secondaryButton))
@@ -54,6 +55,7 @@ struct RegisterView: View {
                                     .stroke(viewModel.role == "Residente" ? Color.darkAqua : Color.clear, lineWidth: 3)
                             )
                     }
+                    .accessibilityHint("Residente foi selecionado")
                     
                     Button(action: {
                         viewModel.role = "Mentor"
@@ -67,6 +69,7 @@ struct RegisterView: View {
                                     .stroke(viewModel.role == "Mentor" ? Color.darkAqua : Color.clear, lineWidth: 3)
                             )
                     }
+                    .accessibilityHint("Mentor foi selecionado")
                 }
                 
                 if let roleError = viewModel.roleError {
@@ -79,8 +82,10 @@ struct RegisterView: View {
             
             VStack(spacing: 20) {
                 InputField(title: "Nome de usuário", text: $viewModel.name, error: viewModel.nameError)
+                    .accessibilityHint("Insira seu nome completo")
                 
                 InputField(title: "E-mail", text: $viewModel.email, error: viewModel.emailError)
+                    .accessibilityHint("Insira seu e-mail")
                 
                 VStack {
                     HStack {
@@ -110,7 +115,8 @@ struct RegisterView: View {
                 buttonView(name: "Cadastrar", background: Color.darkAqua) {
                     viewModel.handleRegister()
                 }
-                .accessibilityLabel("Botão de entrar")
+                .accessibilityLabel("Botão para cadastrar")
+                .accessibilityHint("Cria conta")
                 .font(.tahoma(.secondaryButton))
             }
             .padding(.top,20)
