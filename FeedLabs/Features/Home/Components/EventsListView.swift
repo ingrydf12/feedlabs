@@ -13,7 +13,7 @@ struct EventsListView: View {
     var body: some View {
         ScrollView(.vertical) {
             if groupedEvents.isEmpty {
-                NoEventCard()
+                //EmptyEventsView()
             } else {
                 ForEach(groupedEvents.keys.sorted { Int($0)! < Int($1)!}, id: \.self) { hour in
                     VStack(spacing: 8) {

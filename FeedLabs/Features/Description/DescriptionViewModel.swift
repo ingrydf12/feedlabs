@@ -7,27 +7,22 @@
 
 import Foundation
 
-@Observable
-class DescriptionViewModel {
+class DescriptionViewModel: ObservableObject {
     
     var teamManager = TeamsManager()
     var user = UserManager.shared.user
     var teamId: String = ""
     var meet: Event?
     var team: Team?
-    var name: String = ""
-    var description: String = ""
-    var participants: [String] = []
-    var owners: [String] = []
-    var type: EventType?
-    var createdAt: Date?
-    var date: Date?
-    var doneAt: Date?
-    var userCanEdit: Bool = false
-    
-    var isMeetDescription: Bool {
-            return meet != nil
-        }
+    @Published var name: String = ""
+    @Published var description: String = ""
+    @Published var participants: [String] = []
+    @Published var owners: [String] = []
+    @Published var type: EventType?
+    @Published var createdAt: Date?
+    @Published var date: Date?
+    @Published var doneAt: Date?
+    @Published var userCanEdit: Bool = false
     
     init(meet: Event){
         print("initing event description view model")

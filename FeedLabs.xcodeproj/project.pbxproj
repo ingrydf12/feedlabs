@@ -60,7 +60,6 @@
 		B25654BB2C64EAF7005F8CF7 /* ConfirmEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BA2C64EAF7005F8CF7 /* ConfirmEvent.swift */; };
 		B25654BD2C64EB12005F8CF7 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654BC2C64EB12005F8CF7 /* SecondaryButton.swift */; };
 		B25654C22C64FB8B005F8CF7 /* NoEventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25654C12C64FB8B005F8CF7 /* NoEventCard.swift */; };
-		B25D6D112C736A37000518D7 /* DescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8117117A2C6B79DC006AFB3C /* DescriptionViewModel.swift */; };
 		B2C2DA6A2C6A30C800EF7E75 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA692C6A30C800EF7E75 /* SearchBar.swift */; };
 		B2C2DA6C2C6A472A00EF7E75 /* FilterGenericPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA6B2C6A472A00EF7E75 /* FilterGenericPage.swift */; };
 		B2C2DA702C6A6A8300EF7E75 /* ChatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C2DA6F2C6A6A8300EF7E75 /* ChatCard.swift */; };
@@ -658,7 +657,7 @@
 				81D5E9EE2C61122400CA1443 /* AuthCoordinator.swift in Sources */,
 				816A95482C57BB9E00E881EC /* AuthManager.swift in Sources */,
 				B2C2DA702C6A6A8300EF7E75 /* ChatCard.swift in Sources */,
-				B25D6D112C736A37000518D7 /* DescriptionViewModel.swift in Sources */,
+				F67792492C717EEE00D8F40F /* DescriptionViewModel.swift in Sources */,
 				B2358A632C6BA6CE00BA0F64 /* InviteButton.swift in Sources */,
 				81D5EA022C6116D800CA1443 /* TeamsView.swift in Sources */,
 			);

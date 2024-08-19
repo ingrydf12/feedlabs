@@ -16,8 +16,9 @@ struct NoEventCard: View {
                 .scaledToFit()
             Text("Parece que você não tem nenhum evento para hoje")
                 .multilineTextAlignment(.center)
-                .font(.tahoma(.regular, size: 16)) // Change to Tahoma Main Text (16pt)
-        }.frame(width: 330, height: 290)
+                .font(.headline) // Change to Tahoma Main Text (16pt)
+                .fontWeight(.bold)
+        }.frame(width: 320, height: 290)
     }
 }
 
@@ -30,7 +31,8 @@ struct NoTeamCard: View {
                 .scaledToFit()
             Text("Parece que você não tem nenhum time adicionado.")
                 .multilineTextAlignment(.center)
-                .font(.tahoma(.regular, size: 16)) // Change to Tahoma Main Text (16pt)
+                .font(.headline) // Change to Tahoma Main Text (16pt)
+                .fontWeight(.bold)
         }.frame(width: 320, height: 290)
     }
 }
@@ -39,13 +41,17 @@ struct NoTeamCard: View {
 struct NoFilterResult: View {
     var body: some View {
         VStack(alignment: .center, spacing: 10){
-            Image("CatListUsers")
+            Image("imageNoFilter") //Change to "noFilterImage" (Pedro)
                 .resizable()
                 .scaledToFit()
             Text("Parece que você não tem nenhum evento próximo")
                 .multilineTextAlignment(.center)
-                .font(.tahoma(.bold, size: 16)) // Change to Tahoma Main Text (16pt)
-                .foregroundStyle(.inactive)
+                .font(.headline) // Change to Tahoma Main Text (16pt)
+                .fontWeight(.bold)
         }.frame(width: 320, height: 290)
     }
 }
+
+//#Preview {
+//    NoEventCard()
+//}
