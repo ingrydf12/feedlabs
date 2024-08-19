@@ -8,7 +8,7 @@
 import SwiftUI
 struct HomeRoutes: View {
     
-    @ObservedObject private var inviteManager = InviteManager.shared
+    @State var inviteManager = InviteManager.shared
     @State private var selectedTab: Int = 1
     
     var body: some View {

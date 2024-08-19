@@ -3,7 +3,7 @@ import SwiftUI
 struct AddEventView: View {
     
     @StateObject var viewModel = AddEventViewModel()
-    @StateObject private var userManager = UserManager.shared
+    @State var userManager = UserManager.shared
     @State private var showConfirmEvent = false
 
     @Environment(\.presentationMode) var presentationMode

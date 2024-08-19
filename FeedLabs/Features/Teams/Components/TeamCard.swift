@@ -15,60 +15,54 @@ struct TeamCard: View {
     private let maxParticipantsToShow = 3
     
     var body: some View {
-        VStack(alignment: .leading){
-            HStack(alignment:.top){
-                VStack(alignment: .leading){
-                    HStack{
-                        Text("No prazo")
-                            .font(.tahoma(.regular, size: 16))
-                            .padding(.horizontal,10)
-                            .padding(.vertical,4)
-                    }.overlay{
-                        RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                            .foregroundColor(.green)
-                    }
-                    
-                    Text("\(team.name)")
-                        .font(.tahoma(.bold, size: 32))
-                }
-                if role == .mentor {
-                    Spacer()
-                    NavigationLink(destination: EditTeamView(team: team)) {
-                        Image(systemName: "square.and.pencil")
-                            .font(.system(size: 24))
-                            .foregroundColor(.darkAqua)
-                    }
-                }else {
-                    Spacer()
-                }
-            }.padding()
+        NavigationLink(destination: DescriptionView(team: team)){
             VStack(alignment: .leading){
-                HStack {
-                    let participants = team.participants ?? []
-                    let displayParticipants = Array(participants.prefix(maxParticipantsToShow))
-                    ForEach(displayParticipants, id: \.self) { participantId in
-                        if let participant = UserManager.shared.getUserById(participantId) {
-                            Text("\(participant.name ?? "nnn"),")
+                HStack(alignment:.top){
+                    VStack(alignment: .leading){
+                        HStack{
+                            Text("No prazo")
                                 .font(.tahoma(.regular, size: 16))
+                                .padding(.horizontal,10)
+                                .padding(.vertical,4)
+                        }.overlay{
+                            RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
+                                .foregroundColor(.green)
+                        }
+                        
+                        Text("\(team.name)")
+                            .font(.tahoma(.bold, size: 32))
+                    }
+                    Spacer()
+                }.padding()
+                VStack(alignment: .leading){
+                    HStack {
+                        let participants = team.participants ?? []
+                        let displayParticipants = Array(participants.prefix(maxParticipantsToShow))
+                        ForEach(displayParticipants, id: \.self) { participantId in
+                            if let participant = UserManager.shared.getUserById(participantId) {
+                                Text("\(participant.name ?? "nnn"),")
+                                    .font(.tahoma(.regular, size: 16))
+                            }
+                        }
+                        if participants.count > maxParticipantsToShow {
+                            Text("e mais \(participants.count - maxParticipantsToShow)")
+                                .font(.tahoma(.regular, size: 16))
+                                .italic()
                         }
                     }
-                    if participants.count > maxParticipantsToShow {
-                        Text("e mais \(participants.count - maxParticipantsToShow)")
-                            .font(.tahoma(.regular, size: 16))
-                            .italic()
-                    }
+                    Text("\(team.description?.capitalized ?? "")")
+                        .foregroundStyle(.darkAqua)
                 }
-                Text("\(team.description?.capitalized ?? "")")
-                    .foregroundStyle(.darkAqua)
+                .padding(.horizontal)
+                .padding(.bottom)
+                .padding(.top,-5)
             }
-            .padding(.horizontal)
-            .padding(.bottom)
-            .padding(.top,-5)
-        }
-        .frame(maxWidth: .infinity)
-        .overlay{
-            RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                .foregroundColor(.darkAqua)
+            .foregroundColor(.black)
+            .frame(maxWidth: .infinity)
+            .overlay{
+                RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
+                    .foregroundColor(.darkAqua)
+            }
         }
     }
 }

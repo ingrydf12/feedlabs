@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ListUsers: View {
     @State var isSearching: Bool = false
-    @StateObject var userManager = UserManager.shared
+    @State var search: Bool = false
+    @State var userManager = UserManager.shared
+    @State private var isPrivate: Bool = false
+    //@State private var hideToolbarItem = false
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {

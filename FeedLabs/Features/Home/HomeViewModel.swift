@@ -9,6 +9,7 @@ import Foundation
 
 @Observable
 class HomeViewModel {
+    
     var userManager: UserManager = UserManager.shared
     var eventManager = EventManager.shared
     var selectedDate = Date()
