@@ -25,6 +25,13 @@ struct ChatList: View {
                         .foregroundColor(.gray)
                 })
             }
+            HStack{
+                    NavigationLink(destination: InvitesView()){
+                        Image(systemName: "exclamationmark.bubble.circle.fill")
+                            .font(.largeTitle).foregroundColor(Color("darkAqua") )
+                        Text("Convites")
+                    }
+            }
             if !chatManager.filteredUsersByChats.isEmpty {  // !
                 if !(chatManager.searchText == "") &&   chatManager.isSearchingUser {
                     Section(header: Text("Selecionar conversa")){

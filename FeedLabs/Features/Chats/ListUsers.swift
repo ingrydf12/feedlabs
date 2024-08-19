@@ -62,7 +62,9 @@ struct ListUsers: View {
                     }
                 }
                 
-            }.toolbar{
+            }
+            .navigationTitle("Usuários")
+            .toolbar{
                 ToolbarItem(placement: .topBarLeading){
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
