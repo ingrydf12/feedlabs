@@ -28,7 +28,8 @@ struct ChatList: View {
             HStack{
                     NavigationLink(destination: InvitesView()){
                         Image(systemName: "exclamationmark.bubble.circle.fill")
-                            .font(.largeTitle).foregroundColor(Color("darkAqua") )
+                            .font(.largeTitle)
+                            .foregroundStyle(.accent)
                         Text("Convites")
                     }
             }
@@ -39,7 +40,8 @@ struct ChatList: View {
                             NavigationLink(destination: ChatsView(user: user, chat: getChatWithUser(userId: user.id ?? ""))){
                                 
                                 Image(systemName: "person.circle.fill")
-                                    .font(.largeTitle).foregroundColor(Color("darkAqua") )
+                                    .font(.largeTitle)
+                                    .foregroundStyle(.accent)
                                 Text(user.name ?? "")
                                 
                             }
@@ -52,7 +54,7 @@ struct ChatList: View {
                             NavigationLink(destination: ChatsView(user: user , chat: getChatWithUser(userId: user.id ?? ""))){
                                 Image(systemName: "person.circle.fill")
                                     .font(.largeTitle)
-                                    .foregroundColor(Color("darkAqua") )
+                                    .foregroundStyle(.accent)
                                 //.cornerRadius(30)
                                 Text(user.name ?? "")
                             }
@@ -92,12 +94,12 @@ struct ChatList: View {
                 Button(action: {}){
                     NavigationLink(destination: ListUsers()){
                         
-                        Image(systemName: "plus.circle.fill")
+                        Image(systemName: "plus")
                             .padding(6)
                             .cornerRadius(30)
                             .font(.title2)
                         
-                    }.foregroundStyle(Color("darkAqua"))
+                    }.foregroundStyle(.accent)
                 }
             }
         }

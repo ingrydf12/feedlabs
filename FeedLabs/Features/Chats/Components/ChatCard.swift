@@ -24,7 +24,7 @@ struct ChatCard: View {
         .overlay(
             RoundedRectangle(cornerRadius: 10.0)
                 .stroke(style: StrokeStyle(lineWidth: 2.0))
-                .foregroundStyle(Color.accentColor)
+                .foregroundStyle(.accent)
         )
     }
 

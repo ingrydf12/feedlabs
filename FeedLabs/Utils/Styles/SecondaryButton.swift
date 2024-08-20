@@ -11,9 +11,9 @@ struct SecondaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 330, height: 50)
-            .background (Color.darkAqua.opacity(0.15)) // Change color to "Primary Color" or Action
+            .background (.accent.opacity(0.15)) // Change color to "Primary Color" or Action
             .clipShape(RoundedRectangle(cornerRadius: 12))
-            .foregroundStyle(.darkAqua)
+            .foregroundStyle(.accent)
     }
 }
 

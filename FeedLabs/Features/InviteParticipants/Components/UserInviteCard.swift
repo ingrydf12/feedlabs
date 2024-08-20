@@ -53,7 +53,7 @@ struct UserInviteCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 10.0))
         .overlay(
             RoundedRectangle(cornerRadius: 10.0)
-                .stroke(Color.accentColor, lineWidth: 2.0)
+                .stroke(.accent, lineWidth: 2.0)
         )
     }
     

@@ -29,7 +29,7 @@ struct HomeView: View {
             EventsListView(groupedEvents: viewModel.groupedEventsByHour())
            
             NavigationLink(destination: InvitesView(), isActive: $navigateToInvites) {
-                EmptyView()
+//                EmptyView()
             }
         }
         .navigationTitle("Reuniões")
@@ -47,7 +47,7 @@ struct HomeView: View {
             }
         }
         .padding()
-        .background(Color.background)
+//        .background(Color.background)
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("Você tem convites pendentes!"),

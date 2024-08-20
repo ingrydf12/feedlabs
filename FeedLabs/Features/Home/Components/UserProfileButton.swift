@@ -25,7 +25,7 @@ struct UserProfileButton: View {
                     .frame(width: 45, height: 45)
                     .background {
                         Circle()
-                            .foregroundColor(Color.accentColor).opacity(0.8)
+                            .foregroundColor(.accent).opacity(0.8)
                     }
             } else {
                 Text("")
@@ -34,7 +34,7 @@ struct UserProfileButton: View {
                     .frame(width: 45, height: 45)
                     .background {
                         Circle()
-                            .foregroundColor(Color.accentColor).opacity(0.8)
+                            .foregroundColor(.accent).opacity(0.8)
                     }
             }
         }

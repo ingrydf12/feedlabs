@@ -46,8 +46,7 @@ struct LoginView: View {
                     }
                     
                     HStack {
-                        TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail").foregroundColor(.gray))
-                            .foregroundColor(.gray)
+                        TextField("", text: $viewModel.email, prompt: Text("Insira seu e-mail"))
                             .autocapitalization(.none)
                             .padding(.leading, 20)
                     }
@@ -73,7 +72,7 @@ struct LoginView: View {
                     
                     HStack {
                         showPassword(text: $viewModel.password, title: "Insira sua senha")
-                            .foregroundStyle(Color.gray)
+//                            .foregroundStyle(Color.gray)
                             .autocapitalization(.none)
                             .padding()
                     }
@@ -94,7 +93,7 @@ struct LoginView: View {
                 HStack {
                     Spacer()
                     Text("Esqueceu sua senha?")
-                        .foregroundStyle(Color.darkAqua)
+                        .foregroundStyle(.accent)
                         .font(.tahoma(.secondaryButton))
                         .onTapGesture {
                             viewModel.coordinator.navigateTo(screen: .passwordRecovery)
@@ -104,11 +103,11 @@ struct LoginView: View {
                 .padding(.top,5)
                 
                 VStack {
-                    buttonView(name: "Entrar", background: Color.darkAqua) {
+                    buttonView(name: "Entrar", background: .accent) {
                         viewModel.handleLogin()
                     }
                     .font(.tahoma(.secondaryButton))
-                    
+
                     HStack {
                         Text("Não tem uma conta?")
                             .font(.tahoma(.secondaryButton))
@@ -116,7 +115,7 @@ struct LoginView: View {
                             viewModel.coordinator.navigateTo(screen: .register)
                         } label: {
                             Text("Cadastre-se")
-                                .foregroundStyle(Color.darkAqua)
+                                .foregroundStyle(.accent)
                                 .font(.tahoma(.secondaryButton))
                         }
                     }

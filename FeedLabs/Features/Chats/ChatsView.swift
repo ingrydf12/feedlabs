@@ -44,10 +44,11 @@ struct ChatsView: View {
                                         Text(message.text ?? "")
                                             .frame(alignment: .trailing)
                                             .padding()
-                                            .background(Color(.white))
+                                            .background(Color(uiColor: .secondarySystemBackground))
+                                            .clipShape(RoundedRectangle(cornerRadius: 16))
                                             .overlay(
                                                 RoundedRectangle(cornerRadius: 16)
-                                                    .stroke(Color("darkAqua"), lineWidth: 2)
+                                                    .stroke(Color(.accent), lineWidth: 2)
                                             )
                                         if AuthManager.shared.userId != message.fromUser {Spacer()}
                                     }
@@ -69,14 +70,15 @@ struct ChatsView: View {
                              
                             }, label: {
                                Image(systemName: "paperclip")
-                                   .foregroundColor(Color("darkAqua"))
+                                    .foregroundStyle(.accent)
                             }).padding()
                                
                                 .cornerRadius(30)
-                        }.background(Color(.white))
+                        }
+//                        .background(Color(.white))
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color("darkAqua"), lineWidth: 2)
+                                .stroke(Color.accent, lineWidth: 2)
                         )
                         
                         Button(action: {
@@ -99,30 +101,32 @@ struct ChatsView: View {
                         }
                         , label: {
                             Image(systemName: "paperplane")
-                                .foregroundColor(Color("darkAqua") )
+                                .foregroundStyle(.accent)
                         })
                         .padding()
-                        .background(Color("lightAqua"))
+                        .background(.accent.opacity(0.15))
+//                        .background(Color("lightAqua"))
                         .cornerRadius(30)
                     }
                     .font(.title2)
                 }.padding()
                 .padding(.top)
-                .background(Color("backgroudTextField"))
+//                .background(Color("backgroudTextField"))
             
             }
             .navigationTitle(user?.name ?? "Lucas")
             .toolbar{
                 ToolbarItem(placement: .topBarLeading){
                     Button(action: {presentationMode.wrappedValue.dismiss()}){
-                      
-                        Image(systemName: "chevron.backward").padding(-4)
-                        Text("Voltar")
-                    }.foregroundStyle(Color("darkAqua"))
-                        .font(.headline)
+
+                        Image(systemName: "chevron.backward")
+                            .padding(-4)
+                    }
+                    .foregroundStyle(.accent)
+                    .font(.headline)
                 }
             }
-            .toolbarBackground(Color("backgroudTextField"), for: .navigationBar)
+            .toolbarBackground(Color(uiColor: .tertiarySystemBackground), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
            
         }.navigationBarBackButtonHidden(true)

@@ -25,13 +25,13 @@ struct RegisterView: View {
                 }) {
                     Image(systemName: "chevron.left")
                         .font(.system(size: 25))
-                        .foregroundStyle(Color.darkAqua)
+                        .foregroundStyle(.accent)
                         .padding(.leading)
                 }
                 Spacer()
                 Text("Cadastro")
                     .font(.tahoma(.secondaryButton))
-                    .foregroundStyle(Color.darkAqua)
+                    .foregroundStyle(.accent)
                     .padding(.trailing)
                 Spacer()
             }
@@ -51,7 +51,7 @@ struct RegisterView: View {
                             .frame(width: 160, height: 168)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(viewModel.role == "Residente" ? Color.darkAqua : Color.clear, lineWidth: 3)
+                                    .stroke(viewModel.role == "Residente" ? .accent : Color.clear, lineWidth: 3)
                             )
                     }
                     
@@ -64,7 +64,7 @@ struct RegisterView: View {
                             .frame(width: 160, height: 168)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(viewModel.role == "Mentor" ? Color.darkAqua : Color.clear, lineWidth: 3)
+                                    .stroke(viewModel.role == "Mentor" ? .accent : Color.clear, lineWidth: 3)
                             )
                     }
                 }
@@ -107,7 +107,7 @@ struct RegisterView: View {
                     }
                 }
                 
-                buttonView(name: "Cadastrar", background: Color.darkAqua) {
+                buttonView(name: "Cadastrar", background: .accent) {
                     viewModel.handleRegister()
                 }
                 .font(.tahoma(.secondaryButton))

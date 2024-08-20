@@ -18,7 +18,8 @@ struct showPassword: View {
             
             Image(systemName: "lock.fill")
                 .foregroundStyle(Color.gray)
-               
+                .accessibilityHidden(true)
+
             ZStack(alignment: .trailing) {
                 
                 Group{

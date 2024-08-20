@@ -20,18 +20,18 @@ struct InviteCardView: View {
                         //Quem está convidando:
                         Text("\(UserManager.shared.getUserById(invite.from ?? "")?.name ?? "") está te convidando para um evento:")
                             .font(.tahoma(.regular, size: 14))
-                            .foregroundColor(.black)
+//                            .foregroundColor(.black)
                         
                         //Event Name (ERROR)
                         Text("\(inviteManager.getEventById(eventId: invite.eventId ?? "") ?? "Desconhecido")")
                             .font(.tahoma(.bold, size: 24))
-                            .foregroundColor(.primary)
+//                            .foregroundColor(.primary)
                         
-                        //Você
-                        Text("Para: \(UserManager.shared.getUserById(invite.to ?? "")?.name ?? "")")
-                            .font(.tahoma(.bold, size: 16))
-                            .foregroundColor(.darkAqua)
-                        
+//                        //Você
+//                        Text("Para: \(UserManager.shared.getUserById(invite.to ?? "")?.name ?? "")")
+//                            .font(.tahoma(.bold, size: 16))
+//                            .foregroundColor(.accent)
+
                         //Status do convite
                         Text("\(invite.status?.rawValue ?? "Desconhecido")")
                             .font(.subheadline)
@@ -65,9 +65,8 @@ struct InviteCardView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.white)
+                    .background(Color(uiColor: .secondarySystemBackground))
                     .cornerRadius(10)
-                    .shadow(radius: 2)
                 }
             }
             .padding()
