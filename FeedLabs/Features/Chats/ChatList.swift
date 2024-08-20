@@ -97,7 +97,6 @@ struct ChatList: View {
                         Image(systemName: "plus")
                             .padding(6)
                             .cornerRadius(30)
-                            .font(.title2)
                         
                     }.foregroundStyle(.accent)
                 }
