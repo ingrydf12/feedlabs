@@ -21,7 +21,7 @@ struct TeamsView: View {
                 NavigationLink(destination: AddEventView()) {
                     Image(systemName: "plus")
                         .font(.system(size: 20,weight: .semibold))
-                        .foregroundColor(.darkAqua)
+                        .foregroundStyle(.accent)
                 }
             }
             ScrollView(.vertical,showsIndicators: false) {
@@ -60,7 +60,7 @@ struct TeamsView: View {
                         NavigationLink(destination: EditTeamView()) {
                             Image(systemName: "plus")
                                 .font(.system(size: 20,weight: .semibold))
-                                .foregroundColor(.darkAqua)
+                                .foregroundStyle(.accent)
                         }
                     }
                 }

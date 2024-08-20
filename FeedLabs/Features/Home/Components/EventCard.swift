@@ -105,7 +105,7 @@ struct EventCard: View {
                 .frame(maxWidth: 350)
                 .background(Color.white)
                 .cornerRadius(10)
-                .shadow(color: .black.opacity(0.2), radius: 4, x: 1, y: 2)
+                .shadow(color: .primary.opacity(0.2), radius: 4, x: 1, y: 2)
             }
         }
     }

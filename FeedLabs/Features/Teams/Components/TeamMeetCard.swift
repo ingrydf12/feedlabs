@@ -52,7 +52,6 @@ struct TeamMeetCard: View {
                     Text(event.type.rawValue)
                         .font(.tahoma(.regular, size: 16))
                         .padding(5)
-                        .foregroundStyle(Color.black) //Change name to "Inactive color" or Black
                         .background(
                             RoundedRectangle(cornerRadius: 5)
                                 .stroke(Color.gray.opacity(0.5), lineWidth: 2)
@@ -61,24 +60,21 @@ struct TeamMeetCard: View {
                     HStack (alignment: .center){
                         
                         Image(systemName: "calendar")
-                            .foregroundStyle(Color.black)
                         Text(Self.dateFormatter.string(from: event.date ?? Date()))
                             .font(.tahoma(.regular, size: 16))
-                            .foregroundStyle(Color.black)
                             .cornerRadius(10)
                     }
                 }
             }
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             .padding()
             .frame(maxWidth: 350)
-            .background(Color.white)
             .cornerRadius(10)
             .overlay{
                 RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                    .foregroundColor(Color.darkAqua)
+                    .foregroundColor(.accent)
             }
-            .shadow(color: .black.opacity(0.2), radius: 4, x: 1, y: 2)
+//            .shadow(color: .black.opacity(0.2), radius: 4, x: 1, y: 2)
         }
     }
 }

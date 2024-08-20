@@ -39,7 +39,8 @@ struct ListUsers: View {
                             NavigationLink(destination: ChatsView(user: user)){
                                 HStack{
                                     Image(systemName: "person.circle.fill")
-                                        .foregroundColor(Color("darkAqua") )
+                                        .foregroundStyle(.accent)
+//                                        .foregroundColor(Color("darkAqua") )
                                         .font(.largeTitle)
                                     Text(user.name ?? "")
                                 }
@@ -52,7 +53,8 @@ struct ListUsers: View {
                         ForEach(userManager.filteredUsers){ user in
                             NavigationLink(destination: ChatsView(user: user)){
                                 Image(systemName: "person.circle.fill")
-                                    .foregroundColor(Color("darkAqua") )
+                                    .foregroundStyle(.accent)
+//                                    .foregroundColor(Color("darkAqua") )
                                     .font(.largeTitle)
                                 Text(user.name ?? "")
                             }
@@ -72,8 +74,8 @@ struct ListUsers: View {
                     }){
                       
                         Image(systemName:  "chevron.backward").padding(-4)
-                        Text("Voltar")
-                    }.foregroundStyle(Color("darkAqua"))
+//                        Text("Voltar")
+                    }.foregroundStyle(.accent)
                         .font(.headline)
                         .padding(7)
                 }

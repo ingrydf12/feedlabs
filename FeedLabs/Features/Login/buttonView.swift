@@ -22,7 +22,7 @@ struct buttonView: View {
                     .padding()
                     .frame(width: 329 ,height: 75)
                 Text(name)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color(uiColor: .systemGray6))
                     .bold()
             }
             
