@@ -38,7 +38,8 @@ struct ListUsers: View {
                            ChatsView(user: user)){
                             HStack{
                                 Image(systemName: "person.circle.fill")
-                                    .foregroundColor(Color("darkAqua") )
+                                    .foregroundStyle(.accent)
+//                                    .foregroundColor(Color("darkAqua") )
                                     .font(.largeTitle)
                                 Text(user.name ?? "")
                             }
@@ -68,15 +69,15 @@ struct ListUsers: View {
         .navigationTitle("Usuários")
         .toolbar{
             ToolbarItem(placement: .topBarLeading){
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                    userManager.searchText = ""
-                }){
-                    Image(systemName:  "chevron.backward").padding(-4)
-                    Text("Voltar")
-                }.foregroundStyle(Color("darkAqua"))
-                    .font(.headline)
-                    .padding(7)
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                        userManager.searchText = ""
+                    }){
+                        Image(systemName:  "chevron.backward").padding(-4)
+//                        Text("Voltar")
+                    }.foregroundStyle(.accent)
+                        .font(.headline)
+                        .padding(7)
             }
         }
         .navigationBarBackButtonHidden(true)

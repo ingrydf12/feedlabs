@@ -29,14 +29,14 @@ struct ParticipantsList: View {
                     if team.participants?.allSatisfy({ selectedParticipants.contains($0) }) ?? false {
                         // Value: Selected
                         Image(systemName: "person.fill.checkmark")
-                            .foregroundStyle(.darkAqua)
-                            .background(Circle().fill(Color.darkAqua.opacity(0.2))
+                            .foregroundStyle(.accent)
+                            .background(Circle().fill(.accent.opacity(0.2))
                                 .frame(width: 43, height: 43))
                     } else {
                         // Value: Default
                         Image(systemName: "person.badge.plus")
-                            .foregroundStyle(.darkAqua)
-                            .background(Circle().fill(Color.darkAqua.opacity(0.2))
+                            .foregroundStyle(.accent)
+                            .background(Circle().fill(.accent.opacity(0.2))
                                 .frame(width: 43, height: 43))
                     }
                 }
@@ -59,14 +59,14 @@ struct ParticipantsList: View {
                         if selectedParticipants.contains(user.id ?? "") {
                             // Value: Selected
                             Image(systemName: "person.fill.checkmark")
-                                .foregroundStyle(.darkAqua)
-                                .background(Circle().fill(Color.darkAqua.opacity(0.2))
+                                .foregroundStyle(.accent)
+                                .background(Circle().fill(.accent.opacity(0.2))
                                     .frame(width: 43, height: 43))
                         } else {
                             //Value: Default
                             Image(systemName: "person.badge.plus")
-                                .foregroundStyle(.darkAqua)
-                                .background(Circle().fill(Color.darkAqua.opacity(0.2))
+                                .foregroundStyle(.accent)
+                                .background(Circle().fill(.accent.opacity(0.2))
                                     .frame(width: 43, height: 43))
                         }
                     }

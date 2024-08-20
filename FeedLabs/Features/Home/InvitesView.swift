@@ -18,12 +18,10 @@ struct InvitesView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.backward")
-                        .foregroundColor(.black)
                 }
                 Spacer()
                 Text("Convites")
                     .font(.headline)
-                    .foregroundColor(.black)
                 Spacer()
             }
             .padding(.horizontal)
@@ -32,6 +30,7 @@ struct InvitesView: View {
         }
         .padding()
         .navigationBarBackButtonHidden()
+//        .background(Color.background)
     }
 }
 

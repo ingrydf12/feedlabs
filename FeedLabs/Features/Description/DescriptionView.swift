@@ -32,12 +32,13 @@ struct DescriptionView: View {
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "chevron.backward")
-                            .foregroundColor(.black)
+                            .foregroundStyle(.accent)
+//                            .foregroundColor(.black)
                     }
                     Spacer()
                     Text("Descrição")
                         .font(.headline)
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                     Spacer()
                 }
                 .padding(.horizontal)
@@ -46,13 +47,13 @@ struct DescriptionView: View {
                     HStack {
                         Text("\(viewModel.name)")
                             .font(.system(size: 40, weight: .bold))
-                            .foregroundColor(.black)
+//                            .foregroundColor(.black)
                         Spacer()
                         if isMeetDescription {
                             Text(viewModel.type?.rawValue ?? EventType.meet.rawValue)
                                 .font(.tahoma(.regular, size: 16))
                                 .padding(5)
-                                .foregroundStyle(Color.black)
+//                                .foregroundStyle(Color.black)
                                 .background(
                                     RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color.gray.opacity(0.5), lineWidth: 2)
@@ -63,33 +64,33 @@ struct DescriptionView: View {
                     
                     Text("\(viewModel.description)")
                         .font(.subheadline)
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                     
                     HStack(alignment: .center) {
                         Image(systemName: "calendar")
-                            .foregroundStyle(Color.black)
+//                            .foregroundStyle(Color.black)
                         Text(viewModel.dateFormatter.string(from: viewModel.date ?? Date()))
                             .font(.tahoma(.regular, size: 16))
-                            .foregroundStyle(Color.black)
+//                            .foregroundStyle(Color.black)
                             .cornerRadius(10)
                     }
                     
                     HStack(alignment: .center) {
                         Image(systemName: "clock")
-                            .foregroundStyle(Color.black)
+//                            .foregroundStyle(Color.black)
                         Text(viewModel.timeFormatter.string(from: viewModel.date ?? Date())) // Hora formatada
                             .font(.tahoma(.regular, size: 16))
-                            .foregroundStyle(Color.black)
+//                            .foregroundStyle(Color.black)
                             .cornerRadius(10)
                     }
                     
                     if let date = viewModel.date {
                         HStack(alignment: .center) {
                             Image(systemName: "checkmark.circle")
-                                .foregroundStyle(Color.black)
+//                                .foregroundStyle(Color.black)
                             Text(viewModel.dateFormatter.string(from: date)) // Data em que foi feito
                                 .font(.tahoma(.regular, size: 16))
-                                .foregroundStyle(Color.black)
+//                                .foregroundStyle(Color.black)
                                 .cornerRadius(10)
                         }
                     }
@@ -97,13 +98,13 @@ struct DescriptionView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Participantes:")
                             .font(.system(size: 18,weight: .bold))
-                            .foregroundColor(.black)
+//                            .foregroundColor(.black)
                         
                         ForEach(viewModel.participants, id: \.self) { participantId in
                             if let participant = userManager.getUserById(participantId) {
                                 Text(participant.name ?? "")
                                     .font(.body)
-                                    .foregroundColor(.black)
+//                                    .foregroundColor(.black)
                             }
                         }
                     }
@@ -111,13 +112,13 @@ struct DescriptionView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Organizadores:")
                             .font(.headline)
-                            .foregroundColor(.black)
+//                            .foregroundColor(.black)
                         
                         ForEach(viewModel.owners, id: \.self) { participantId in
                             if let participant = userManager.getUserById(participantId) {
                                 Text(participant.name ?? "")
                                     .font(.body)
-                                    .foregroundColor(.black)
+//                                    .foregroundColor(.black)
                             }
                         }
                     }

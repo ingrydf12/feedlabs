@@ -11,10 +11,10 @@ struct InviteButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 50, height: 50)
-            .foregroundStyle(.darkAqua)
+            .foregroundStyle(.accent)
             .background(
             Circle()
-                .foregroundStyle(.darkAqua.opacity(0.2))
+                .foregroundStyle(.accent.opacity(0.2))
             )
             .padding(15)
     }

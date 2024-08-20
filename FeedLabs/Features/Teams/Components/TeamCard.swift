@@ -51,17 +51,17 @@ struct TeamCard: View {
                         }
                     }
                     Text("\(team.description?.capitalized ?? "")")
-                        .foregroundStyle(.darkAqua)
+                        .foregroundStyle(.accent)
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
                 .padding(.top,-5)
             }
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             .frame(maxWidth: .infinity)
             .overlay{
                 RoundedRectangle(cornerRadius: 10).stroke(lineWidth: 3)
-                    .foregroundColor(.darkAqua)
+                    .foregroundColor(.accent)
             }
         }
     }

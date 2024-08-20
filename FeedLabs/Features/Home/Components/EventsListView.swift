@@ -17,7 +17,8 @@ struct EventsListView: View {
             } else {
                 ForEach(groupedEvents.keys.sorted { Int($0)! < Int($1)!}, id: \.self) { hour in
                     VStack(spacing: 8) {
-                        DividerComponent(text: "\(hour):00")
+                        DividerComponent(text: "\(hour):00").accessibilityLabel("\(hour) horas")
+
                         ForEach(groupedEvents[hour]!) { event in
                             TeamMeetCard(event: event)
                         }

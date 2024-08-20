@@ -31,12 +31,12 @@ struct EditTeamView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.backward")
-                        .foregroundColor(.black)
+                        .foregroundColor(.accent)
                 }
                 Spacer()
                 Text(isEditMode ? "Editar Team": "Criar Team")
                     .font(.headline)
-                    .foregroundColor(.black)
+//                    .foregroundColor(.black)
                 Spacer()
             }.scrollDisabled(true)
             .padding(.horizontal)
@@ -80,7 +80,7 @@ struct EditTeamView: View {
                             presentationMode.wrappedValue.dismiss()
 
                         }.buttonStyle(SecondaryButton())
-                            .padding(.top,-15)
+//                            .padding(.top,-15)
                     }
                 }
             }

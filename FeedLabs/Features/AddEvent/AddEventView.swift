@@ -18,12 +18,12 @@ struct AddEventView: View {
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "chevron.backward")
-                            .foregroundColor(.black)
+//                            .foregroundColor(.black)
                     }
                     Spacer()
                     Text("Criar evento")
                         .font(.headline)
-                        .foregroundColor(.black)
+//                        .foregroundColor(.black)
                     Spacer()
                 }.scrollDisabled(true)
                 .padding(.horizontal)
