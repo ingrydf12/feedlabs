@@ -92,10 +92,8 @@ struct ChatList: View {
                 Button(action: {}){
                     NavigationLink(destination: ListUsers()){
                         
-                        Image(systemName: "plus.circle.fill")
-                            .padding(6)
+                        Image(systemName: "plus")
                             .cornerRadius(30)
-                            .font(.title2)
                         
                     }.foregroundStyle(Color("darkAqua"))
                 }
