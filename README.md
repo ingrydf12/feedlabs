@@ -1,3 +1,3 @@
-## Application design:
+## Feedlabs: A collaborative feedback app
 
-![image](https://github.com/user-attachments/assets/1369fac4-8068-4169-9d21-6af8789a6776)
+![mockupFeedlabs](https://github.com/user-attachments/assets/4ba39a9a-ad07-4735-848e-589aca7c39d5)
