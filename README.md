@@ -5,8 +5,9 @@
 
 Estamos animados em compartilhar o resultado do nosso mais recente projeto em equipe: **Feedlabs**, um aplicativo desenvolvido para tornar o ambiente de trabalho mais produtivo, acessível e colaborativo.
 
-Equipe
-| ![Guilherme Pessoa](https://media.licdn.com/dms/image/v2/D4D03AQH0HqkU4NlnrA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1698182448545?e=1729728000&v=beta&t=1ed__CI5DrkfzzWNQs-GjapLvM1TewAE5RdxTnL8afs) | ![João Pedro Vinhas](https://media.licdn.com/dms/image/v2/D4D03AQGA8ZRc0SAfqA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1722042597323?e=1729728000&v=beta&t=2k3ui0h15mIZwaqGuUZdxM1c_6MskVr4Ydyv0lOcbPc) | ![Luciana Adrião](https://media.licdn.com/dms/image/v2/D4D03AQEAVmGOOSxk4Q/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1702317814440?e=1729728000&v=beta&t=Tvecff2tbpWFjelMEpq8cKh4bKvbBKVP470M1U2NMnw) | ![Ingryd](https://media.licdn.com/dms/image/v2/D4D03AQFQEHXdU_yF8g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1721435990851?e=1729728000&v=beta&t=ilgDs1ZTiyyfyYvZxhBsiy8DRNsDn6gubkIFF17Zuu0) | ![Pedro Victor](https://media.licdn.com/dms/image/v2/D4E03AQHbhgeGf3-F8g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1702009343981?e=1729728000&v=beta&t=pQywY-QU0lXoVpliPS5fFC7Sw_MUcnNKvlH6sdwSRTk) |
+### Equipe
+
+| ![Guilherme Pessoa](https://avatars.githubusercontent.com/u/142844933?v=4) | ![João Pedro Vinhas](https://avatars.githubusercontent.com/u/147623135?v=4) | ![Luciana Adrião](https://avatars.githubusercontent.com/u/82406248?v=4) | ![Ingryd](https://avatars.githubusercontent.com/u/90623907?v=4) | ![Pedro Victor](https://avatars.githubusercontent.com/u/45602207?v=4) |
 |:---:|:---:|:---:|:---:|:---:|
 | Guilherme Pessoa | João Pedro Vinhas | Luciana Adrião | Ingryd Duarte | Pedro Victor Furtado |
 
@@ -34,3 +35,8 @@ O **Feedlabs** foi criado com o propósito de estimular o desenvolvimento e apri
 ## 💻 Tecnologia
 
 Além do Firebase, utilizamos **SwiftUI** para o desenvolvimento da interface nativa para iOS e **Figma** para o design e prototipagem da interface.
+
+
+![Linkedin](https://github.com/user-attachments/assets/831e39ab-400c-4ead-82c5-3fb6f8ede5b6)
+![image](https://github.com/user-attachments/assets/3d05c08d-60e2-49bf-be85-9d4ffa5a1e3a)
+
